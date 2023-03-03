@@ -17,6 +17,19 @@ public class MoveTheCamera : MonoBehaviour
 
             transform.Translate(horizontalOffset, verticalOffset, 0);
         }
+        //zoom la caméra
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+        {
+            Debug.Log(Input.GetAxis("Mouse ScrollWheel"));
+            Camera.main.fieldOfView = 45;
+        }
+        //Dezoom la caméra
+        if(Input.GetAxis("Mouse ScrollWheel") < 0f)
+        {
+            Debug.Log(Input.GetAxis("Mouse ScrollWheel"));
+            Camera.main.fieldOfView = 75;
+        }
+        
     }
 
 }
