@@ -6,6 +6,7 @@ public class CreateAContruct : MonoBehaviour
 {
     public GameObject cube;
     bool ConstructMod;
+    public GameObject cubePrevisual;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,13 +20,17 @@ public class CreateAContruct : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 10000))
         {
-            Debug.Log(hit.transform.name);
-            Debug.Log(hit.transform.transform.position);
-            if (Input.GetMouseButton(0) && ConstructMod)
-            { 
-                GameObject newCube = Instantiate(cube, new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z), Quaternion.identity); 
-                ConstructMod = false;
-            }   
+            if (ConstructMod)
+            {
+                cubePrevisual.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z);
+                if (Input.GetMouseButton(0))
+                {
+                    cubePrevisual.SetActive(false);
+                    GameObject newCube = Instantiate(cube, new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z), Quaternion.identity);
+                    ConstructMod = false;
+
+                }
+            }
         }
     }
 
@@ -33,5 +38,6 @@ public class CreateAContruct : MonoBehaviour
     {
         ConstructMod = true;
         cube.GetComponent<MeshRenderer>().material = colors;
+        cubePrevisual.SetActive(true);
     }
 }
