@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7613694942237664616}
   - component: {fileID: 5405206782400814708}
   - component: {fileID: 1854118550268196933}
-  - component: {fileID: -5742614945999508593}
   m_Layer: 0
   m_Name: invisibleCube
   m_TagString: Untagged
@@ -84,15 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-5742614945999508593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8171996915834360801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b46358d5390fda438fbdbce078acd96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
