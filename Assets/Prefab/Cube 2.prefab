@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5458086022456063649}
   - component: {fileID: 5458086022456063648}
   - component: {fileID: 5458086022456063651}
-  - component: {fileID: -586994702617267612}
+  - component: {fileID: -490222621667990588}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Cube 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1932f87afc8c8ec4cb4df735fcf88ca0, type: 2}
+  - {fileID: 2100000, guid: 1658147763a67c849b4e6194c75d8ef8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-586994702617267612
+--- !u!114 &-490222621667990588
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,6 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67df5d59f5916d439ca23dc7fa3548c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodCost: 5
-  stoneCost: 52
-  foodCost: 4
+  woodCost: 25
+  stoneCost: 3
+  foodCost: 21

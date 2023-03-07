@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class CreateAContruct : MonoBehaviour
 {
     public GameObject cube;
     bool ConstructMod;
     public GameObject cubePrevisual;
+    public Resource Resource;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,10 +36,17 @@ public class CreateAContruct : MonoBehaviour
         }
     }
 
-    public void PutABuilding(Material colors)
+    public void PutABuilding(GameObject aConstruct)
     {
-        ConstructMod = true;
-        cube.GetComponent<MeshRenderer>().material = colors;
-        cubePrevisual.SetActive(true);
+       Construct construct = aConstruct.GetComponent<Construct>();
+        if (construct.woodCost <= Resource.Wood && construct.stoneCost <= Resource.Stone && construct.foodCost <= Resource.Food && !ConstructMod) 
+        {
+            cube = aConstruct;
+            Resource.Wood = -construct.woodCost;
+            Resource.Stone = -construct.stoneCost;
+            Resource.Food = -construct.foodCost;
+            ConstructMod = true;
+            cubePrevisual.SetActive(true);
+        }
     }
 }
