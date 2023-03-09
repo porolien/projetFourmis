@@ -59186,7 +59186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dfd7e94056bb0343a5dca8b376c248a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  surface: {fileID: 0}
+  surface: {fileID: 1201228439}
 --- !u!114 &1201228439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81548,7 +81548,7 @@ MonoBehaviour:
   cubePrevisual: {fileID: 126301335}
   Resource: {fileID: 1677460352}
   navMeshSurface: {fileID: 0}
-  navigationBaker: {fileID: 0}
+  navigationBaker: {fileID: 1201228438}
 --- !u!114 &1677460352
 MonoBehaviour:
   m_ObjectHideFlags: 0
