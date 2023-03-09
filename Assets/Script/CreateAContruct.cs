@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 
 
 public class CreateAContruct : MonoBehaviour
@@ -9,10 +11,12 @@ public class CreateAContruct : MonoBehaviour
     bool ConstructMod;
     public GameObject cubePrevisual;
     public Resource Resource;
+    public NavMeshSurface navMeshSurface;
+    public NavigationBaker navigationBaker;
     // Start is called before the first frame update
     void Start()
     {
-    
+       // navMeshSurface = cubePrevisual.GetComponent<NavMeshSurface>();
     }
 
     // Update is called once per frame
@@ -30,7 +34,7 @@ public class CreateAContruct : MonoBehaviour
                     cubePrevisual.SetActive(false);
                     GameObject newCube = Instantiate(cube, new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z), Quaternion.identity);
                     ConstructMod = false;
-
+                    navigationBaker.bakeTheNavigation();
                 }
             }
         }
