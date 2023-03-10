@@ -12,8 +12,13 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance = null;
     private GameManager() { }
     public static GameManager Instance => _instance;
+    //
 
+    public GameObject ant;
+    
     public MovingAnt[] ants;
+    public GameObject[] ground;
+
     public int dayTime;
     public int nightTime;
 
@@ -33,12 +38,15 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        ground = GameObject.FindGameObjectsWithTag("Ground");
         ants = FindObjectsOfType<MovingAnt>();
         StartCoroutine(Day());
     }
 
     public IEnumerator Day()
     {
+        ant = Instantiate(ant);
+
         foreach (MovingAnt ant in ants)
         {
             ant.gameObject.SetActive(true);

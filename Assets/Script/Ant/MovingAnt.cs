@@ -5,36 +5,35 @@ using UnityEngine.AI;
 
 public class MovingAnt : MonoBehaviour
 {
+    private string[] jobs = new string[] { "vagrant", "lumberjack", "collier", "explorer", "mason" };
     public string job;
+
     public bool isItStartingDay;
     public bool isItEndingDay;
 
-    public GameObject[] ground;
     public GameObject[] forests;
     public GameObject[] mines;
     public GameObject[] foods;
     public GameObject[] worksites;
 
-    public MeshRenderer meshRenderer;
     public NavMeshAgent agent;
+
     private GameObject LastWaypoint;
     public GameObject waypointToReach;
 
-    private void Awake()
+    void Start()
     {
-        ground = GameObject.FindGameObjectsWithTag("Ground");
         forests = GameObject.FindGameObjectsWithTag("Forest");
         mines = GameObject.FindGameObjectsWithTag("Mine");
         foods = GameObject.FindGameObjectsWithTag("Food");
         worksites = GameObject.FindGameObjectsWithTag("Worksite");
-    }
 
-    void Start()
-    {
         agent = GetComponent<NavMeshAgent>();
-        meshRenderer = GetComponent<MeshRenderer>();
 
-        transform.position = GameObject.FindGameObjectWithTag("House").transform.position;
+        if (job == "")
+        {
+            job = jobs[Random.Range(0, jobs.Length)];
+        }
     }
 
     private void FixedUpdate()
@@ -58,7 +57,7 @@ public class MovingAnt : MonoBehaviour
 
     public void selectDestination()
     {
-        waypointToReach = ground[Random.Range(0, ground.Length)];
+        waypointToReach = GameManager.Instance.ground[Random.Range(0, GameManager.Instance.ground.Length)];
     }
 
     public void OnTriggerEnter(Collider other)

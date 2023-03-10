@@ -13718,6 +13718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95b1d03241d30e046957fac798d7be42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ant: {fileID: 0}
   ants: []
   dayTime: 15
   nightTime: 15
@@ -62874,7 +62875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7227759867230754867, guid: 240083c1744cfe74abaf01df91b7c7ff, type: 3}
       propertyPath: job
-      value: vagrant
+      value: mason
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7227759867230754865, guid: 240083c1744cfe74abaf01df91b7c7ff, type: 3}
