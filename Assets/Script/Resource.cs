@@ -36,6 +36,9 @@ public class Resource : MonoBehaviour
             NumberOfFood.text = "" + food;
         }
     }
+    public string resource;
+    public int numberWorker;
+    private bool onAWork;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +50,7 @@ public class Resource : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+     /*   if (Input.GetKeyDown(KeyCode.W))
         {
             Wood = 15;
         }
@@ -58,6 +61,28 @@ public class Resource : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             Food = 15;
+        }
+     */
+     if(!onAWork && numberWorker > 0)
+        {
+            StartCoroutine(Cultivate());
+        }
+    }
+
+    public IEnumerator Cultivate()
+    {
+        yield return new WaitForSeconds(10f);
+        switch (resource)
+        {
+            case "wood":
+                Wood = numberWorker;
+                break;
+            case "stone":
+                Stone = numberWorker;
+                break;
+            case "food":
+                Stone = numberWorker;
+                break;
         }
     }
 }
