@@ -36,6 +36,8 @@ public class Resource : MonoBehaviour
             NumberOfFood.text = "" + food;
         }
     }
+    public string resource;
+    public int numberWorker;
     // Start is called before the first frame update
     void Start()
     {
