@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 7227759867230754864}
   - component: {fileID: 7227759867230754867}
   - component: {fileID: 7227759867230754865}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ant
-  m_TagString: Untagged
+  m_TagString: Ant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,8 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ec546b0d205d6f4da928fff53fc6f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isItDay: 1
   job: 
+  isItStartingDay: 0
   ground: []
   forests: []
   mines: []
