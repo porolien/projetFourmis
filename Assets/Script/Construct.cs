@@ -6,7 +6,6 @@ public class Construct : MonoBehaviour
 {
     public int woodCost;
     public int stoneCost;
-    public int foodCost;
     // Start is called before the first frame update
     void Start()
     {

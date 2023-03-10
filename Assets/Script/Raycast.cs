@@ -21,7 +21,10 @@ public class Raycast : MonoBehaviour
             string tagFromHit = hit.transform.gameObject.tag;
             if (tagFromHit == "Groud")
             {
-
+                if(createAContruct.ConstructMod == true)
+                {
+                    createAContruct.create(hit);
+                }
             }
             else if(tagFromHit == "Ant")
             {
