@@ -5,8 +5,9 @@ using UnityEngine.AI;
 
 public class MovingAnt : MonoBehaviour
 {
-    public bool isItDay = true;
     public string job;
+    public bool isItStartingDay;
+    public bool isItEndingDay;
 
     public GameObject[] ground;
     public GameObject[] forests;
@@ -18,25 +19,34 @@ public class MovingAnt : MonoBehaviour
     public NavMeshAgent agent;
     private GameObject LastWaypoint;
     public GameObject waypointToReach;
-    void Start()
+
+    private void Awake()
     {
         ground = GameObject.FindGameObjectsWithTag("Ground");
         forests = GameObject.FindGameObjectsWithTag("Forest");
         mines = GameObject.FindGameObjectsWithTag("Mine");
         foods = GameObject.FindGameObjectsWithTag("Food");
         worksites = GameObject.FindGameObjectsWithTag("Worksite");
+    }
 
-
+    void Start()
+    {
         agent = GetComponent<NavMeshAgent>();
         meshRenderer = GetComponent<MeshRenderer>();
 
         transform.position = GameObject.FindGameObjectWithTag("House").transform.position;
-        StartCoroutine(Day());
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        
+        if (isItStartingDay)
+        {
+            StartingDay();
+        }
+        if (isItEndingDay)
+        {
+            GoToSleep();
+        }
     }
 
     public void GoTo(GameObject waypoint)
@@ -66,7 +76,7 @@ public class MovingAnt : MonoBehaviour
             {
                 if (other.gameObject.tag == "House")
                 {
-                    meshRenderer.enabled = false;
+                    gameObject.SetActive(false);
                 }
                 else
                 {
@@ -80,11 +90,7 @@ public class MovingAnt : MonoBehaviour
     {
         if (job != "vagrant")
         {
-            if (other.gameObject.tag == "House")
-            {
-                meshRenderer.enabled = true;
-            }
-            else if(other.gameObject == LastWaypoint)
+            if(other.gameObject == LastWaypoint)
             {
                 LastWaypoint.GetComponent<Resource>().numberWorker--;
             }
@@ -99,9 +105,9 @@ public class MovingAnt : MonoBehaviour
         }
     }
 
-    public IEnumerator Day()
+    public void StartingDay()
     {
-        isItDay = true;
+        isItStartingDay = false;
         switch (job)
         {
             case ("vagrant"):
@@ -136,20 +142,16 @@ public class MovingAnt : MonoBehaviour
                 }
         }
         GoTo(waypointToReach);
-        yield return new WaitForSeconds(15f);
-        StartCoroutine(Night());
     }
 
-    public IEnumerator Night()
+    public void GoToSleep()
     {
-        isItDay = false;
+        isItEndingDay = false;
         if (job != "vagrant")
         {
             waypointToReach = GameObject.FindGameObjectWithTag("House");
             GoTo(waypointToReach);
         }
-        yield return new WaitForSeconds(15f);
-        StartCoroutine(Day());
     }
 
     public IEnumerator VagrantWait()
