@@ -16,7 +16,7 @@ public class MovingAnt : MonoBehaviour
 
     public MeshRenderer meshRenderer;
     public NavMeshAgent agent;
-
+    private GameObject LastWaypoint;
     public GameObject waypointToReach;
     void Start()
     {
@@ -42,6 +42,8 @@ public class MovingAnt : MonoBehaviour
     public void GoTo(GameObject waypoint)
     {
         agent.SetDestination(waypoint.transform.position);
+        waypoint.GetComponent<Resource>().numberWorker++;
+        LastWaypoint = waypoint;
     }
 
     public void selectDestination()
@@ -81,6 +83,10 @@ public class MovingAnt : MonoBehaviour
             if (other.gameObject.tag == "House")
             {
                 meshRenderer.enabled = true;
+            }
+            else if(other.gameObject == LastWaypoint)
+            {
+                LastWaypoint.GetComponent<Resource>().numberWorker--;
             }
             else
             {
