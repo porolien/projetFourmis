@@ -30,13 +30,14 @@ public class CreateAContruct : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 10000))
             {
                 string tagFromHit = hit.transform.gameObject.tag;
-                if (!(tagFromHit == "House" || tagFromHit == "Mine" || tagFromHit == "Forest" || tagFromHit == "Food" || tagFromHit == "Worksite"))
+                if (tagFromHit == "Groud")
                 {
                     cubePrevisual.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z);
 
 
                     if (Input.GetMouseButton(0))
                     {
+                        hit.transform.gameObject.tag = "Untagged";
                         cubePrevisual.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 2, hit.transform.position.z);
                         Resource.Wood = -cube.GetComponent<Construct>().woodCost;
                         Resource.Stone = -cube.GetComponent<Construct>().stoneCost;
@@ -66,5 +67,9 @@ public class CreateAContruct : MonoBehaviour
             ConstructMod = true;
             cubePrevisual.SetActive(true);
         }
+    }
+    public void create()
+    {
+
     }
 }
