@@ -13718,8 +13718,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95b1d03241d30e046957fac798d7be42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ant: {fileID: 0}
+  ant: {fileID: 7227759867230754862, guid: 240083c1744cfe74abaf01df91b7c7ff, type: 3}
   ants: []
+  ground: []
   dayTime: 15
   nightTime: 15
 --- !u!4 &333052435

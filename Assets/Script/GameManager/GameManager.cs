@@ -15,8 +15,9 @@ public class GameManager : MonoBehaviour
     //
 
     public GameObject ant;
-    
-    public MovingAnt[] ants;
+
+    public List<MovingAnt> ants = new List<MovingAnt>();
+
     public GameObject[] ground;
 
     public int dayTime;
@@ -39,13 +40,19 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         ground = GameObject.FindGameObjectsWithTag("Ground");
-        ants = FindObjectsOfType<MovingAnt>();
+        MovingAnt[] tempAnts = FindObjectsOfType<MovingAnt>();
+        
+        foreach (MovingAnt ant in tempAnts)
+        {
+            ants.Add(ant);
+        }
         StartCoroutine(Day());
     }
 
     public IEnumerator Day()
     {
-        ant = Instantiate(ant);
+        GameObject newAnt = Instantiate(ant);
+        ants.Add(newAnt.GetComponent<MovingAnt>());
 
         foreach (MovingAnt ant in ants)
         {
