@@ -6264,7 +6264,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 154828140}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -6350,11 +6350,6 @@ MonoBehaviour:
   isItDay: 1
   job: vagrant
   ground: []
-  forests: []
-  mines: []
-  foods: []
-  worksites: []
-  meshRenderer: {fileID: 0}
   agent: {fileID: 0}
   waypointToReach: {fileID: 0}
 --- !u!195 &154828146
@@ -34999,11 +34994,6 @@ MonoBehaviour:
   isItDay: 1
   job: collier
   ground: []
-  forests: []
-  mines: []
-  foods: []
-  worksites: []
-  meshRenderer: {fileID: 0}
   agent: {fileID: 0}
   waypointToReach: {fileID: 0}
 --- !u!195 &827753485
@@ -35036,7 +35026,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827753482}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -53202,11 +53192,6 @@ MonoBehaviour:
   isItDay: 1
   job: mason
   ground: []
-  forests: []
-  mines: []
-  foods: []
-  worksites: []
-  meshRenderer: {fileID: 0}
   agent: {fileID: 0}
   waypointToReach: {fileID: 0}
 --- !u!195 &1246819811
@@ -53239,7 +53224,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246819808}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -62384,11 +62369,6 @@ MonoBehaviour:
   isItDay: 1
   job: explorer
   ground: []
-  forests: []
-  mines: []
-  foods: []
-  worksites: []
-  meshRenderer: {fileID: 0}
   agent: {fileID: 0}
   waypointToReach: {fileID: 0}
 --- !u!195 &1438979798
@@ -62421,7 +62401,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1438979795}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -72536,11 +72516,6 @@ MonoBehaviour:
   isItDay: 1
   job: lumberjack
   ground: []
-  forests: []
-  mines: []
-  foods: []
-  worksites: []
-  meshRenderer: {fileID: 0}
   agent: {fileID: 0}
   waypointToReach: {fileID: 0}
 --- !u!195 &1711408932
@@ -72573,7 +72548,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1711408929}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
