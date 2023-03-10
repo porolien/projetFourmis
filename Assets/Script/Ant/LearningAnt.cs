@@ -5,6 +5,7 @@ using UnityEngine;
 public class LearningAnt : MonoBehaviour
 {
     public MovingAnt Ant;
+    float TimeNeeded;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,7 @@ public class LearningAnt : MonoBehaviour
 
     public void LearnAJob( string AJobToLearn)
     {
-        float TimeNeeded = 0;
+ 
         switch (AJobToLearn)
         {
             case "lumberjack":
@@ -35,11 +36,24 @@ public class LearningAnt : MonoBehaviour
                 TimeNeeded = 60f;
                 break;
         }
-        StartCoroutine(LearningAJob(TimeNeeded));
+        StartCoroutine(LearningAJob(TimeNeeded, AJobToLearn));
     }
 
-    public IEnumerator LearningAJob(float TimeToLearnAJob)
-    {
-        yield return new WaitForSeconds(TimeToLearnAJob);
+    public IEnumerator LearningAJob(float TimeToLearnAJob, string AJobToLearn)
+    { bool finishedToLearn = false;
+        while (!finishedToLearn)
+        {
+            yield return new WaitForSeconds(TimeToLearnAJob);
+            if (TimeToLearnAJob < TimeNeeded)
+            {
+                TimeToLearnAJob = TimeNeeded - TimeToLearnAJob;
+            }
+            else
+            {
+                finishedToLearn = true;
+            }
+        }
+        Ant.job = AJobToLearn;
+
     }
 }
