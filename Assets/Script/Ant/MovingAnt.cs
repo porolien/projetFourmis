@@ -123,6 +123,11 @@ public class MovingAnt : MonoBehaviour
                     waypointToReach = worksites[Random.Range(0, worksites.Length)];
                     break;
                 }
+            default:
+                {
+                    Debug.Log($"Choose a valid job for {gameObject}");
+                    break;
+                }
         }
         GoTo(waypointToReach);
         yield return new WaitForSeconds(15f);
