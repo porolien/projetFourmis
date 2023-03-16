@@ -9,7 +9,7 @@ using UnityEngine.AI;
 public class CreateAContruct : MonoBehaviour
 {
     GameObject cube;
-    bool ConstructMod;
+    public bool ConstructMod;
     public GameObject cubePrevisual;
     public Resource Resource;
     public NavMeshSurface navMeshSurface;
@@ -23,20 +23,21 @@ public class CreateAContruct : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (ConstructMod)
+    /*    if (ConstructMod)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 10000))
             {
                 string tagFromHit = hit.transform.gameObject.tag;
-                if (!(tagFromHit == "House" || tagFromHit == "Mine" || tagFromHit == "Forest" || tagFromHit == "Food" || tagFromHit == "Worksite"))
+                if (tagFromHit == "Groud")
                 {
                     cubePrevisual.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z);
 
 
                     if (Input.GetMouseButton(0))
                     {
+                        hit.transform.gameObject.tag = "Untagged";
                         cubePrevisual.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 2, hit.transform.position.z);
                         Resource.Wood = -cube.GetComponent<Construct>().woodCost;
                         Resource.Stone = -cube.GetComponent<Construct>().stoneCost;
@@ -55,16 +56,40 @@ public class CreateAContruct : MonoBehaviour
                 }
             }
         }
+    */
     }
 
     public void PutABuilding(GameObject aConstruct)
     {
        Construct construct = aConstruct.GetComponent<Construct>();
-        if (construct.woodCost <= Resource.Wood && construct.stoneCost <= Resource.Stone && construct.foodCost <= Resource.Food && !ConstructMod) 
+        if (construct.woodCost <= Resource.Wood && construct.stoneCost <= Resource.Stone) 
         {
             cube = aConstruct;
             ConstructMod = true;
             cubePrevisual.SetActive(true);
+        }
+    }
+    public void create(RaycastHit hit)
+    {
+        cubePrevisual.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z);
+
+
+        if (Input.GetMouseButton(0))
+        {
+            hit.transform.gameObject.tag = "Untagged";
+            cubePrevisual.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 2, hit.transform.position.z);
+            Resource.Wood = -cube.GetComponent<Construct>().woodCost;
+            Resource.Stone = -cube.GetComponent<Construct>().stoneCost;
+            cubePrevisual.SetActive(false);
+            GameObject newCube = Instantiate(cube, new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z), Quaternion.identity);
+            ConstructMod = false;
+            navigationBaker.bakeTheNavigation();
+        }
+        if (Input.GetMouseButton(1))
+        {
+            cubePrevisual.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 2, hit.transform.position.z);
+            cubePrevisual.SetActive(false);
+            ConstructMod = false;
         }
     }
 }
