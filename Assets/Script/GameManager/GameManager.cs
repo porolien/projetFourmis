@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Jobs;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -11,10 +13,9 @@ public class GameManager : MonoBehaviour
     private GameManager() { }
     public static GameManager Instance => _instance;
 
+    public MovingAnt[] ants;
     public int dayTime;
     public int nightTime;
-
-    public bool isItDay;
 
     private void Awake()
     {
@@ -32,20 +33,28 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+        ants = FindObjectsOfType<MovingAnt>();
+        StartCoroutine(Day());
     }
 
     public IEnumerator Day()
     {
-        isItDay = true;
+        foreach (MovingAnt ant in ants)
+        {
+            ant.gameObject.SetActive(true);
+            ant.isItStartingDay = true;
+        }
         yield return new WaitForSeconds(15f);
         StartCoroutine(Night());
     }
 
     public IEnumerator Night()
     {
-        isItDay = false;
+        foreach (MovingAnt ant in ants)
+        {
+            ant.isItEndingDay = true;
+        }
         yield return new WaitForSeconds(15f);
-        StartCoroutine(Night());
+        StartCoroutine(Day());
     }
 }
