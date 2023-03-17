@@ -5,64 +5,50 @@ using UnityEngine.AI;
 
 public class MovingAnt : MonoBehaviour
 {
+    // Possible ant jobs
+    private string[] jobs = new string[] { "vagrant", "lumberjack", "collier", "explorer", "mason" };
     public string job;
-    public bool isItStartingDay;
-    public bool isItEndingDay;
 
-    public GameObject[] ground;
-    public GameObject[] forests;
-    public GameObject[] mines;
-    public GameObject[] foods;
-    public GameObject[] worksites;
-
-    public MeshRenderer meshRenderer;
     public NavMeshAgent agent;
+
+    // Place to reach
     private GameObject LastWaypoint;
     public GameObject waypointToReach;
 
     private void Awake()
     {
-        ground = GameObject.FindGameObjectsWithTag("Ground");
-        forests = GameObject.FindGameObjectsWithTag("Forest");
-        mines = GameObject.FindGameObjectsWithTag("Mine");
-        foods = GameObject.FindGameObjectsWithTag("Food");
-        worksites = GameObject.FindGameObjectsWithTag("Worksite");
+        // Choose a job for new ants who haven't job
+        if (job == "")
+        {
+            job = jobs[Random.Range(0, jobs.Length)];
+        }
     }
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        meshRenderer = GetComponent<MeshRenderer>();
-
-        transform.position = GameObject.FindGameObjectWithTag("House").transform.position;
-    }
-
-    private void FixedUpdate()
-    {
-        if (isItStartingDay)
-        {
-            StartingDay();
-        }
-        if (isItEndingDay)
-        {
-            GoToSleep();
-        }
     }
 
     public void GoTo(GameObject waypoint)
     {
+        // Send ant to a place
+
         agent.SetDestination(waypoint.transform.position);
-        waypoint.GetComponent<Resource>().numberWorker++;
+        //waypoint.GetComponent<Resource>().numberWorker++;
         LastWaypoint = waypoint;
     }
 
     public void selectDestination()
     {
-        waypointToReach = ground[Random.Range(0, ground.Length)];
+        // Select a random place for vagrant ants
+        waypointToReach = GameManager.Instance.ground[Random.Range(0, GameManager.Instance.ground.Length)];
     }
 
     public void OnTriggerEnter(Collider other)
     {
+        // Check if an ant enter in place
+
+        // If the ant is a vagrant : go to an other place
         if (job == "vagrant")
         {
             if (other.transform.position == waypointToReach.transform.position)
@@ -70,24 +56,22 @@ public class MovingAnt : MonoBehaviour
                 StartCoroutine(VagrantWait());
             }
         }
-        else
+        // If it's the waypoint to reach : enter in
+        else if(other.transform.position == waypointToReach.transform.position)
         {
-            if (other.transform.position == waypointToReach.transform.position)
-            {
-                if (other.gameObject.tag == "House")
-                {
-                    gameObject.SetActive(false);
-                }
-                else
-                {
-                    transform.position = transform.position;
-                }
-            }
+            Building thisBuilding = other.GetComponent<Building>();
+
+            // Add ant in the building
+            thisBuilding.antsInBuilding.Add(gameObject.GetComponent<MovingAnt>());
+            gameObject.SetActive(false);
+            transform.position = other.transform.position;
         }
     }
 
     public void OnTriggerExit(Collider other)
     {
+        // Check if an ant who's not a vagrant is outside of a zone
+
         if (job != "vagrant")
         {
             if(other.gameObject == LastWaypoint)
@@ -107,7 +91,8 @@ public class MovingAnt : MonoBehaviour
 
     public void StartingDay()
     {
-        isItStartingDay = false;
+        // Select a destination at the beginning of the day
+
         switch (job)
         {
             case ("vagrant"):
@@ -117,22 +102,22 @@ public class MovingAnt : MonoBehaviour
                 }
             case ("lumberjack"):
                 {
-                    waypointToReach = forests[Random.Range(0, forests.Length)];
+                    waypointToReach = GameManager.Instance.forests[Random.Range(0, GameManager.Instance.forests.Count)].gameObject;
                     break;
                 }
             case ("collier"):
                 {
-                    waypointToReach = mines[Random.Range(0, mines.Length)];
+                    waypointToReach = GameManager.Instance.mines[Random.Range(0, GameManager.Instance.mines.Count)].gameObject;
                     break;
                 }
             case ("explorer"):
                 {
-                    waypointToReach = foods[Random.Range(0, foods.Length)];
+                    waypointToReach = GameManager.Instance.foods[Random.Range(0, GameManager.Instance.foods.Count)].gameObject;
                     break;
                 }
             case ("mason"):
                 {
-                    waypointToReach = worksites[Random.Range(0, worksites.Length)];
+                    waypointToReach = GameManager.Instance.worksites[Random.Range(0, GameManager.Instance.worksites.Count)].gameObject;
                     break;
                 }
             default:
@@ -146,16 +131,19 @@ public class MovingAnt : MonoBehaviour
 
     public void GoToSleep()
     {
-        isItEndingDay = false;
+        // Send all ants who aren't vagrants to sleep
+
         if (job != "vagrant")
         {
-            waypointToReach = GameObject.FindGameObjectWithTag("House");
+            waypointToReach = GameManager.Instance.houses[Random.Range(0, GameManager.Instance.houses.Count)].gameObject;
             GoTo(waypointToReach);
         }
     }
 
     public IEnumerator VagrantWait()
     {
+        // Behaviour of the vagrant
+
         yield return new WaitForSeconds(Random.Range(0, 5));
         selectDestination();
         GoTo(waypointToReach);
