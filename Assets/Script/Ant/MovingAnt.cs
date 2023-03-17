@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -103,21 +104,29 @@ public class MovingAnt : MonoBehaviour
             case ("lumberjack"):
                 {
                     waypointToReach = GameManager.Instance.forests[Random.Range(0, GameManager.Instance.forests.Count)].gameObject;
+                    Building waypointBuilding = waypointToReach.GetComponent<Building>();
+                    waypointBuilding.antsAssignToThisBuilding.Add(gameObject.GetComponent<MovingAnt>());
                     break;
                 }
             case ("collier"):
                 {
                     waypointToReach = GameManager.Instance.mines[Random.Range(0, GameManager.Instance.mines.Count)].gameObject;
+                    Building waypointBuilding = waypointToReach.GetComponent<Building>();
+                    waypointBuilding.antsAssignToThisBuilding.Add(gameObject.GetComponent<MovingAnt>());
                     break;
                 }
             case ("explorer"):
                 {
                     waypointToReach = GameManager.Instance.foods[Random.Range(0, GameManager.Instance.foods.Count)].gameObject;
+                    Building waypointBuilding = waypointToReach.GetComponent<Building>();
+                    waypointBuilding.antsAssignToThisBuilding.Add(gameObject.GetComponent<MovingAnt>());
                     break;
                 }
             case ("mason"):
                 {
                     waypointToReach = GameManager.Instance.worksites[Random.Range(0, GameManager.Instance.worksites.Count)].gameObject;
+                    Building waypointBuilding = waypointToReach.GetComponent<Building>();
+                    waypointBuilding.antsAssignToThisBuilding.Add(gameObject.GetComponent<MovingAnt>());
                     break;
                 }
             default:
