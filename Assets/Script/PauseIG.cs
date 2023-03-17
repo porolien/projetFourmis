@@ -5,23 +5,20 @@ using UnityEngine.AI;
 
 public class PauseIG : MonoBehaviour
 {
-    public NavMeshAgent Ant;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        Ant = GetComponent<MovingAnt>().agent;
-    }
 
     public void PauseAnt()
     {
-        //AntRB.constraints = RigidbodyConstraints.FreezeAll;
-        Ant.isStopped = true;
+        foreach (MovingAnt ant in GameManager.Instance.ants)
+        {
+            ant.agent.isStopped = true;
+        }
     }
 
     public void PlayAnt()
     {
-        //AntRB.constraints = RigidbodyConstraints.None;
-        Ant.isStopped = false;
+        foreach (MovingAnt ant in GameManager.Instance.ants)
+        {
+            ant.agent.isStopped = false;
+        }
     }
 }

@@ -13940,6 +13940,7 @@ MonoBehaviour:
   foods: []
   worksites: []
   houses: []
+  school: []
   ground: []
   dayTime: 15
   nightTime: 15
