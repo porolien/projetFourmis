@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Option : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public AudioSource audioSource;
+    public Slider slider;
 
-    // Update is called once per frame
-    void Update()
+    //public TMP_Text TxtVolume;
+
+    public void SliderChange()
     {
-        
+        audioSource.volume = slider.value;
+       // TxtVolume.text = "Volume" + (audioSource.volume + 100).ToString("00") + "%";
+
     }
 }
