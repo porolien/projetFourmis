@@ -12,7 +12,7 @@ public class PlayerUi : MonoBehaviour
 
     public void AntButton()
     {
-        antwindow.SetActive(true);
+            antwindow.SetActive(true);
     }
 
     public void CloseAntButton()
