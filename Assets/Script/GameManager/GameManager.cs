@@ -31,6 +31,11 @@ public class GameManager : MonoBehaviour
     public int dayTime;
     public int nightTime;
 
+    public int restNightTime;
+    public int restDayTime;
+
+    public bool isItDay;
+
     private void Awake()
     {
         //Singleton
@@ -48,8 +53,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        restNightTime = nightTime;
+        restDayTime = dayTime;
         FindAllInTheScene();
-        StartCoroutine(Day());
+        StartCoroutine(Day(dayTime));
     }
 
     private void FindAllInTheScene()
@@ -107,6 +114,8 @@ public class GameManager : MonoBehaviour
             houses.Add(house.GetComponent<Building>());
         }
 
+
+        // Schools
         GameObject[] tempSchools = GameObject.FindGameObjectsWithTag("School");
 
         foreach (GameObject school in tempSchools)
@@ -115,31 +124,49 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public IEnumerator Day()
+    public IEnumerator Day(int dayTime)
     {
-        foreach (MovingAnt ant in ants)
+        isItDay = true;
+        for (int i = 1; i <= dayTime; i++)
         {
-            ant.gameObject.SetActive(true);
-            ant.StartingDay();
+            if (restDayTime == this.dayTime)
+            {
+                foreach (MovingAnt ant in ants)
+                {
+                    ant.gameObject.SetActive(true);
+                    ant.StartingDay();
+                }
+            }
+            restDayTime = this.dayTime - i;
+            yield return new WaitForSeconds(1f);
         }
-        yield return new WaitForSeconds(dayTime);
-        StartCoroutine(Night());
+        restDayTime = this.dayTime;
+        StartCoroutine(Night(nightTime));
     }
 
-    public IEnumerator Night()
+    public IEnumerator Night(int nightTime)
     {
-        foreach (MovingAnt ant in ants)
+        isItDay = false;
+        for (int i = 1; i <= nightTime; i++)
         {
-            ant.gameObject.SetActive(true);
-            ant.GoToSleep();
+            if (restNightTime == this.nightTime)
+            {
+                foreach (MovingAnt ant in ants)
+                {
+                    ant.gameObject.SetActive(true);
+                    ant.GoToSleep();
+                }
+            }
+            restNightTime = this.nightTime - i;
+            yield return new WaitForSeconds(1f);
         }
-        yield return new WaitForSeconds(nightTime);
 
         // Create a new ant
         GameObject newAnt = Instantiate(ant);
         ants.Add(newAnt.GetComponent<MovingAnt>());
 
         yield return new WaitForSeconds(0.01f);
-        StartCoroutine(Day());
+        restNightTime = this.nightTime;
+        StartCoroutine(Day(dayTime));
     }
 }

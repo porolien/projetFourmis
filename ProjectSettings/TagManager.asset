@@ -11,6 +11,7 @@ TagManager:
   - Food
   - Worksite
   - Ant
+  - School
   layers:
   - Default
   - TransparentFX

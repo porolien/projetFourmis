@@ -57,16 +57,6 @@ public class MovingAnt : MonoBehaviour
                 StartCoroutine(VagrantWait());
             }
         }
-        // If it's the waypoint to reach : enter in
-        else if(other.transform.position == waypointToReach.transform.position)
-        {
-            Building thisBuilding = other.GetComponent<Building>();
-
-            // Add ant in the building
-            thisBuilding.antsInBuilding.Add(gameObject.GetComponent<MovingAnt>());
-            gameObject.SetActive(false);
-            transform.position = other.transform.position;
-        }
     }
 
     public void OnTriggerExit(Collider other)
@@ -150,6 +140,8 @@ public class MovingAnt : MonoBehaviour
         if (job != "vagrant")
         {
             waypointToReach = GameManager.Instance.houses[Random.Range(0, GameManager.Instance.houses.Count)].gameObject;
+            Building waypointBuilding = waypointToReach.GetComponent<Building>();
+            waypointBuilding.antsAssignToThisBuilding.Add(gameObject.GetComponent<MovingAnt>());
             GoTo(waypointToReach);
         }
     }
