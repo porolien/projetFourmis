@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class MovingAnt : MonoBehaviour
 {
     // Possible ant jobs
-    private string[] jobs = new string[] { "vagrant", "lumberjack", "collier", "explorer", "mason" };
+    private string[] jobs = new string[] { "vagrant", "lumberjack", "collier", "explorer", "mason"};
     public string job;
 
     public NavMeshAgent agent;
@@ -118,6 +118,11 @@ public class MovingAnt : MonoBehaviour
             case ("mason"):
                 {
                     waypointToReach = GameManager.Instance.worksites[Random.Range(0, GameManager.Instance.worksites.Count)].gameObject;
+                    break;
+                }
+            case ("student"):
+                {
+                    waypointToReach = GameManager.Instance.worksites[Random.Range(0, GameManager.Instance.school.Count)].gameObject;
                     break;
                 }
             default:
