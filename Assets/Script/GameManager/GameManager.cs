@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public List<Building> foods = new();
     public List<Building> worksites = new();
     public List<Building> houses = new();
+    public List<Building> school = new();
     public GameObject[] ground;
 
     // Time of the day and the night
@@ -104,6 +105,13 @@ public class GameManager : MonoBehaviour
         foreach (GameObject house in tempHouses)
         {
             houses.Add(house.GetComponent<Building>());
+        }
+
+        GameObject[] tempSchools = GameObject.FindGameObjectsWithTag("School");
+
+        foreach (GameObject school in tempSchools)
+        {
+            houses.Add(school.GetComponent<Building>());
         }
     }
 

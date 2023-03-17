@@ -6,6 +6,7 @@ public class LearningAnt : MonoBehaviour
 {
     public MovingAnt Ant;
     float TimeNeeded;
+    bool isLearningAJob;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,10 @@ public class LearningAnt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (isLearningAJob)
+        {
+
+        }
     }
 
     public void LearnAJob( string AJobToLearn)
@@ -36,6 +40,7 @@ public class LearningAnt : MonoBehaviour
                 TimeNeeded = 60f;
                 break;
         }
+        isLearningAJob = true;
         StartCoroutine(LearningAJob(TimeNeeded, AJobToLearn));
     }
 
