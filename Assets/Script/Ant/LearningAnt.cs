@@ -6,7 +6,7 @@ public class LearningAnt : MonoBehaviour
 {
     public MovingAnt Ant;
     float TimeNeeded;
-    bool isLearningAJob;
+    public bool isLearningAJob;
     float timeBeforeLast;
     string TheLearningJob;
     // Start is called before the first frame update

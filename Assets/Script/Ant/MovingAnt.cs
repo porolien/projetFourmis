@@ -65,18 +65,11 @@ public class MovingAnt : MonoBehaviour
 
         if (job != "vagrant")
         {
-            if(other.gameObject == LastWaypoint)
-            {
-                LastWaypoint.GetComponent<Resource>().numberWorker--;
-            }
-            else
-            {
-                return;
-            }
         }
         else
         {
             return;
+        
         }
     }
 
@@ -122,7 +115,9 @@ public class MovingAnt : MonoBehaviour
                     }
                 case ("student"):
                     {
-                        waypointToReach = GameManager.Instance.worksites[Random.Range(0, GameManager.Instance.school.Count)].gameObject;
+                        waypointToReach = GameManager.Instance.school[Random.Range(0, GameManager.Instance.school.Count)].gameObject;
+                        Building waypointBuilding = waypointToReach.GetComponent<Building>();
+                        waypointBuilding.antsAssignToThisBuilding.Add(gameObject.GetComponent<MovingAnt>());
                         break;
                     }
                 default:
@@ -145,11 +140,16 @@ public class MovingAnt : MonoBehaviour
             foreach (Building house in GameManager.Instance.houses) {
                 if (house.capacity <= 4)
                 {
-                    waypointToReach = GameManager.Instance.houses[Random.Range(0, GameManager.Instance.houses.Count)].gameObject;
+                    Debug.Log(house.capacity);
+                    waypointToReach = house.gameObject;
                     GoTo(waypointToReach);
                     hasFindAHouse = true;
                     exhausted = false;
                     break;
+                }
+                else
+                {
+                    Debug.Log("Im exhausted");
                 }
             }
             if (!hasFindAHouse)
