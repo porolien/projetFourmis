@@ -9,6 +9,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     //Singleton
+    
     private static GameManager _instance = null;
     private GameManager() { }
     public static GameManager Instance => _instance;
@@ -161,6 +162,7 @@ public class GameManager : MonoBehaviour
             {
                 foreach (MovingAnt ant in ants)
                 {
+                    resource.Food = -1;
                     ant.graphicComponents.SetActive(true);
                     ant.GoToSleep();
                 }
