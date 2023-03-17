@@ -16,6 +16,7 @@ public class MovingAnt : MonoBehaviour
     private GameObject LastWaypoint;
     public GameObject waypointToReach;
 
+    public GameObject graphicComponents;
     private void Awake()
     {
         // Choose a job for new ants who haven't job

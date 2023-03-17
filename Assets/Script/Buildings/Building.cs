@@ -37,7 +37,7 @@ public class Building : MonoBehaviour
             {
                 // Add ant in the building
                 antsInBuilding.Add(movingAnt);
-                movingAnt.gameObject.SetActive(false);
+                movingAnt.graphicComponents.SetActive(false);
                 movingAnt.transform.position = transform.position;
             }
         }
