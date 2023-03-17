@@ -57,6 +57,14 @@ public class GameManager : MonoBehaviour
         restNightTime = nightTime;
         restDayTime = dayTime;
         FindAllInTheScene();
+
+        foreach (MovingAnt ant in ants)
+        {
+            foreach (MovingAnt otherAnt in ants)
+            {
+                Physics.IgnoreCollision(ant.gameObject.GetComponent<Collider>(), otherAnt.gameObject.GetComponent<Collider>());
+            }
+        }
         StartCoroutine(Day(dayTime));
     }
 
@@ -134,7 +142,7 @@ public class GameManager : MonoBehaviour
             {
                 foreach (MovingAnt ant in ants)
                 {
-                    ant.gameObject.SetActive(true);
+                    ant.graphicComponents.SetActive(true);
                     ant.StartingDay();
                 }
             }
@@ -154,8 +162,7 @@ public class GameManager : MonoBehaviour
             {
                 foreach (MovingAnt ant in ants)
                 {
-                    resource.Food = -1;
-                    ant.gameObject.SetActive(true);
+                    ant.graphicComponents.SetActive(true);
                     ant.GoToSleep();
                 }
             }
