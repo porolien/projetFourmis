@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     // Prefab to clone each day
     public GameObject ant;
-
+    public Resource resource;
     // All objects we need to access during the game
     public List<MovingAnt> ants = new();
     public List<Building> forests = new();
@@ -132,6 +132,14 @@ public class GameManager : MonoBehaviour
         {
             ant.gameObject.SetActive(true);
             ant.GoToSleep();
+            if (resource.Food <= 0)
+            {
+                Destroy(ant.gameObject);
+            }
+            else
+            {
+                resource.Food = -1;
+            }
         }
         yield return new WaitForSeconds(nightTime);
 
