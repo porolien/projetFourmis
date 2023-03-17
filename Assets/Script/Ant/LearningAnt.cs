@@ -7,6 +7,8 @@ public class LearningAnt : MonoBehaviour
     public MovingAnt Ant;
     float TimeNeeded;
     bool isLearningAJob;
+    float timeBeforeLast;
+    string TheLearningJob;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +20,18 @@ public class LearningAnt : MonoBehaviour
     {
         if (isLearningAJob)
         {
+            timeBeforeLast += Time.deltaTime;  // ajoute a chaque update le temps écoulé depuis le dernier Update		
+            if (timeBeforeLast > 1)
+            {
+                TimeNeeded--;
+                timeBeforeLast = 0;
+                if (TimeNeeded <= 0)
+                {
 
+                    isLearningAJob = false;
+                    Ant.job = TheLearningJob;
+                }
+            }
         }
     }
 
@@ -41,24 +54,7 @@ public class LearningAnt : MonoBehaviour
                 break;
         }
         isLearningAJob = true;
-        StartCoroutine(LearningAJob(TimeNeeded, AJobToLearn));
-    }
-
-    public IEnumerator LearningAJob(float TimeToLearnAJob, string AJobToLearn)
-    { bool finishedToLearn = false;
-        while (!finishedToLearn)
-        {
-            yield return new WaitForSeconds(TimeToLearnAJob);
-            if (TimeToLearnAJob < TimeNeeded)
-            {
-                TimeToLearnAJob = TimeNeeded - TimeToLearnAJob;
-            }
-            else
-            {
-                finishedToLearn = true;
-            }
-        }
-        Ant.job = AJobToLearn;
-
+        TheLearningJob = AJobToLearn;
+   
     }
 }

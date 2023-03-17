@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Building : MonoBehaviour
@@ -19,18 +20,40 @@ public class Building : MonoBehaviour
         
     }
 
+    private void FixedUpdate()
+    {
+        if (antsAssignToThisBuilding.Count == antsInBuilding.Count)
+        {
+            antsAssignToThisBuilding.Clear();
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        // If it's the waypoint to reach : enter in
-
-        foreach (MovingAnt ant in antsAssignToThisBuilding)
+        // Check if the ant need to enter in the building
+        if (other.TryGetComponent<MovingAnt>(out var movingAnt))
         {
-            if (ant == other)
+            if (antsAssignToThisBuilding.Contains(movingAnt))
             {
                 // Add ant in the building
-                antsInBuilding.Add(ant);
-                ant.gameObject.SetActive(false);
-                ant.transform.position = transform.position;
+                antsInBuilding.Add(movingAnt);
+                movingAnt.gameObject.SetActive(false);
+                movingAnt.transform.position = transform.position;
+            }
+        }
+        //antsAssignToThisBuilding.FindAll(x => x.job == "vagrant");
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // Check if the ant need to exit in the building
+
+        if (other.TryGetComponent<MovingAnt>(out var movingAnt))
+        {
+            if (antsInBuilding.Contains(movingAnt))
+            {
+                // Remove ant in the building
+                antsInBuilding.Remove(movingAnt);
             }
         }
     }
