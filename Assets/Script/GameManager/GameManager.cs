@@ -162,6 +162,7 @@ public class GameManager : MonoBehaviour
             {
                 foreach (MovingAnt ant in ants)
                 {
+                    resource.Food = -1;
                     ant.graphicComponents.SetActive(true);
                     ant.GoToSleep();
                 }
