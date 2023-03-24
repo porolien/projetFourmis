@@ -5,35 +5,14 @@ using UnityEngine.AI;
 
 public class PauseIG : MonoBehaviour
 {
-    NavMeshAgent Ant;
-    Rigidbody AntRB;
-    public bool isStopped;
 
-    // Start is called before the first frame update
-    void Start()
+    public void PauseAnt()
     {
-        Ant = GetComponent<MovingAnt>().agent;
-        AntRB = GetComponent<Rigidbody>();
-        AntRB.constraints = RigidbodyConstraints.FreezeAll;
+        GameManager.Instance.PauseAnt();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayAnt()
     {
-        if (!isStopped)
-        {
-            Ant.speed = 0;
-            isStopped = true;
-        }
-        else
-        {
-            Ant.speed = 3.5f;
-            isStopped = false;
-        }
-    }
-
-    public void ToggleStopped(bool isStopped)
-    {
-        isStopped = !isStopped;
+        GameManager.Instance.PlayAnt();
     }
 }
