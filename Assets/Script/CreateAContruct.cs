@@ -67,6 +67,7 @@ public class CreateAContruct : MonoBehaviour
             cube = aConstruct;
             ConstructMod = true;
             cubePrevisual.SetActive(true);
+            ConstructMod = true;
         }
     }
     public void create(RaycastHit hit)

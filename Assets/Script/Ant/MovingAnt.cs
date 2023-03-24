@@ -10,6 +10,8 @@ public class MovingAnt : MonoBehaviour
     private string[] jobs = new string[] { "vagrant", "lumberjack", "collier", "explorer", "mason"};
     public string job;
 
+    public List<GameObject> skins = new List<GameObject>();
+
     public NavMeshAgent agent;
 
     // Place to reach
@@ -30,6 +32,11 @@ public class MovingAnt : MonoBehaviour
 
     void Start()
     {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            skins.Add(transform.GetChild(i).gameObject);
+        }
+
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -78,18 +85,29 @@ public class MovingAnt : MonoBehaviour
 
     public void StartingDay()
     {
-        // Select a destination at the beginning of the day
+        // Select a destination at the beginning of the day and show the good skin depending
+        // of the job
         if(!exhausted || job == "vagrant") 
         {
+            foreach (GameObject skinChildren in skins)
+            {
+                skinChildren.SetActive(false);
+            }
             switch (job)
             {
                 case ("vagrant"):
                     {
+                        GameObject skin = skins.Find(x => x.tag == "Vagrant");
+                        skin.SetActive(true);
+
                         selectDestination();
                         break;
                     }
                 case ("lumberjack"):
                     {
+                        GameObject skin = skins.Find(x => x.tag == "Lumberjack");
+                        skin.SetActive(true);
+
                         waypointToReach = GameManager.Instance.forests[Random.Range(0, GameManager.Instance.forests.Count)].gameObject;
                         Building waypointBuilding = waypointToReach.GetComponent<Building>();
                         waypointBuilding.antsAssignToThisBuilding.Add(gameObject.GetComponent<MovingAnt>());
@@ -97,6 +115,9 @@ public class MovingAnt : MonoBehaviour
                     }
                 case ("collier"):
                     {
+                        GameObject skin = skins.Find(x => x.tag == "Collier");
+                        skin.SetActive(true);
+
                         waypointToReach = GameManager.Instance.mines[Random.Range(0, GameManager.Instance.mines.Count)].gameObject;
                         Building waypointBuilding = waypointToReach.GetComponent<Building>();
                         waypointBuilding.antsAssignToThisBuilding.Add(gameObject.GetComponent<MovingAnt>());
@@ -104,6 +125,9 @@ public class MovingAnt : MonoBehaviour
                     }
                 case ("explorer"):
                     {
+                        GameObject skin = skins.Find(x => x.tag == "Explorer");
+                        skin.SetActive(true);
+
                         waypointToReach = GameManager.Instance.foods[Random.Range(0, GameManager.Instance.foods.Count)].gameObject;
                         Building waypointBuilding = waypointToReach.GetComponent<Building>();
                         waypointBuilding.antsAssignToThisBuilding.Add(gameObject.GetComponent<MovingAnt>());
@@ -111,6 +135,9 @@ public class MovingAnt : MonoBehaviour
                     }
                 case ("mason"):
                     {
+                        GameObject skin = skins.Find(x => x.tag == "Mason");
+                        skin.SetActive(true);
+
                         waypointToReach = GameManager.Instance.worksites[Random.Range(0, GameManager.Instance.worksites.Count)].gameObject;
                         Building waypointBuilding = waypointToReach.GetComponent<Building>();
                         waypointBuilding.antsAssignToThisBuilding.Add(gameObject.GetComponent<MovingAnt>());
@@ -118,6 +145,9 @@ public class MovingAnt : MonoBehaviour
                     }
                 case ("student"):
                     {
+                        GameObject skin = skins.Find(x => x.tag == "Vagrant");
+                        skin.SetActive(true);
+
                         waypointToReach = GameManager.Instance.school[Random.Range(0, GameManager.Instance.school.Count)].gameObject;
                         Building waypointBuilding = waypointToReach.GetComponent<Building>();
                         waypointBuilding.antsAssignToThisBuilding.Add(gameObject.GetComponent<MovingAnt>());
