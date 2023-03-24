@@ -12,6 +12,11 @@ TagManager:
   - Worksite
   - Ant
   - School
+  - Vagrant
+  - Collier
+  - Explorer
+  - Mason
+  - Lumberjack
   layers:
   - Default
   - TransparentFX
