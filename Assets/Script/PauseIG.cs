@@ -8,17 +8,11 @@ public class PauseIG : MonoBehaviour
 
     public void PauseAnt()
     {
-        foreach (MovingAnt ant in GameManager.Instance.ants)
-        {
-            ant.agent.isStopped = true;
-        }
+        GameManager.Instance.PauseAnt();
     }
 
     public void PlayAnt()
     {
-        foreach (MovingAnt ant in GameManager.Instance.ants)
-        {
-            ant.agent.isStopped = false;
-        }
+        GameManager.Instance.PlayAnt();
     }
 }
