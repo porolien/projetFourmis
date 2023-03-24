@@ -9,7 +9,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     //Singleton
-    
+
     private static GameManager _instance = null;
     private GameManager() { }
     public static GameManager Instance => _instance;
@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     public int restDayTime;
 
     public bool isItDay;
+
+    public Coroutine routine;
 
     private void Awake()
     {
@@ -178,5 +180,41 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.01f);
         restNightTime = this.nightTime;
         StartCoroutine(Day(dayTime));
+    }
+
+    public void PauseAnt()
+    {
+        foreach (MovingAnt ant in ants)
+        {
+            ant.agent.isStopped = true;
+        }
+
+        if (isItDay)
+        {
+            StopCoroutine(routine);
+        }
+        else
+        {
+            StopCoroutine(routine);
+        }
+    }
+
+    public void PlayAnt()
+    {
+        foreach (MovingAnt ant in ants)
+        {
+            ant.agent.isStopped = false;
+        }
+
+        if (isItDay)
+        {
+            Debug.Log(restDayTime);
+            routine = StartCoroutine(Day(restDayTime));
+        }
+        else
+        {
+            Debug.Log(restNightTime);
+            routine = StartCoroutine(Night(restNightTime));
+        }
     }
 }
