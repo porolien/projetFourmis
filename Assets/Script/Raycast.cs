@@ -20,10 +20,12 @@ public class Raycast : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 10000))
         {
             string tagFromHit = hit.transform.gameObject.tag;
-            if (tagFromHit == "Groud")
+            if (tagFromHit == "Ground")
             {
+               
                 if(createAContruct.ConstructMod == true)
                 {
+                    Debug.Log("jetouchemieuxle sol");
                     createAContruct.create(hit);
                 }
             }

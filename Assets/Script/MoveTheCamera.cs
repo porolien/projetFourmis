@@ -7,6 +7,7 @@ public class MoveTheCamera : MonoBehaviour
 
     public float horizontalSpeed = 50;
     public float verticalSpeed = 50;
+    private int Zoom = 3;
 
     public void Update()
     {
@@ -21,15 +22,47 @@ public class MoveTheCamera : MonoBehaviour
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
             Debug.Log(Input.GetAxis("Mouse ScrollWheel"));
-            Camera.main.fieldOfView = 45;
+            Zoom--;
+            if(Zoom < 0)
+            {
+                Zoom = 1;
+            }
+            ZoomTheCamera();
         }
         //Dezoom la caméra
         if(Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
             Debug.Log(Input.GetAxis("Mouse ScrollWheel"));
-            Camera.main.fieldOfView = 75;
+            Zoom++;
+            if (Zoom > 5)
+            {
+                Zoom = 5;
+            }
+            ZoomTheCamera();
         }
         
+    }
+
+    void ZoomTheCamera()
+    {
+        switch (Zoom)
+        {
+            case 1:
+                Camera.main.fieldOfView = 45;
+                break;
+            case 2:
+                Camera.main.fieldOfView = 55;
+                break;
+            case 3:
+                Camera.main.fieldOfView = 65;
+                break;
+            case 4:
+                Camera.main.fieldOfView = 75;
+                break;
+            case 5:
+                Camera.main.fieldOfView = 85;
+                break;
+        }
     }
 
 }

@@ -9,6 +9,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     //Singleton
+
     private static GameManager _instance = null;
     private GameManager() { }
     public static GameManager Instance => _instance;
@@ -16,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     // Prefab to clone each day
     public GameObject ant;
-
+    public Resource resource;
     // All objects we need to access during the game
     public List<MovingAnt> ants = new();
     public List<Building> forests = new();
@@ -24,11 +25,19 @@ public class GameManager : MonoBehaviour
     public List<Building> foods = new();
     public List<Building> worksites = new();
     public List<Building> houses = new();
+    public List<Building> school = new();
     public GameObject[] ground;
 
     // Time of the day and the night
     public int dayTime;
     public int nightTime;
+
+    public int restNightTime;
+    public int restDayTime;
+
+    public bool isItDay;
+
+    public Coroutine routine;
 
     private void Awake()
     {
@@ -47,8 +56,18 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        restNightTime = nightTime;
+        restDayTime = dayTime;
         FindAllInTheScene();
-        StartCoroutine(Day());
+
+        foreach (MovingAnt ant in ants)
+        {
+            foreach (MovingAnt otherAnt in ants)
+            {
+                Physics.IgnoreCollision(ant.gameObject.GetComponent<Collider>(), otherAnt.gameObject.GetComponent<Collider>());
+            }
+        }
+        StartCoroutine(Day(dayTime));
     }
 
     private void FindAllInTheScene()
@@ -105,33 +124,97 @@ public class GameManager : MonoBehaviour
         {
             houses.Add(house.GetComponent<Building>());
         }
+
+
+        // Schools
+        GameObject[] tempSchools = GameObject.FindGameObjectsWithTag("School");
+
+        foreach (GameObject school in tempSchools)
+        {
+            houses.Add(school.GetComponent<Building>());
+        }
     }
 
-    public IEnumerator Day()
+    public IEnumerator Day(int dayTime)
     {
-        foreach (MovingAnt ant in ants)
+        isItDay = true;
+        for (int i = 1; i <= dayTime; i++)
         {
-            ant.gameObject.SetActive(true);
-            ant.StartingDay();
+            if (restDayTime == this.dayTime)
+            {
+                foreach (MovingAnt ant in ants)
+                {
+                    ant.graphicComponents.SetActive(true);
+                    ant.StartingDay();
+                }
+            }
+            restDayTime = this.dayTime - i;
+            yield return new WaitForSeconds(1f);
         }
-        yield return new WaitForSeconds(dayTime);
-        StartCoroutine(Night());
+        restDayTime = this.dayTime;
+        StartCoroutine(Night(nightTime));
     }
 
-    public IEnumerator Night()
+    public IEnumerator Night(int nightTime)
     {
-        foreach (MovingAnt ant in ants)
+        isItDay = false;
+        for (int i = 1; i <= nightTime; i++)
         {
-            ant.gameObject.SetActive(true);
-            ant.GoToSleep();
+            if (restNightTime == this.nightTime)
+            {
+                foreach (MovingAnt ant in ants)
+                {
+                    resource.Food = -1;
+                    ant.graphicComponents.SetActive(true);
+                    ant.GoToSleep();
+                }
+            }
+            restNightTime = this.nightTime - i;
+            yield return new WaitForSeconds(1f);
         }
-        yield return new WaitForSeconds(nightTime);
 
         // Create a new ant
         GameObject newAnt = Instantiate(ant);
         ants.Add(newAnt.GetComponent<MovingAnt>());
 
         yield return new WaitForSeconds(0.01f);
-        StartCoroutine(Day());
+        restNightTime = this.nightTime;
+        StartCoroutine(Day(dayTime));
+    }
+
+    public void PauseAnt()
+    {
+        foreach (MovingAnt ant in ants)
+        {
+            ant.agent.isStopped = true;
+        }
+
+        if (isItDay)
+        {
+            StopCoroutine(routine);
+        }
+        else
+        {
+            StopCoroutine(routine);
+        }
+    }
+
+    public void PlayAnt()
+    {
+        foreach (MovingAnt ant in ants)
+        {
+            ant.agent.isStopped = false;
+        }
+
+        if (isItDay)
+        {
+            Debug.Log(restDayTime);
+            routine = StartCoroutine(Day(restDayTime));
+        }
+        else
+        {
+            Debug.Log(restNightTime);
+            routine = StartCoroutine(Night(restNightTime));
+        }
     }
 }

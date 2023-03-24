@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class MovingAnt : MonoBehaviour
 {
     // Possible ant jobs
-    private string[] jobs = new string[] { "vagrant", "lumberjack", "collier", "explorer", "mason" };
+    private string[] jobs = new string[] { "vagrant", "lumberjack", "collier", "explorer", "mason"};
     public string job;
 
     public NavMeshAgent agent;
@@ -14,6 +15,9 @@ public class MovingAnt : MonoBehaviour
     // Place to reach
     private GameObject LastWaypoint;
     public GameObject waypointToReach;
+    bool exhausted;
+
+    public GameObject graphicComponents;
 
     private void Awake()
     {
@@ -56,16 +60,6 @@ public class MovingAnt : MonoBehaviour
                 StartCoroutine(VagrantWait());
             }
         }
-        // If it's the waypoint to reach : enter in
-        else if(other.transform.position == waypointToReach.transform.position)
-        {
-            Building thisBuilding = other.GetComponent<Building>();
-
-            // Add ant in the building
-            thisBuilding.antsInBuilding.Add(gameObject.GetComponent<MovingAnt>());
-            gameObject.SetActive(false);
-            transform.position = other.transform.position;
-        }
     }
 
     public void OnTriggerExit(Collider other)
@@ -74,57 +68,67 @@ public class MovingAnt : MonoBehaviour
 
         if (job != "vagrant")
         {
-            if(other.gameObject == LastWaypoint)
-            {
-                LastWaypoint.GetComponent<Resource>().numberWorker--;
-            }
-            else
-            {
-                return;
-            }
         }
         else
         {
             return;
+        
         }
     }
 
     public void StartingDay()
     {
         // Select a destination at the beginning of the day
-
-        switch (job)
+        if(!exhausted || job == "vagrant") 
         {
-            case ("vagrant"):
-                {
-                    selectDestination();
-                    break;
-                }
-            case ("lumberjack"):
-                {
-                    waypointToReach = GameManager.Instance.forests[Random.Range(0, GameManager.Instance.forests.Count)].gameObject;
-                    break;
-                }
-            case ("collier"):
-                {
-                    waypointToReach = GameManager.Instance.mines[Random.Range(0, GameManager.Instance.mines.Count)].gameObject;
-                    break;
-                }
-            case ("explorer"):
-                {
-                    waypointToReach = GameManager.Instance.foods[Random.Range(0, GameManager.Instance.foods.Count)].gameObject;
-                    break;
-                }
-            case ("mason"):
-                {
-                    waypointToReach = GameManager.Instance.worksites[Random.Range(0, GameManager.Instance.worksites.Count)].gameObject;
-                    break;
-                }
-            default:
-                {
-                    Debug.Log($"Choose a valid job for {gameObject}");
-                    break;
-                }
+            switch (job)
+            {
+                case ("vagrant"):
+                    {
+                        selectDestination();
+                        break;
+                    }
+                case ("lumberjack"):
+                    {
+                        waypointToReach = GameManager.Instance.forests[Random.Range(0, GameManager.Instance.forests.Count)].gameObject;
+                        Building waypointBuilding = waypointToReach.GetComponent<Building>();
+                        waypointBuilding.antsAssignToThisBuilding.Add(gameObject.GetComponent<MovingAnt>());
+                        break;
+                    }
+                case ("collier"):
+                    {
+                        waypointToReach = GameManager.Instance.mines[Random.Range(0, GameManager.Instance.mines.Count)].gameObject;
+                        Building waypointBuilding = waypointToReach.GetComponent<Building>();
+                        waypointBuilding.antsAssignToThisBuilding.Add(gameObject.GetComponent<MovingAnt>());
+                        break;
+                    }
+                case ("explorer"):
+                    {
+                        waypointToReach = GameManager.Instance.foods[Random.Range(0, GameManager.Instance.foods.Count)].gameObject;
+                        Building waypointBuilding = waypointToReach.GetComponent<Building>();
+                        waypointBuilding.antsAssignToThisBuilding.Add(gameObject.GetComponent<MovingAnt>());
+                        break;
+                    }
+                case ("mason"):
+                    {
+                        waypointToReach = GameManager.Instance.worksites[Random.Range(0, GameManager.Instance.worksites.Count)].gameObject;
+                        Building waypointBuilding = waypointToReach.GetComponent<Building>();
+                        waypointBuilding.antsAssignToThisBuilding.Add(gameObject.GetComponent<MovingAnt>());
+                        break;
+                    }
+                case ("student"):
+                    {
+                        waypointToReach = GameManager.Instance.school[Random.Range(0, GameManager.Instance.school.Count)].gameObject;
+                        Building waypointBuilding = waypointToReach.GetComponent<Building>();
+                        waypointBuilding.antsAssignToThisBuilding.Add(gameObject.GetComponent<MovingAnt>());
+                        break;
+                    }
+                default:
+                    {
+                        Debug.Log($"Choose a valid job for {gameObject}");
+                        break;
+                    }
+            }
         }
         GoTo(waypointToReach);
     }
@@ -135,8 +139,27 @@ public class MovingAnt : MonoBehaviour
 
         if (job != "vagrant")
         {
-            waypointToReach = GameManager.Instance.houses[Random.Range(0, GameManager.Instance.houses.Count)].gameObject;
-            GoTo(waypointToReach);
+            bool hasFindAHouse = false;
+            foreach (Building house in GameManager.Instance.houses) {
+                if (house.capacity <= 4)
+                {
+                    Debug.Log(house.capacity);
+                    waypointToReach = house.gameObject;
+                    GoTo(waypointToReach);
+                    hasFindAHouse = true;
+                    exhausted = false;
+                    break;
+                }
+                else
+                {
+                    Debug.Log("Im exhausted");
+                }
+            }
+            if (!hasFindAHouse)
+            {
+               exhausted = true;
+            }
+            
         }
     }
 
