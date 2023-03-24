@@ -21,10 +21,9 @@ public class Raycast : MonoBehaviour
             string tagFromHit = hit.transform.gameObject.tag;
             if (tagFromHit == "Ground")
             {
-               
+                
                 if(createAContruct.ConstructMod == true)
                 {
-                    Debug.Log("jetouchemieuxle sol");
                     createAContruct.create(hit);
                 }
             }
