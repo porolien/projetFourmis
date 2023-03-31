@@ -14,7 +14,12 @@ public class CreateAContruct : MonoBehaviour
     public Resource Resource;
     public NavMeshSurface navMeshSurface;
     public NavigationBaker navigationBaker;
+    public GameObject PArentOfBLoc;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        navigationBaker.bakeTheNavigation();
+    }
     void Start()
     {
         // navMeshSurface = cubePrevisual.GetComponent<NavMeshSurface>();
@@ -84,6 +89,7 @@ public class CreateAContruct : MonoBehaviour
             cubePrevisual.SetActive(false);
             GameObject newCube = Instantiate(cube, new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z), Quaternion.identity);
             ConstructMod = false;
+            newCube.transform.SetParent(PArentOfBLoc.transform);
             navigationBaker.bakeTheNavigation();
         }
         if (Input.GetMouseButton(1))

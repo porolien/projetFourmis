@@ -392,7 +392,7 @@ NavMeshAgent:
   m_Height: 1.6
   m_BaseOffset: 0.9
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!114 &7227759867230754867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,6 +408,7 @@ MonoBehaviour:
   job: 
   agent: {fileID: 7227759867230754864}
   waypointToReach: {fileID: 0}
+  exhausted: 0
   graphicComponents: {fileID: 343885744275130157}
 --- !u!136 &2852367539359512308
 CapsuleCollider:
