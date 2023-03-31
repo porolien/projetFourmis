@@ -20,6 +20,7 @@ public class PauseIG : MonoBehaviour
             }
             else
             {
+                GameManager.Instance.PauseAnt();
                 return;
             }
         }
