@@ -24,13 +24,13 @@ public class Building : MonoBehaviour
         
     }
 
-    private void FixedUpdate()
-    {
-        if (antsAssignToThisBuilding.Count == antsInBuilding.Count)
-        {
-            antsAssignToThisBuilding.Clear();
-        }
-    }
+    //private void FixedUpdate()
+    //{
+    //    if (antsAssignToThisBuilding.Count == antsInBuilding.Count)
+    //    {
+    //        antsAssignToThisBuilding.Clear();
+    //    }
+    //}
     private void Update()
     {
         if (tag == "Food" || tag == "Mine" || tag == "Forest")
@@ -53,8 +53,9 @@ public class Building : MonoBehaviour
             {
                 // Add ant in the building
                 antsInBuilding.Add(movingAnt);
-                movingAnt.graphicComponents.SetActive(false);
-                movingAnt.transform.position = transform.position;
+                antsAssignToThisBuilding.Remove(movingAnt);
+                movingAnt.gameObject.SetActive(false);
+                movingAnt.transform.position = new Vector3(gameObject.transform.position.x, movingAnt.transform.position.y, gameObject.transform.position.z);
                 if(tag == "School" && movingAnt.job == "student")
                 {
                     movingAnt.GetComponent<LearningAnt>().isLearningAJob = true;

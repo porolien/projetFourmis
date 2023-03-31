@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     public List<Building> foods = new();
     public List<Building> worksites = new();
     public List<Building> houses = new();
-    public List<Building> school = new();
+    public List<Building> schools = new();
     public GameObject[] ground;
 
     // Time of the day and the night
@@ -144,7 +144,7 @@ public class GameManager : MonoBehaviour
             {
                 foreach (MovingAnt ant in ants)
                 {
-                    ant.graphicComponents.SetActive(true);
+                    ant.gameObject.SetActive(true);
                     ant.StartingDay();
                 }
             }
@@ -164,8 +164,9 @@ public class GameManager : MonoBehaviour
             {
                 foreach (MovingAnt ant in ants)
                 {
+                    ant.gameObject.SetActive(true);
                     //resource.Food = -1;
-                    ant.graphicComponents.SetActive(true);
+                    ant.exhausted = false;
                     ant.GoToSleep();
                 }
             }
