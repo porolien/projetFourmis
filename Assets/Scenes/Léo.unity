@@ -7500,6 +7500,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: House
       objectReference: {fileID: 0}
+    - target: {fileID: 5940769823888152209, guid: 3b545a685bd2dda4b9bf22aef15e2c20, type: 3}
+      propertyPath: m_Size.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5940769823888152209, guid: 3b545a685bd2dda4b9bf22aef15e2c20, type: 3}
+      propertyPath: m_Size.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5940769823888152209, guid: 3b545a685bd2dda4b9bf22aef15e2c20, type: 3}
+      propertyPath: m_Size.z
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5940769823888152212, guid: 3b545a685bd2dda4b9bf22aef15e2c20, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -14340,7 +14352,7 @@ MonoBehaviour:
   foods: []
   worksites: []
   houses: []
-  school: []
+  schools: []
   ground: []
   dayTime: 15
   nightTime: 15
@@ -42339,6 +42351,7 @@ MonoBehaviour:
   Resource: {fileID: 333052436}
   navMeshSurface: {fileID: 0}
   navigationBaker: {fileID: 1720075594}
+  PArentOfBLoc: {fileID: 0}
 --- !u!1 &963552196
 GameObject:
   m_ObjectHideFlags: 0
