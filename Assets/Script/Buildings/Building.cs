@@ -53,7 +53,7 @@ public class Building : MonoBehaviour
             {
                 // Add ant in the building
                 antsInBuilding.Add(movingAnt);
-                movingAnt.graphicComponents.SetActive(false);
+                antsAssignToThisBuilding.Remove(movingAnt);
                 movingAnt.transform.position = transform.position;
                 if(tag == "School" && movingAnt.job == "student")
                 {

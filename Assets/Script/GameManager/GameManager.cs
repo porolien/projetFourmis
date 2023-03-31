@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
                 Physics.IgnoreCollision(ant.gameObject.GetComponent<Collider>(), otherAnt.gameObject.GetComponent<Collider>());
             }
         }
-        StartCoroutine(Day(dayTime));
+        routine = StartCoroutine(Day(dayTime));
     }
 
     private void FindAllInTheScene()
@@ -144,15 +144,14 @@ public class GameManager : MonoBehaviour
             {
                 foreach (MovingAnt ant in ants)
                 {
-                    ant.graphicComponents.SetActive(true);
                     ant.StartingDay();
                 }
             }
-            restDayTime = this.dayTime - i;
+            restDayTime = dayTime - i;
             yield return new WaitForSeconds(1f);
         }
         restDayTime = this.dayTime;
-        StartCoroutine(Night(nightTime));
+        routine = StartCoroutine(Night(nightTime));
     }
 
     public IEnumerator Night(int nightTime)
@@ -164,12 +163,12 @@ public class GameManager : MonoBehaviour
             {
                 foreach (MovingAnt ant in ants)
                 {
-                    resource.Food = -1;
-                    ant.graphicComponents.SetActive(true);
+                    //resource.Food = -1;
+                    Debug.Log($"{ant} goes to sleep");
                     ant.GoToSleep();
                 }
             }
-            restNightTime = this.nightTime - i;
+            restNightTime = nightTime - i;
             yield return new WaitForSeconds(1f);
         }
 
@@ -179,7 +178,7 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.01f);
         restNightTime = this.nightTime;
-        StartCoroutine(Day(dayTime));
+        routine = StartCoroutine(Day(dayTime));
     }
 
     public void PauseAnt()
