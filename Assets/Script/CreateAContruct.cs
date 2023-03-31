@@ -15,6 +15,10 @@ public class CreateAContruct : MonoBehaviour
     public NavMeshSurface navMeshSurface;
     public NavigationBaker navigationBaker;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        navigationBaker.bakeTheNavigation();
+    }
     void Start()
     {
         // navMeshSurface = cubePrevisual.GetComponent<NavMeshSurface>();
