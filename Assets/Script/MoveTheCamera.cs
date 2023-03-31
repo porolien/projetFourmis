@@ -1,23 +1,75 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class MoveTheCamera : MonoBehaviour
 {
 
-    public float horizontalSpeed = 50;
-    public float verticalSpeed = 50;
+
+    public float sensitivity = 5f;
     private int Zoom = 3;
+    public Camera cameraFollow;
+
+     private float aze = 0f;
+     int bze = 31;
+
+    private Vector3 cameraFollowPosition;
+
+    public float scrollSpeed = 45;
+
+    private void Start()
+    {
+
+    }
+
+
+
 
     public void Update()
     {
-        if (Input.GetMouseButton(0))
+        //Mouving caméra
+
+        var mPosX = Input.mousePosition.x;
+        var mPosY = Input.mousePosition.y;
+
+
+        float mousePosX = Input.mousePosition.x;
+        float mousePosY = Input.mousePosition.y;
+        int scrollDistance = 10;
+        if (mousePosX < scrollDistance)
+        {
+            transform.Translate(Vector3.right * -scrollSpeed * Time.deltaTime);
+        }
+
+        if (mousePosX >= Screen.width - scrollDistance)
+        {
+            transform.Translate(Vector3.right * scrollSpeed * Time.deltaTime);
+        }
+
+        if (mousePosY < scrollDistance)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y,
+            transform.position.z + 1 * -scrollSpeed * Time.deltaTime);
+        }
+
+        if (mousePosY >= Screen.height - scrollDistance)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y,
+            transform.position.z + 1 * scrollSpeed * Time.deltaTime);
+        }
+
+        
+
+
+
+        /*if (Input.GetMouseButton(0))
         {
             float horizontalOffset = horizontalSpeed * Input.GetAxis("Mouse X") * Time.deltaTime;
             float verticalOffset = verticalSpeed * Input.GetAxis("Mouse Y") * Time.deltaTime;
 
             transform.Translate(horizontalOffset, verticalOffset, 0);
-        }
+        }*/
         //zoom la caméra
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
@@ -64,5 +116,7 @@ public class MoveTheCamera : MonoBehaviour
                 break;
         }
     }
+
+
 
 }

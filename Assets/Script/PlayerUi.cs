@@ -6,7 +6,7 @@ public class PlayerUi : MonoBehaviour
 {
 
     public GameObject botonplayer;
-    public GameObject antwindow, workwindow;
+    public GameObject antwindow, antwindow1, antwindow2, antwindow3, antwindow4;
     public GameObject ressourcesmanager;
     //public Text ressources;
 
@@ -20,14 +20,44 @@ public class PlayerUi : MonoBehaviour
         antwindow.SetActive(false);
     }
 
-    public void WorkWindow()
+    public void AntButton1()
     {
-        workwindow.SetActive(true);
+        antwindow1.SetActive(true);
     }
 
-    public void CloseWorkWindow()
+    public void CloseAntButton1()
     {
-        workwindow.SetActive(false);
+        antwindow1.SetActive(false);
+    }
+
+    public void AntButton2()
+    {
+        antwindow2.SetActive(true);
+    }
+
+    public void CloseAntButton2()
+    {
+        antwindow2.SetActive(false);
+    }
+
+    public void AntButton3()
+    {
+        antwindow3.SetActive(true);
+    }
+
+    public void CloseAntButton3()
+    {
+        antwindow3.SetActive(false);
+    }
+
+    public void AntButton4()
+    {
+        antwindow4.SetActive(true);
+    }
+
+    public void CloseAntButton4()
+    {
+        antwindow4.SetActive(false);
     }
 
     public void PrintState()
