@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5458086022456063648}
   - component: {fileID: 5458086022456063651}
   - component: {fileID: -586994702617267612}
+  - component: {fileID: 8023613986876087774}
   m_Layer: 0
   m_Name: Food
   m_TagString: Food
@@ -113,3 +114,20 @@ MonoBehaviour:
   woodCost: 5
   stoneCost: 52
   foodCost: 4
+--- !u!114 &8023613986876087774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5458086022456063650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4af4c9cd88d90a642aadf240b483ddba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeForProduct: 0
+  resource: {fileID: 0}
+  capacity: 4
+  antsAssignToThisBuilding: []
+  antsInBuilding: []

@@ -144,7 +144,6 @@ public class GameManager : MonoBehaviour
             {
                 foreach (MovingAnt ant in ants)
                 {
-                    ant.graphicComponents.SetActive(true);
                     ant.StartingDay();
                 }
             }
@@ -165,7 +164,7 @@ public class GameManager : MonoBehaviour
                 foreach (MovingAnt ant in ants)
                 {
                     //resource.Food = -1;
-                    ant.graphicComponents.SetActive(true);
+                    Debug.Log($"{ant} goes to sleep");
                     ant.GoToSleep();
                 }
             }

@@ -17,9 +17,8 @@ public class MovingAnt : MonoBehaviour
     // Place to reach
     private GameObject LastWaypoint;
     public GameObject waypointToReach;
-    bool exhausted;
 
-    public GameObject graphicComponents;
+    bool exhausted;
 
     private void Awake()
     {
@@ -171,25 +170,21 @@ public class MovingAnt : MonoBehaviour
         {
             bool hasFindAHouse = false;
             foreach (Building house in GameManager.Instance.houses) {
-                if (house.capacity <= 4)
+                if (house.antsAssignToThisBuilding.Count < house.capacity)
                 {
-                    Debug.Log(house.capacity);
                     waypointToReach = house.gameObject;
+                    Building waypointBuilding = waypointToReach.GetComponent<Building>();
+                    waypointBuilding.antsAssignToThisBuilding.Add(gameObject.GetComponent<MovingAnt>());
                     GoTo(waypointToReach);
                     hasFindAHouse = true;
                     exhausted = false;
                     break;
                 }
-                else
-                {
-                    Debug.Log("Im exhausted");
-                }
             }
             if (!hasFindAHouse)
             {
                exhausted = true;
-            }
-            
+            }   
         }
     }
 
