@@ -4,35 +4,44 @@ using UnityEngine;
 
 public class LearningAnt : MonoBehaviour
 {
-    public MovingAnt Ant;
+    public MovingAnt ant;
     float TimeNeeded;
     public bool isLearningAJob;
     float timeBeforeLast;
     string TheLearningJob;
+
+    //Check if the game was on play or pause
+    public bool isPlayLearning;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        ant = GetComponent<MovingAnt>();
+        isPlayLearning = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isLearningAJob)
+        if (isPlayLearning)
         {
-            timeBeforeLast += Time.deltaTime;  // ajoute a chaque update le temps écoulé depuis le dernier Update		
-            if (timeBeforeLast > 1)
+            if (isLearningAJob)
             {
-                TimeNeeded--;
-                timeBeforeLast = 0;
-                if (TimeNeeded <= 0)
+                timeBeforeLast += Time.deltaTime;  // ajoute a chaque update le temps écoulé depuis le dernier Update		
+                if (timeBeforeLast > 1)
                 {
+                    TimeNeeded--;
+                    timeBeforeLast = 0;
+                    if (TimeNeeded <= 0)
+                    {
 
-                    isLearningAJob = false;
-                    Ant.job = TheLearningJob;
+                        isLearningAJob = false;
+                        ant.job = TheLearningJob;
+                    }
                 }
             }
         }
+        
     }
 
     public void LearnAJob( string AJobToLearn)
