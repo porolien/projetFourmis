@@ -13934,6 +13934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ant: {fileID: 7227759867230754862, guid: 240083c1744cfe74abaf01df91b7c7ff, type: 3}
+  resource: {fileID: 0}
   ants: []
   forests: []
   mines: []
@@ -13944,6 +13945,9 @@ MonoBehaviour:
   ground: []
   dayTime: 15
   nightTime: 15
+  restNightTime: 0
+  restDayTime: 0
+  isItDay: 0
 --- !u!4 &333052435
 Transform:
   m_ObjectHideFlags: 0
@@ -63459,6 +63463,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3541463132178237564, guid: 240083c1744cfe74abaf01df91b7c7ff, type: 3}
+      propertyPath: isLearningAJob
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3541463132178237564, guid: 240083c1744cfe74abaf01df91b7c7ff, type: 3}
+      propertyPath: isPlayLearning
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7227759867230754862, guid: 240083c1744cfe74abaf01df91b7c7ff, type: 3}
       propertyPath: m_Name
       value: Ant (3)
@@ -91370,6 +91382,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3541463132178237564, guid: 240083c1744cfe74abaf01df91b7c7ff, type: 3}
+      propertyPath: isLearningAJob
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3541463132178237564, guid: 240083c1744cfe74abaf01df91b7c7ff, type: 3}
+      propertyPath: isPlayLearning
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7227759867230754862, guid: 240083c1744cfe74abaf01df91b7c7ff, type: 3}
       propertyPath: m_Name
       value: Ant
