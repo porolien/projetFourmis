@@ -5,6 +5,7 @@ using UnityEngine;
 public class Raycast : MonoBehaviour
 {
     public CreateAContruct createAContruct;
+    public PlayerUi playerUi;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +30,10 @@ public class Raycast : MonoBehaviour
             }
             else if(tagFromHit == "Ant")
             {
-
+                if (Input.GetMouseButton(0))
+                {
+                    playerUi.antwindow.SetActive(true);
+                }
             }
         }
     }
