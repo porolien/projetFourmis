@@ -11,16 +11,18 @@ public class MoveTheCamera : MonoBehaviour
     private int Zoom = 3;
     public Camera cameraFollow;
 
+    public int poseCamera = -31;
+
      private float aze = 0f;
      int bze = 31;
 
     private Vector3 cameraFollowPosition;
 
-    public float scrollSpeed = 45;
+    public float scrollSpeed = 10;
 
     private void Start()
     {
-
+        
     }
 
 
@@ -59,18 +61,13 @@ public class MoveTheCamera : MonoBehaviour
             transform.position.z + 1 * scrollSpeed * Time.deltaTime);
         }
 
-        
+        Debug.Log(cameraFollow.transform.position);
 
-
-
-        /*if (Input.GetMouseButton(0))
+        if (cameraFollow.transform.position == new Vector3(-31, 0, 0))
         {
-            float horizontalOffset = horizontalSpeed * Input.GetAxis("Mouse X") * Time.deltaTime;
-            float verticalOffset = verticalSpeed * Input.GetAxis("Mouse Y") * Time.deltaTime;
+            
+        }
 
-            transform.Translate(horizontalOffset, verticalOffset, 0);
-        }*/
-        //zoom la caméra
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
             Debug.Log(Input.GetAxis("Mouse ScrollWheel"));
