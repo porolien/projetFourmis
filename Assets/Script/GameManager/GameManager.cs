@@ -15,6 +15,11 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance => _instance;
     //
 
+    //prefab of ressources building needed to be paused and played
+    public GameObject Mine;
+    public GameObject Forest;
+    public GameObject Food;
+
     // Prefab to clone each day
     public GameObject ant;
     public Resource resource;
@@ -210,6 +215,22 @@ public class GameManager : MonoBehaviour
         {
             StopCoroutine(routine);
         }
+
+        foreach (Building Forest in forests)
+        {
+            Building forest = Forest.gameObject.GetComponent<Building>();
+            forest.isWork = false;
+        }
+        foreach (Building Mine in mines)
+        {
+            Building mine = Mine.gameObject.GetComponent<Building>(); 
+            mine.isWork = false;
+        }
+        foreach (Building Food in foods)
+        {
+            Building food = Food.gameObject.GetComponent<Building>(); 
+            food.isWork = false;
+        }
     }
 
     public void PlayAnt()
@@ -228,6 +249,22 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log(restNightTime);
             routine = StartCoroutine(Night(restNightTime));
+        }
+
+        foreach (Building Forest in forests)
+        {
+            Building forest = Forest.gameObject.GetComponent<Building>();
+            forest.isWork = true;
+        }
+        foreach (Building Mine in mines)
+        {
+            Building mine = Mine.gameObject.GetComponent<Building>();
+            mine.isWork = true;
+        }
+        foreach (Building Food in foods)
+        {
+            Building food = Food.gameObject.GetComponent<Building>();
+            food.isWork = true;
         }
     }
 }

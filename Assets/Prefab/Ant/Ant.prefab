@@ -345,6 +345,7 @@ GameObject:
   - component: {fileID: 7227759867230754867}
   - component: {fileID: 2852367539359512308}
   - component: {fileID: -3541463132178237564}
+  - component: {fileID: 4006896871108887744}
   m_Layer: 7
   m_Name: Ant
   m_TagString: Ant
@@ -411,7 +412,6 @@ MonoBehaviour:
   agent: {fileID: 7227759867230754864}
   waypointToReach: {fileID: 0}
   exhausted: 0
-  graphicComponents: {fileID: 343885744275130157}
 --- !u!136 &2852367539359512308
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -438,9 +438,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4848c0bd9a11dc479e911a9f998233f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ant: {fileID: 0}
+  ant: {fileID: 0}
   isLearningAJob: 0
   isPlayLearning: 0
+--- !u!114 &4006896871108887744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7227759867230754862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e15578b407dbc54486cfaf040bcc69e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minOld: 15
+  maxOld: 20
+  maxAge: 0
+  age: 0
 --- !u!1 &8628396383139077137
 GameObject:
   m_ObjectHideFlags: 0
