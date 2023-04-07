@@ -61,7 +61,7 @@ public class MoveTheCamera : MonoBehaviour
             transform.position.z + 1 * scrollSpeed * Time.deltaTime);
         }
 
-        Debug.Log(cameraFollow.transform.position);
+       
 
         if (cameraFollow.transform.position == new Vector3(-31, 0, 0))
         {

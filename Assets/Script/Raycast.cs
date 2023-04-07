@@ -32,7 +32,9 @@ public class Raycast : MonoBehaviour
             {
                 if (Input.GetMouseButton(0))
                 {
+                    playerUi.ant = hit.transform.gameObject;
                     playerUi.antwindow.SetActive(true);
+                    playerUi.Init();
                 }
             }
         }
