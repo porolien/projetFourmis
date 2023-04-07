@@ -7,13 +7,20 @@ public class PauseMenu : MonoBehaviour
     public GameObject GameMenu;
     public GameObject MenuPause;
 
-    void Pause()
+    public void Pause()
     {
-
+        GameMenu.SetActive(false);
+        MenuPause.SetActive(true);
     }
 
-    void Resume()
+    public void Resume()
     {
+        GameMenu.SetActive(true);
+        MenuPause.SetActive(false);
+    }
 
+    public void Quit()
+    {
+        
     }
 }
