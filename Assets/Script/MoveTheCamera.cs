@@ -11,7 +11,7 @@ public class MoveTheCamera : MonoBehaviour
     private int Zoom = 3;
     public Camera cameraFollow;
 
-    public int poseCamera = -31;
+
 
      private float aze = 0f;
      int bze = 31;
@@ -63,10 +63,29 @@ public class MoveTheCamera : MonoBehaviour
 
         Debug.Log(cameraFollow.transform.position);
 
-        if (cameraFollow.transform.position == new Vector3(-31, 0, 0))
+        if (transform.position.x >= 0)
         {
-            
+            transform.position = new Vector3 (0, transform.position.y, transform.position.z);
         }
+
+        else if(transform.position.x <= -40)
+        {
+            transform.position = new Vector3(-40, transform.position.y, transform.position.z);
+        }
+
+        else if (transform.position.z >= -10)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, -10);
+        }
+
+        else if (transform.position.z <= -40)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, -40);
+        }
+
+
+
+
 
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
