@@ -7,6 +7,7 @@ public class Construct : MonoBehaviour
     public int woodCost;
     public int stoneCost;
     public int foodCost;
+    public int constructSize;
     // Start is called before the first frame update
     void Start()
     {

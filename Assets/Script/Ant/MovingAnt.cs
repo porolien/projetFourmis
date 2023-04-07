@@ -51,7 +51,7 @@ public class MovingAnt : MonoBehaviour
     public void selectDestination()
     {
         // Select a random place for vagrant ants
-        waypointToReach = GameManager.Instance.ground[Random.Range(0, GameManager.Instance.ground.Length)];
+        waypointToReach = GameManager.Instance.ground[Random.Range(0, GameManager.Instance.ground.Count)];
     }
 
     public void OnTriggerEnter(Collider other)

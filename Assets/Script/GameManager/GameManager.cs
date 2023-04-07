@@ -25,8 +25,10 @@ public class GameManager : MonoBehaviour
     public List<Building> foods = new();
     public List<Building> worksites = new();
     public List<Building> houses = new();
-    public List<Building> schools = new();
-    public GameObject[] ground;
+    public List<Building> school = new();
+    public List<GameObject> ground = new();
+
+    //public GameObject[] ground;
 
     // Time of the day and the night
     public int dayTime;
@@ -75,7 +77,7 @@ public class GameManager : MonoBehaviour
         // Find all who's already placed in the scene like ants, ground or zones
 
         // Ground
-        ground = GameObject.FindGameObjectsWithTag("Ground");
+
 
         // Ants
         MovingAnt[] tempAnts = FindObjectsOfType<MovingAnt>();
@@ -132,6 +134,14 @@ public class GameManager : MonoBehaviour
         foreach (GameObject school in tempSchools)
         {
             houses.Add(school.GetComponent<Building>());
+        }
+
+        // Ground
+        GameObject[] tempGround = GameObject.FindGameObjectsWithTag("Ground");
+
+        foreach (GameObject AGround in tempGround)
+        {
+            ground.Add(AGround.GetComponent<GameObject>());
         }
     }
 
