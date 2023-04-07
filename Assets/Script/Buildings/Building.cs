@@ -21,7 +21,10 @@ public class Building : MonoBehaviour
     float timeBeforeLast;
     void Start()
     {
-        
+        if(resource == null)
+        {
+            resource = GameManager.Instance.GetComponent<Resource>();
+        }
     }
 
     private void FixedUpdate()

@@ -11,10 +11,12 @@ public class CreateAContruct : MonoBehaviour
     GameObject cube;
     public bool ConstructMod;
     public GameObject cubePrevisual;
+    public GameObject LargeCubePrevisual;
     public Resource Resource;
     public NavMeshSurface navMeshSurface;
     public NavigationBaker navigationBaker;
     public GameObject PArentOfBLoc;
+    private int BuildingSize;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -70,23 +72,54 @@ public class CreateAContruct : MonoBehaviour
         if (construct.woodCost <= Resource.Wood && construct.stoneCost <= Resource.Stone) 
         {
             cube = aConstruct;
+            BuildingSize = construct.constructSize;
             ConstructMod = true;
-            cubePrevisual.SetActive(true);
-            ConstructMod = true;
+            if (BuildingSize > 1)
+            {
+                LargeCubePrevisual.SetActive(true);
+            }
+            else
+            {
+                cubePrevisual.SetActive(true);
+            }
+            
+           
         }
     }
     public void create(RaycastHit hit)
     {
-        cubePrevisual.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z);
-
+        
+        if (BuildingSize > 1)
+        {
+            LargeCubePrevisual.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z);
+        }
+        else
+        {
+            cubePrevisual.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z);
+        }
 
         if (Input.GetMouseButton(0))
         {
+            foreach (GameObject AGround in GameManager.Instance.ground)
+            {
+                if(AGround == hit.transform.gameObject)
+                {
+                    GameManager.Instance.ground.Remove(AGround);
+                }
+            }
             hit.transform.gameObject.tag = "Untagged";
-            cubePrevisual.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 2, hit.transform.position.z);
+            if (BuildingSize > 1)
+            {
+                LargeCubePrevisual.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 2, hit.transform.position.z);
+                LargeCubePrevisual.SetActive(false);
+            }
+            else
+            {
+                cubePrevisual.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 2, hit.transform.position.z);
+                cubePrevisual.SetActive(false);
+            }
             Resource.Wood = -cube.GetComponent<Construct>().woodCost;
             Resource.Stone = -cube.GetComponent<Construct>().stoneCost;
-            cubePrevisual.SetActive(false);
             GameObject newCube = Instantiate(cube, new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z), Quaternion.identity);
             ConstructMod = false;
             newCube.transform.SetParent(PArentOfBLoc.transform);
@@ -96,6 +129,7 @@ public class CreateAContruct : MonoBehaviour
         {
             cubePrevisual.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 2, hit.transform.position.z);
             cubePrevisual.SetActive(false);
+            LargeCubePrevisual.SetActive(false);
             ConstructMod = false;
         }
     }

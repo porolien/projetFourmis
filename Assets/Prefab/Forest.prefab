@@ -111,9 +111,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67df5d59f5916d439ca23dc7fa3548c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodCost: 25
-  stoneCost: 3
-  foodCost: 21
+  woodCost: 0
+  stoneCost: 0
+  foodCost: 0
+  constructSize: 0
 --- !u!114 &-675835790061615124
 MonoBehaviour:
   m_ObjectHideFlags: 0
