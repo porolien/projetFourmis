@@ -97,12 +97,15 @@ public class Building : MonoBehaviour
         switch (tag)
         {
             case "Food":
+                Debug.Log("gainFood");
                 resource.Food = antsInBuilding.Count * 3;
                 break;
             case "Mine":
+                Debug.Log("gainstone");
                 resource.Stone = antsInBuilding.Count * 3;
                 break;
             case "Forest":
+                Debug.Log("gainwood");
                 resource.Wood = antsInBuilding.Count * 3;
                 break;
         }

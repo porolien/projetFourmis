@@ -6,8 +6,8 @@ using TMPro;
 
 public class GaugeManager : MonoBehaviour
 {
-   public float happy = 50f;
-   public float happyMax = 100f;
+   public float happy = 25f;
+   public float happyMax = 200f;
 
     public Image happyBar;
 

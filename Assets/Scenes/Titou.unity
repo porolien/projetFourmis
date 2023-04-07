@@ -6182,9 +6182,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734e455e4429e4c4ab702833cb5ef1be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  happy: 50
-  happyMax: 100
-  happyBar: {fileID: 0}
+  happy: 25
+  happyMax: 200
+  happyBar: {fileID: 1479915228}
 --- !u!1 &127322436
 GameObject:
   m_ObjectHideFlags: 0
@@ -25051,13 +25051,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4487edd870ffba14f971833c938c7643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  botonplayer: {fileID: 0}
+  Lumberjack: {fileID: 0}
+  Mason: {fileID: 0}
+  Explorer: {fileID: 0}
+  Collier: {fileID: 0}
   antwindow: {fileID: 1706637184}
   antwindow1: {fileID: 0}
   antwindow2: {fileID: 0}
   antwindow3: {fileID: 0}
   antwindow4: {fileID: 0}
   ressourcesmanager: {fileID: 1135612657}
+  ant: {fileID: 0}
+  AntName: {fileID: 0}
 --- !u!1 &505676334
 GameObject:
   m_ObjectHideFlags: 0
@@ -67030,7 +67035,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1363483536
 Transform:
   m_ObjectHideFlags: 0

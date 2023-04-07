@@ -201,12 +201,14 @@ public class MovingAnt : MonoBehaviour
                     waypointBuilding.antsAssignToThisBuilding.Add(gameObject.GetComponent<MovingAnt>());
                     GoTo(waypointToReach);
                     hasFindAHouse = true;
+                    GameManager.Instance.UpOurHappyness(1);
                     exhausted = false;
                     break;
                 }
             }
             if (!hasFindAHouse)
             {
+                GameManager.Instance.UpOurHappyness(-1);
                 exhausted = true;
                 StartCoroutine(VagrantWait());
             }

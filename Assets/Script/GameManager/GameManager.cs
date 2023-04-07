@@ -22,7 +22,11 @@ public class GameManager : MonoBehaviour
 
     // Prefab to clone each day
     public GameObject ant;
+
+    //Resource and the gauge which will be upgrade during the game
     public Resource resource;
+    public GaugeManager HappyGauge;
+
     // All objects we need to access during the game
     public List<MovingAnt> ants = new();
     public List<Building> forests = new();
@@ -266,5 +270,10 @@ public class GameManager : MonoBehaviour
             Building food = Food.gameObject.GetComponent<Building>();
             food.isWork = true;
         }
+    }
+
+    public void UpOurHappyness(int amountOfHappyness)
+    {
+        HappyGauge.happy += amountOfHappyness; 
     }
 }
