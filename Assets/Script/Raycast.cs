@@ -22,9 +22,10 @@ public class Raycast : MonoBehaviour
             string tagFromHit = hit.transform.gameObject.tag;
             if (tagFromHit == "Ground")
             {
-                
+               
                 if(createAContruct.ConstructMod == true)
                 {
+                    Debug.Log("jetouchemieuxle sol");
                     createAContruct.create(hit);
                 }
             }
@@ -35,6 +36,13 @@ public class Raycast : MonoBehaviour
                     playerUi.ant = hit.transform.gameObject;
                     playerUi.antwindow.SetActive(true);
                     playerUi.Init();
+                }
+            }
+            else if(tagFromHit == "house" || tagFromHit == "Forest" || tagFromHit == "Mine" || tagFromHit == "Food")
+            {
+                if (Input.GetMouseButton(0))
+                {
+
                 }
             }
         }
