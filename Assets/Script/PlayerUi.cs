@@ -6,7 +6,7 @@ public class PlayerUi : MonoBehaviour
 {
 
     public GameObject botonplayer;
-    public GameObject antwindow, antwindow1, antwindow2, antwindow3, antwindow4;
+    public GameObject antwindow, antwindow1, antwindow2, antwindow3, antwindow4, bulding;
     public GameObject ressourcesmanager;
     //public Text ressources;
 
@@ -58,6 +58,16 @@ public class PlayerUi : MonoBehaviour
     public void CloseAntButton4()
     {
         antwindow4.SetActive(false);
+    }
+
+    public void BuldingButton()
+    {
+        bulding.SetActive(true);
+    }
+
+    public void CloseBuldingButton()
+    {
+        bulding.SetActive(false);
     }
 
     public void PrintState()

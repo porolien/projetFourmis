@@ -36,6 +36,10 @@ public class Raycast : MonoBehaviour
                     playerUi.antwindow.SetActive(true);
                 }
             }
+            else if(tagFromHit == "house" || tagFromHit == "Forest" || tagFromHit == "Mine" || tagFromHit == "Food")
+            {
+
+            }
         }
     }
 }
