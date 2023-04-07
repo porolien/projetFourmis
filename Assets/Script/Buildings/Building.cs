@@ -38,7 +38,7 @@ public class Building : MonoBehaviour
             timeBeforeLast += Time.deltaTime;  // ajoute a chaque update le temps écoulé depuis le dernier Update		
             if (timeBeforeLast > 5)
             {
-                GainResources();
+                //GainResources();
                 timeBeforeLast = 0;
             }
         }
@@ -83,19 +83,19 @@ public class Building : MonoBehaviour
         }
     }
 
-    private void GainResources()
-    {
-        switch (tag)
-        {
-            case "Food":
-                resource.Food = antsInBuilding.Count * 3;
-                break;
-            case "Mine":
-                resource.Stone = antsInBuilding.Count * 3;
-                break;
-            case "Forest":
-                resource.Wood = antsInBuilding.Count * 3;
-                break;
-        }
-    }
+    //private void GainResources()
+    //{
+    //    switch (tag)
+    //    {
+    //        case "Food":
+    //            resource.Food = antsInBuilding.Count * 3;
+    //            break;
+    //        case "Mine":
+    //            resource.Stone = antsInBuilding.Count * 3;
+    //            break;
+    //        case "Forest":
+    //            resource.Wood = antsInBuilding.Count * 3;
+    //            break;
+    //    }
+    //}
 }

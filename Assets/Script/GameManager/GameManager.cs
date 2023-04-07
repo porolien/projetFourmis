@@ -146,6 +146,9 @@ public class GameManager : MonoBehaviour
                 {
                     ant.gameObject.SetActive(true);
                     ant.StartingDay();
+                    AntAge antAge = ant.GetComponent<AntAge>();
+                    antAge.GainAge();
+                    Debug.Log("Bonjour");
                 }
             }
             restDayTime = dayTime - i;

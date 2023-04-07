@@ -129,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeForProduct: 0
   resource: {fileID: 0}
-  capacity: 0
+  capacity: 4
   antsAssignToThisBuilding: []
   antsInBuilding: []
 --- !u!54 &7820217436211290885

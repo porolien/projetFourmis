@@ -20,6 +20,7 @@ public class MovingAnt : MonoBehaviour
 
     public bool exhausted;
 
+
     private void Awake()
     {
         // Choose a job for new ants who haven't job
