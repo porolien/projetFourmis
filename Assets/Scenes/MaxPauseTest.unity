@@ -7099,6 +7099,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 632384185}
     m_Modifications:
+    - target: {fileID: 1859668870118967809, guid: 3b545a685bd2dda4b9bf22aef15e2c20, type: 3}
+      propertyPath: capacity
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5940769823888152208, guid: 3b545a685bd2dda4b9bf22aef15e2c20, type: 3}
       propertyPath: m_Name
       value: House
@@ -8140,22 +8144,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &212135880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 212135866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e15578b407dbc54486cfaf040bcc69e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minOld: 15
-  maxOld: 20
-  age: 0
-  maxAge: 0
 --- !u!1 &212232576
 GameObject:
   m_ObjectHideFlags: 0
@@ -13949,6 +13937,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95b1d03241d30e046957fac798d7be42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Mine: {fileID: 0}
+  Forest: {fileID: 0}
+  Food: {fileID: 0}
   ant: {fileID: 7227759867230754862, guid: 240083c1744cfe74abaf01df91b7c7ff, type: 3}
   resource: {fileID: 0}
   ants: []
@@ -13964,7 +13955,6 @@ MonoBehaviour:
   restNightTime: 0
   restDayTime: 0
   isItDay: 0
-  antAge: {fileID: 0}
 --- !u!4 &333052435
 Transform:
   m_ObjectHideFlags: 0

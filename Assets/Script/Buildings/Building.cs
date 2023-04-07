@@ -18,10 +18,15 @@ public class Building : MonoBehaviour
     public List<MovingAnt> antsAssignToThisBuilding = new();
     public List<MovingAnt> antsInBuilding = new();
 
+    public bool isWork;
+
     float timeBeforeLast;
     void Start()
     {
-        
+        if(resource == null)
+        {
+            resource = GameManager.Instance.GetComponent<Resource>();
+        }
     }
 
     //private void FixedUpdate()
@@ -33,15 +38,19 @@ public class Building : MonoBehaviour
     //}
     private void Update()
     {
-        if (tag == "Food" || tag == "Mine" || tag == "Forest")
+        if (isWork)
         {
-            timeBeforeLast += Time.deltaTime;  // ajoute a chaque update le temps écoulé depuis le dernier Update		
-            if (timeBeforeLast > 5)
+            if (tag == "Food" || tag == "Mine" || tag == "Forest")
             {
-                GainResources();
-                timeBeforeLast = 0;
+                timeBeforeLast += Time.deltaTime;  // ajoute a chaque update le temps écoulé depuis le dernier Update		
+                if (timeBeforeLast > 5)
+                {
+                    GainResources();
+                    timeBeforeLast = 0;
+                }
             }
         }
+        
     }
 
     private void OnTriggerEnter(Collider other)

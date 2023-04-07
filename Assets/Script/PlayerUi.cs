@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class PlayerUi : MonoBehaviour
 {
-
-    public GameObject botonplayer;
+    public GameObject Lumberjack, Mason, Explorer, Collier;
     public GameObject antwindow, antwindow1, antwindow2, antwindow3, antwindow4;
     public GameObject ressourcesmanager;
+    public GameObject ant;
+    public TMP_Text AntName;
     //public Text ressources;
 
     public void AntButton()
@@ -68,6 +71,30 @@ public class PlayerUi : MonoBehaviour
         // ressources.text = ressourcesmanager. missing data;
         // ressources.text = ressourcesmanager. missing data;
         // ressources.text = ressourcesmanager. missing data;
+    }
+
+    public void Init()
+    {
+        AntName.text = ant.name;
+        Debug.Log(ant.GetComponent<MovingAnt>().job);
+        switch (ant.GetComponent<MovingAnt>().job)
+        {
+            
+            case "lumberjack":
+                Lumberjack.GetComponent<Image>().color = Color.red;
+                break;
+            case "collier":
+                Lumberjack.GetComponent<Image>().color = Color.red;
+                break;
+            case "explorer":
+                Lumberjack.GetComponent<Image>().color = Color.red;
+                break;
+            case "mason":
+                Lumberjack.GetComponent<Image>().color = Color.red;
+                break;
+            default:
+                break;
+        }
     }
 
 

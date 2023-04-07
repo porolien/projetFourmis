@@ -61,7 +61,7 @@ public class MoveTheCamera : MonoBehaviour
             transform.position.z + 1 * scrollSpeed * Time.deltaTime);
         }
 
-        Debug.Log(cameraFollow.transform.position);
+       
 
         if (cameraFollow.transform.position == new Vector3(-31, 0, 0))
         {
@@ -81,7 +81,7 @@ public class MoveTheCamera : MonoBehaviour
         //Dezoom la caméra
         if(Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
-            Debug.Log(Input.GetAxis("Mouse ScrollWheel"));
+           
             Zoom++;
             if (Zoom > 5)
             {

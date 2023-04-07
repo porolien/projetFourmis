@@ -15,6 +15,11 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance => _instance;
     //
 
+    //prefab of ressources building needed to be paused and played
+    public GameObject Mine;
+    public GameObject Forest;
+    public GameObject Food;
+
     // Prefab to clone each day
     public GameObject ant;
     public Resource resource;
@@ -25,8 +30,10 @@ public class GameManager : MonoBehaviour
     public List<Building> foods = new();
     public List<Building> worksites = new();
     public List<Building> houses = new();
-    public List<Building> schools = new();
-    public GameObject[] ground;
+    public List<Building> school = new();
+    public List<GameObject> ground = new();
+
+    //public GameObject[] ground;
 
     // Time of the day and the night
     public int dayTime;
@@ -75,7 +82,7 @@ public class GameManager : MonoBehaviour
         // Find all who's already placed in the scene like ants, ground or zones
 
         // Ground
-        ground = GameObject.FindGameObjectsWithTag("Ground");
+
 
         // Ants
         MovingAnt[] tempAnts = FindObjectsOfType<MovingAnt>();
@@ -133,6 +140,14 @@ public class GameManager : MonoBehaviour
         {
             houses.Add(school.GetComponent<Building>());
         }
+
+        // Ground
+        GameObject[] tempGround = GameObject.FindGameObjectsWithTag("Ground");
+
+        foreach (GameObject AGround in tempGround)
+        {
+            ground.Add(AGround.GetComponent<GameObject>());
+        }
     }
 
     public IEnumerator Day(int dayTime)
@@ -146,6 +161,8 @@ public class GameManager : MonoBehaviour
                 {
                     ant.gameObject.SetActive(true);
                     ant.StartingDay();
+                    AntAge antAge = ant.GetComponent<AntAge>();
+                    antAge.GainAge();
                 }
             }
             restDayTime = dayTime - i;
@@ -198,6 +215,22 @@ public class GameManager : MonoBehaviour
         {
             StopCoroutine(routine);
         }
+
+        foreach (Building Forest in forests)
+        {
+            Building forest = Forest.gameObject.GetComponent<Building>();
+            forest.isWork = false;
+        }
+        foreach (Building Mine in mines)
+        {
+            Building mine = Mine.gameObject.GetComponent<Building>(); 
+            mine.isWork = false;
+        }
+        foreach (Building Food in foods)
+        {
+            Building food = Food.gameObject.GetComponent<Building>(); 
+            food.isWork = false;
+        }
     }
 
     public void PlayAnt()
@@ -216,6 +249,22 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log(restNightTime);
             routine = StartCoroutine(Night(restNightTime));
+        }
+
+        foreach (Building Forest in forests)
+        {
+            Building forest = Forest.gameObject.GetComponent<Building>();
+            forest.isWork = true;
+        }
+        foreach (Building Mine in mines)
+        {
+            Building mine = Mine.gameObject.GetComponent<Building>();
+            mine.isWork = true;
+        }
+        foreach (Building Food in foods)
+        {
+            Building food = Food.gameObject.GetComponent<Building>();
+            food.isWork = true;
         }
     }
 }
