@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     public List<Building> worksites = new();
     public List<Building> houses = new();
     public List<Building> school = new();
-    public List<GameObject> ground = new();
+    public List<GameObject> grounds = new();
 
     //public GameObject[] ground;
 
@@ -84,9 +84,6 @@ public class GameManager : MonoBehaviour
     private void FindAllInTheScene()
     {
         // Find all who's already placed in the scene like ants, ground or zones
-
-        // Ground
-
 
         // Ants
         MovingAnt[] tempAnts = FindObjectsOfType<MovingAnt>();
@@ -148,9 +145,9 @@ public class GameManager : MonoBehaviour
         // Ground
         GameObject[] tempGround = GameObject.FindGameObjectsWithTag("Ground");
 
-        foreach (GameObject AGround in tempGround)
+        foreach (GameObject ground in tempGround)
         {
-            ground.Add(AGround.GetComponent<GameObject>());
+            grounds.Add(ground);
         }
     }
 

@@ -36,13 +36,15 @@ public class Building : MonoBehaviour
     //        antsAssignToThisBuilding.Clear();
     //    }
     //}
+
     private void Update()
     {
         if (isWork)
         {
             if (tag == "Food" || tag == "Mine" || tag == "Forest")
             {
-                timeBeforeLast += Time.deltaTime;  // ajoute a chaque update le temps écoulé depuis le dernier Update		
+                // add at every update the time since the last update
+                timeBeforeLast += Time.deltaTime;	
                 if (timeBeforeLast > 5)
                 {
                     GainResources();
