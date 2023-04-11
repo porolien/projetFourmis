@@ -17,7 +17,7 @@ public class CreateAContruct : MonoBehaviour
     public NavigationBaker navigationBaker;
     public GameObject PArentOfBLoc;
     private int BuildingSize;
-    // Start is called before the first frame update
+
     private void Awake()
     {
         navigationBaker.bakeTheNavigation();
@@ -100,11 +100,11 @@ public class CreateAContruct : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            foreach (GameObject AGround in GameManager.Instance.ground)
+            foreach (GameObject ground in GameManager.Instance.grounds)
             {
-                if(AGround == hit.transform.gameObject)
+                if(ground == hit.transform.gameObject)
                 {
-                    GameManager.Instance.ground.Remove(AGround);
+                    GameManager.Instance.grounds.Remove(ground);
                 }
             }
             hit.transform.gameObject.tag = "Untagged";

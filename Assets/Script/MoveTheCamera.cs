@@ -30,7 +30,7 @@ public class MoveTheCamera : MonoBehaviour
 
     public void Update()
     {
-        //Mouving caméra
+        //Mouving the camera
 
         var mPosX = Input.mousePosition.x;
         var mPosY = Input.mousePosition.y;
@@ -78,7 +78,7 @@ public class MoveTheCamera : MonoBehaviour
             }
             ZoomTheCamera();
         }
-        //Dezoom la caméra
+        //zoom out the camera
         if(Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
            
@@ -113,7 +113,4 @@ public class MoveTheCamera : MonoBehaviour
                 break;
         }
     }
-
-
-
 }

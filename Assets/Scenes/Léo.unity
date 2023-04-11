@@ -732,7 +732,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 19600787}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9, y: 0, z: -5}
+  m_LocalPosition: {x: -9, y: -0.000000014901161, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14344,16 +14344,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95b1d03241d30e046957fac798d7be42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Mine: {fileID: 0}
+  Forest: {fileID: 0}
+  Food: {fileID: 0}
   ant: {fileID: 7227759867230754862, guid: 240083c1744cfe74abaf01df91b7c7ff, type: 3}
   resource: {fileID: 333052436}
+  HappyGauge: {fileID: 0}
   ants: []
   forests: []
   mines: []
   foods: []
   worksites: []
   houses: []
-  schools: []
-  ground: []
+  school: []
+  grounds: []
   dayTime: 15
   nightTime: 15
   restNightTime: 0
@@ -14403,6 +14407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   createAContruct: {fileID: 958823026}
+  playerUi: {fileID: 0}
 --- !u!1 &337140931
 GameObject:
   m_ObjectHideFlags: 0
@@ -42348,6 +42353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConstructMod: 0
   cubePrevisual: {fileID: 956672332}
+  LargeCubePrevisual: {fileID: 0}
   Resource: {fileID: 333052436}
   navMeshSurface: {fileID: 0}
   navigationBaker: {fileID: 1720075594}
