@@ -44,21 +44,21 @@ public class LearningAnt : MonoBehaviour
         
     }
 
-    public void LearnAJob( string AJobToLearn)
+    public void LearnAJob(string AJobToLearn)
     {
  
         switch (AJobToLearn)
         {
-            case "lumberjack":
+            case "Lumberjack":
                 TimeNeeded = 30f;
                 break;
-            case "collier":
+            case "Collier":
                 TimeNeeded = 40f;
                 break;
-            case "explorer":
+            case "Explorer":
                 TimeNeeded = 50f;
                 break;
-            case "mason":
+            case "Mason":
                 TimeNeeded = 60f;
                 break;
         }

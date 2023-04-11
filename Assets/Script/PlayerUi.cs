@@ -23,9 +23,21 @@ public class PlayerUi : MonoBehaviour
         antwindow.SetActive(false);
     }
 
-    public void AntButton1()
+    public void JobButton(string TheJob)
     {
-        antwindow1.SetActive(true);
+        switch (TheJob)
+        {
+            case "Lumberjack":
+                break;
+            case "Mason":
+                break;
+            case "Explorer":
+                break;
+            case "Collier":
+                break;
+        }
+        ant.GetComponent<MovingAnt>().job = "student";
+        ant.GetComponent<MovingAnt>().StartingDay();
     }
 
     public void CloseAntButton1()
@@ -76,7 +88,6 @@ public class PlayerUi : MonoBehaviour
     public void Init()
     {
         AntName.text = ant.name;
-        Debug.Log(ant.GetComponent<MovingAnt>().job);
         switch (ant.GetComponent<MovingAnt>().job)
         {
             

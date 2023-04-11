@@ -7654,7 +7654,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1859668870118967809, guid: 3b545a685bd2dda4b9bf22aef15e2c20, type: 3}
       propertyPath: capacity
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1859668870118967809, guid: 3b545a685bd2dda4b9bf22aef15e2c20, type: 3}
       propertyPath: resource
@@ -9162,7 +9162,7 @@ Transform:
   - {fileID: 1888110689}
   - {fileID: 632384185}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &217474890
 GameObject:
@@ -14682,7 +14682,7 @@ MonoBehaviour:
   foods: []
   worksites: []
   houses: []
-  school: []
+  schools: []
   ground: []
   dayTime: 15
   nightTime: 15
@@ -18497,7 +18497,7 @@ RectTransform:
   - {fileID: 645580851}
   - {fileID: 612213655}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -26357,7 +26357,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7227759867230754866, guid: 240083c1744cfe74abaf01df91b7c7ff, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7227759867230754866, guid: 240083c1744cfe74abaf01df91b7c7ff, type: 3}
       propertyPath: m_LocalPosition.x
@@ -32619,7 +32619,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &745250994
 GameObject:
@@ -35700,7 +35700,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 804017102}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 645580852}
+        m_TargetAssemblyTypeName: PlayerUi, Assembly-CSharp
+        m_MethodName: JobButton
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Mason
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &804017102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46141,7 +46153,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7613694942237664616, guid: 7978327263318dd489e6fd79f08beaf8, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7613694942237664616, guid: 7978327263318dd489e6fd79f08beaf8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -48564,7 +48576,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7227759867230754866, guid: 240083c1744cfe74abaf01df91b7c7ff, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7227759867230754866, guid: 240083c1744cfe74abaf01df91b7c7ff, type: 3}
       propertyPath: m_LocalPosition.x
@@ -48987,7 +48999,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1091522476}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 645580852}
+        m_TargetAssemblyTypeName: PlayerUi, Assembly-CSharp
+        m_MethodName: JobButton
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Explorer
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1091522476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55511,7 +55535,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1215440818
 GameObject:
@@ -58584,7 +58608,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1281542964}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 645580852}
+        m_TargetAssemblyTypeName: PlayerUi, Assembly-CSharp
+        m_MethodName: JobButton
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Lumberjack
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1281542964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66988,7 +67024,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7227759867230754866, guid: 240083c1744cfe74abaf01df91b7c7ff, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7227759867230754866, guid: 240083c1744cfe74abaf01df91b7c7ff, type: 3}
       propertyPath: m_LocalPosition.x
@@ -69827,7 +69863,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -80, y: -14.789978}
+  m_AnchoredPosition: {x: -80, y: -14.789917}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1539617633
@@ -75094,7 +75130,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1663679334}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 645580852}
+        m_TargetAssemblyTypeName: PlayerUi, Assembly-CSharp
+        m_MethodName: JobButton
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Collier
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1663679334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78667,7 +78715,7 @@ Transform:
   - {fileID: 792950202}
   - {fileID: 432282857}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1720075593
 MonoBehaviour:
@@ -90824,7 +90872,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 45, y: 45, z: 0}
 --- !u!114 &2038980876
 MonoBehaviour:
@@ -91799,22 +91847,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerUi, Assembly-CSharp
-        m_MethodName: CloseAntButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerUi, Assembly-CSharp
-        m_MethodName: CloseAntButton
-        m_Mode: 1
+      - m_Target: {fileID: 46634362}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -95781,6 +95817,71 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128247379}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &2128332123
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1465860250850685548, guid: db3f38ff0be5de640861954e33563cb9, type: 3}
+      propertyPath: resource
+      value: 
+      objectReference: {fileID: 333052436}
+    - target: {fileID: 5458086022456063648, guid: db3f38ff0be5de640861954e33563cb9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5c9ea827aaa4145c8900e81ca1395aae, type: 2}
+    - target: {fileID: 5458086022456063650, guid: db3f38ff0be5de640861954e33563cb9, type: 3}
+      propertyPath: m_Name
+      value: School
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458086022456063654, guid: db3f38ff0be5de640861954e33563cb9, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458086022456063654, guid: db3f38ff0be5de640861954e33563cb9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.160776
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458086022456063654, guid: db3f38ff0be5de640861954e33563cb9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458086022456063654, guid: db3f38ff0be5de640861954e33563cb9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -17.246616
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458086022456063654, guid: db3f38ff0be5de640861954e33563cb9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458086022456063654, guid: db3f38ff0be5de640861954e33563cb9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458086022456063654, guid: db3f38ff0be5de640861954e33563cb9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458086022456063654, guid: db3f38ff0be5de640861954e33563cb9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458086022456063654, guid: db3f38ff0be5de640861954e33563cb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458086022456063654, guid: db3f38ff0be5de640861954e33563cb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458086022456063654, guid: db3f38ff0be5de640861954e33563cb9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: db3f38ff0be5de640861954e33563cb9, type: 3}
 --- !u!1 &2129241968
 GameObject:
   m_ObjectHideFlags: 0
@@ -96022,7 +96123,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7613694942237664616, guid: 7874150e875fc8d46bd96c5b636932ec, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7613694942237664616, guid: 7874150e875fc8d46bd96c5b636932ec, type: 3}
       propertyPath: m_LocalPosition.x
@@ -96699,7 +96800,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6538083802523641659, guid: a20918f28a30eac42a2a12ce2af7d8f8, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6538083802523641659, guid: a20918f28a30eac42a2a12ce2af7d8f8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -96780,7 +96881,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7227759867230754866, guid: 240083c1744cfe74abaf01df91b7c7ff, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7227759867230754866, guid: 240083c1744cfe74abaf01df91b7c7ff, type: 3}
       propertyPath: m_LocalPosition.x

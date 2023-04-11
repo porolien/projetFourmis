@@ -24,7 +24,7 @@ public class Raycast : MonoBehaviour
             {
                
                 if(createAContruct.ConstructMod == true)
-                {
+                {   
                     createAContruct.create(hit);
                 }
             }

@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     public List<Building> foods = new();
     public List<Building> worksites = new();
     public List<Building> houses = new();
-    public List<Building> school = new();
+    public List<Building> schools = new();
     public List<GameObject> ground = new();
 
     //public GameObject[] ground;
@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
 
         foreach (GameObject school in tempSchools)
         {
-            houses.Add(school.GetComponent<Building>());
+            schools.Add(school.GetComponent<Building>());
         }
 
         // Ground
@@ -150,7 +150,7 @@ public class GameManager : MonoBehaviour
 
         foreach (GameObject AGround in tempGround)
         {
-            ground.Add(AGround.GetComponent<GameObject>());
+            ground.Add(AGround);
         }
     }
 
@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour
                 foreach (MovingAnt ant in ants)
                 {
                     ant.gameObject.SetActive(true);
-                    //resource.Food = -1;
+                    resource.Food = -1;
                     ant.exhausted = false;
                     ant.GoToSleep();
                 }

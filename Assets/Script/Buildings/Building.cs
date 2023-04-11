@@ -23,6 +23,7 @@ public class Building : MonoBehaviour
     float timeBeforeLast;
     void Start()
     {
+        isWork = true;
         if(resource == null)
         {
             resource = GameManager.Instance.GetComponent<Resource>();

@@ -44,7 +44,6 @@ public class MovingAnt : MonoBehaviour
         // Send ant to a place
 
         agent.SetDestination(waypoint.transform.position);
-        //waypoint.GetComponent<Resource>().numberWorker++;
         LastWaypoint = waypoint;
     }
 
@@ -52,12 +51,13 @@ public class MovingAnt : MonoBehaviour
     {
         // Select a random place for vagrant ants
         waypointToReach = GameManager.Instance.ground[Random.Range(0, GameManager.Instance.ground.Count)];
+        Debug.Log(waypointToReach);
     }
 
     public void OnTriggerEnter(Collider other)
     {
         // If the ant is a vagrant : go to an other place
-        if (job == "vagrant")
+        if (job == "vagrant" || exhausted )
         {
             if (waypointToReach != null)
             {
@@ -166,7 +166,7 @@ public class MovingAnt : MonoBehaviour
 
                     if (!exhausted)
                     {
-                        waypointToReach = GameManager.Instance.school[Random.Range(0, GameManager.Instance.school.Count)].gameObject;
+                        waypointToReach = GameManager.Instance.schools[Random.Range(0, GameManager.Instance.schools.Count)].gameObject;
                         Building waypointBuilding = waypointToReach.GetComponent<Building>();
                         waypointBuilding.antsAssignToThisBuilding.Add(gameObject.GetComponent<MovingAnt>());
                         GoTo(waypointToReach);
@@ -210,7 +210,7 @@ public class MovingAnt : MonoBehaviour
             {
                 GameManager.Instance.UpOurHappyness(-1);
                 exhausted = true;
-                StartCoroutine(VagrantWait());
+                StartingDay();
             }
         }
     }
