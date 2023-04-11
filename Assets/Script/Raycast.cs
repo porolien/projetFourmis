@@ -6,11 +6,6 @@ public class Raycast : MonoBehaviour
 {
     public CreateAContruct createAContruct;
     public PlayerUi playerUi;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -36,9 +31,13 @@ public class Raycast : MonoBehaviour
                     playerUi.antwindow.SetActive(true);
                 }
             }
-            else if(tagFromHit == "house" || tagFromHit == "Forest" || tagFromHit == "Mine" || tagFromHit == "Food")
+            else if(tagFromHit == "House" || tagFromHit == "Forest" || tagFromHit == "Mine" || tagFromHit == "Food")
             {
-
+                if (Input.GetMouseButton(0))
+                {
+                    playerUi.bulding.SetActive(true);
+                    Debug.Log("toucher");
+                }
             }
         }
     }
