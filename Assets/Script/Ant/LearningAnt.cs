@@ -52,10 +52,7 @@ public class LearningAnt : MonoBehaviour
         switch (AJobToLearn)
         {
             case "lumberjack":
-                
                 TimeNeeded = 5f;
-
-                Debug.Log(TimeNeeded);  
                 TheLearningJob = AJobToLearn;
                 break;
             case "collier":
