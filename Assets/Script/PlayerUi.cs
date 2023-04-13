@@ -27,12 +27,19 @@ public class PlayerUi : MonoBehaviour
     {
         MovingAnt movingAnt = ant.GetComponent<MovingAnt>();
         movingAnt.job = "student";
+
+        foreach (GameObject skinChildren in movingAnt.skins)
+        {
+            skinChildren.SetActive(false);
+        }
         GameObject skin = movingAnt.skins.Find(x => x.tag == "Vagrant");
         skin.SetActive(true);
 
         if (GameManager.Instance.isItDay)
         {
             movingAnt.waypointToReach = GameManager.Instance.schools[Random.Range(0, GameManager.Instance.schools.Count)].gameObject;
+            Building waypointBuilding = movingAnt.waypointToReach.GetComponent<Building>();
+            waypointBuilding.antsAssignToThisBuilding.Add(movingAnt);
             movingAnt.GoTo(movingAnt.waypointToReach);
         }
         else
