@@ -256,14 +256,14 @@ public class MovingAnt : MonoBehaviour
     }
     public void die()
     {
-       for (int i = 0; i < GameManager.Instance.ants.Count; i++)
+      /* for (int i = 0; i < GameManager.Instance.ants.Count; i++)
         {
             if (GameManager.Instance.ants[i] == gameObject.GetComponent<MovingAnt>())
             {
                 GameManager.Instance.ants.Remove(GameManager.Instance.ants[i]);
             }
         }
-        Destroy(gameObject);
+        Destroy(gameObject);*/
     }
 
     public IEnumerator leftTheConstruct()

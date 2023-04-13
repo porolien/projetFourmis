@@ -5,7 +5,7 @@ using UnityEngine;
 public class LearningAnt : MonoBehaviour
 {
     public MovingAnt ant;
-    float TimeNeeded;
+    public float TimeNeeded;
     public bool isLearningAJob;
     float timeBeforeLast;
     string TheLearningJob;
@@ -27,7 +27,6 @@ public class LearningAnt : MonoBehaviour
         {
             if (isLearningAJob)
             {
-                Debug.Log(TimeNeeded);
                 timeBeforeLast += Time.deltaTime;  		
                 if (timeBeforeLast > 1)
                 {
@@ -52,23 +51,25 @@ public class LearningAnt : MonoBehaviour
         
         switch (AJobToLearn)
         {
-            case "Lumberjack":
+            case "lumberjack":
+                
                 TimeNeeded = 5f;
+
+                Debug.Log(TimeNeeded);  
                 TheLearningJob = AJobToLearn;
                 break;
-            case "Collier":
+            case "collier":
                 TimeNeeded = 40f;
                 TheLearningJob = AJobToLearn;
                 break;
-            case "Explorer":
+            case "explorer":
                 TimeNeeded = 50f;
                 TheLearningJob = AJobToLearn;
                 break;
-            case "Mason":
+            case "mason":
                 TimeNeeded = 60f;
                 TheLearningJob = AJobToLearn;
                 break;
         }
-   Debug.Log("weTakeAJob");
     }
 }
