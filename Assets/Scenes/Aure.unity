@@ -81466,8 +81466,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfd0cf1863229e044bec804e111c2bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalSpeed: 100
-  verticalSpeed: 100
+  sensitivity: 5
+  cameraFollow: {fileID: 0}
+  poseCamera: -31
+  scrollSpeed: 10
 --- !u!81 &1677460348
 AudioListener:
   m_ObjectHideFlags: 0
@@ -81546,11 +81548,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 708e10d15c298054d978b7a65c9d4441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cube: {fileID: 0}
   ConstructMod: 0
   cubePrevisual: {fileID: 126301335}
+  LargeCubePrevisual: {fileID: 0}
   Resource: {fileID: 1677460352}
   navMeshSurface: {fileID: 1201228439}
   navigationBaker: {fileID: 1201228438}
+  PArentOfBLoc: {fileID: 0}
 --- !u!114 &1677460352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81582,6 +81587,10 @@ MonoBehaviour:
   woodCost: 0
   stoneCost: 0
   foodCost: 0
+  TheConstruct: {fileID: 0}
+  TypeOfConstruct: 
+  timeToConstruct: 0
+  AllTheTime: 0
 --- !u!114 &1677460354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81595,6 +81604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   createAContruct: {fileID: 1677460351}
+  playerUi: {fileID: 0}
 --- !u!1 &1678532277
 GameObject:
   m_ObjectHideFlags: 0
