@@ -227,6 +227,7 @@ public class MovingAnt : MonoBehaviour
                     GameManager.Instance.UpOurHappyness(1);
                     exhausted = false;
                     break;
+                    
                 }
             }
             if (!hasFindAHouse)
@@ -235,6 +236,7 @@ public class MovingAnt : MonoBehaviour
                 exhausted = true;
                 StartingDay();
             }
+            isWorking = false;
         }
     }
 
