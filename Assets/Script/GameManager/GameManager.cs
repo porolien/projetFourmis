@@ -291,12 +291,10 @@ public class GameManager : MonoBehaviour
 
         if (isItDay)
         {
-            Debug.Log(restDayTime);
             routine = StartCoroutine(Day(restDayTime));
         }
         else
         {
-            Debug.Log(restNightTime);
             routine = StartCoroutine(Night(restNightTime));
         }
 
