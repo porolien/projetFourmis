@@ -137,19 +137,23 @@ public class MovingAnt : MonoBehaviour
                     {
                         for(int i = 0; i < GameManager.Instance.farms.Count; i++)
                         {
-                            if (GameManager.Instance.farms[i].GetComponent<Building>().antsAssignToThisBuilding.Count < GameManager.Instance.farms[i].GetComponent<Building>().capacity && (waypointToReach.tag != "Farm" || waypointToReach != null))
+                            if (GameManager.Instance.farms[i].GetComponent<Building>().antsAssignToThisBuilding.Count < GameManager.Instance.farms[i].GetComponent<Building>().capacity && waypointToReach.tag != "Farm" )
                             {
                                 waypointToReach = GameManager.Instance.farms[i].gameObject;
                             }
                         }
                         if(waypointToReach != null)
                         {
-
+                            if (waypointToReach.tag != "Farm" )
+                            {
+                                waypointToReach = GameManager.Instance.foods[Random.Range(0, GameManager.Instance.foods.Count)].gameObject;
+                            }
                         }
-                        if(waypointToReach.tag != "Farm" || waypointToReach == null)
+                        else
                         {
                             waypointToReach = GameManager.Instance.foods[Random.Range(0, GameManager.Instance.foods.Count)].gameObject;
                         }
+                        
                         Building waypointBuilding = waypointToReach.GetComponent<Building>();
                         waypointBuilding.antsAssignToThisBuilding.Add(gameObject.GetComponent<MovingAnt>());
                         GoTo(waypointToReach);

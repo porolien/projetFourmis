@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1658147763a67c849b4e6194c75d8ef8, type: 2}
+  - {fileID: 2100000, guid: 8e22f6a9c266a264ab3c21270d613879, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,6 +115,7 @@ MonoBehaviour:
   stoneCost: 0
   foodCost: 0
   TheConstruct: {fileID: 0}
+  TypeOfConstruct: 
   timeToConstruct: 0
   AllTheTime: 0
 --- !u!114 &-675835790061615124
@@ -136,4 +137,5 @@ MonoBehaviour:
   antsAssignToThisBuilding: []
   antsInBuilding: []
   isWork: 0
+  timeBeforeLast: 0
   ConstructTime: 0
