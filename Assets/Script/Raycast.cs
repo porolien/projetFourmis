@@ -32,8 +32,7 @@ public class Raycast : MonoBehaviour
             else if(tagFromHit == "Ant")
             {
                 if (Input.GetMouseButton(0))
-                {
-                    
+                {                 
                     playerUi.ant = hit.transform.gameObject;
                     playerUi.antwindow.SetActive(true);
                     playerUi.Init();

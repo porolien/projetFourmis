@@ -33,14 +33,6 @@ public class Building : MonoBehaviour
         }
     }
 
-    //private void FixedUpdate()
-    //{
-    //    if (antsAssignToThisBuilding.Count == antsInBuilding.Count)
-    //    {
-    //        antsAssignToThisBuilding.Clear();
-    //    }
-    //}
-
     private void Update()
     {
         if (isWork)
