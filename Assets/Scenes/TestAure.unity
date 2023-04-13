@@ -34532,7 +34532,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777702464}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.94, y: 0, z: -23}
+  m_LocalPosition: {x: -8, y: 0, z: -23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -35800,7 +35800,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Mason
+          m_StringArgument: mason
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &804017102
@@ -49099,7 +49099,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Explorer
+          m_StringArgument: explorer
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1091522476
@@ -58712,7 +58712,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Lumberjack
+          m_StringArgument: lumberjack
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1281542964
@@ -75239,7 +75239,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Collier
+          m_StringArgument: collier
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1663679334
@@ -96060,7 +96060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5458086022456063654, guid: db3f38ff0be5de640861954e33563cb9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.160776
+      value: -5.96
       objectReference: {fileID: 0}
     - target: {fileID: 5458086022456063654, guid: db3f38ff0be5de640861954e33563cb9, type: 3}
       propertyPath: m_LocalPosition.y

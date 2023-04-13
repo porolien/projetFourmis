@@ -27,17 +27,18 @@ public class PlayerUi : MonoBehaviour
     {
         switch (TheJob)
         {
-            case "Lumberjack":
+            case "lumberjack":
                 break;
-            case "Mason":
+            case "mason":
                 break;
-            case "Explorer":
+            case "explorer":
                 break;
-            case "Collier":
+            case "collier":
                 break;
         }
         ant.GetComponent<MovingAnt>().job = "student";
         ant.GetComponent<MovingAnt>().StartingDay();
+        ant.GetComponent<LearningAnt>().LearnAJob(TheJob);
     }
 
     public void CloseAntButton1()
