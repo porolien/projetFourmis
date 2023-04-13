@@ -14854,7 +14854,7 @@ MonoBehaviour:
   Food: {fileID: 0}
   ant: {fileID: 7227759867230754862, guid: 240083c1744cfe74abaf01df91b7c7ff, type: 3}
   resource: {fileID: 333052436}
-  HappyGauge: {fileID: 0}
+  HappyGauge: {fileID: 710720774}
   ants: []
   forests: []
   mines: []
