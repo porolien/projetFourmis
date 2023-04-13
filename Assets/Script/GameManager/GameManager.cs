@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
     public List<Building> worksites = new();
     public List<Building> houses = new();
     public List<Building> schools = new();
+    public List<Building> museums = new(); 
+    public List<Building> librarys = new();
+    public List<Building> farms = new();
     public List<GameObject> ground = new();
 
     //public GameObject[] ground;
@@ -62,15 +65,15 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
         }
-        //
     }
 
     void Start()
     {
+
+    
         restNightTime = nightTime;
         restDayTime = dayTime;
         FindAllInTheScene();
-
         foreach (MovingAnt ant in ants)
         {
             foreach (MovingAnt otherAnt in ants)
@@ -79,6 +82,7 @@ public class GameManager : MonoBehaviour
             }
         }
         routine = StartCoroutine(Day(dayTime));
+       
     }
 
     private void FindAllInTheScene()
@@ -145,7 +149,29 @@ public class GameManager : MonoBehaviour
             schools.Add(school.GetComponent<Building>());
         }
 
-        // Ground
+        // Museums
+        GameObject[] tempMuseum = GameObject.FindGameObjectsWithTag("Museum");
+
+        foreach (GameObject museum in tempMuseum)
+        {
+            museums.Add(museum.GetComponent<Building>());
+        }
+        // Librarys
+        GameObject[] tempLibrary = GameObject.FindGameObjectsWithTag("Library");
+
+        foreach (GameObject library in tempLibrary)
+        {
+            librarys.Add(library.GetComponent<Building>());
+        }
+        // Farms
+        GameObject[] tempFarm = GameObject.FindGameObjectsWithTag("Farm");
+
+        foreach (GameObject farm in tempFarm)
+        {
+            farms.Add(farm.GetComponent<Building>());
+        }
+
+        // Grounds
         GameObject[] tempGround = GameObject.FindGameObjectsWithTag("Ground");
 
         foreach (GameObject AGround in tempGround)
@@ -156,6 +182,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator Day(int dayTime)
     {
+
         isItDay = true;
         for (int i = 1; i <= dayTime; i++)
         {
@@ -163,12 +190,14 @@ public class GameManager : MonoBehaviour
             {
                 foreach (MovingAnt ant in ants)
                 {
-                    ant.gameObject.SetActive(true);
+                   // ant.gameObject.SetActive(true);
                     ant.StartingDay();
                     AntAge antAge = ant.GetComponent<AntAge>();
                     antAge.GainAge();
+
                 }
             }
+            
             restDayTime = dayTime - i;
             yield return new WaitForSeconds(1f);
         }
@@ -185,7 +214,13 @@ public class GameManager : MonoBehaviour
             {
                 foreach (MovingAnt ant in ants)
                 {
-                    ant.gameObject.SetActive(true);
+                    foreach (Transform AntChild in ant.transform)
+                    {
+                        if (AntChild.gameObject.name == ant.InvisibleAnt(ant.job))
+                        {
+                            AntChild.gameObject.GetComponent<MeshRenderer>().enabled = true;
+                        }
+                    }
                     resource.Food = -1;
                     ant.exhausted = false;
                     ant.GoToSleep();

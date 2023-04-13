@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Jobs;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -18,6 +19,7 @@ public class MovingAnt : MonoBehaviour
     private GameObject LastWaypoint;
     public GameObject waypointToReach;
 
+    public bool isWorking;
     public bool exhausted;
 
     private void Awake()
@@ -27,14 +29,17 @@ public class MovingAnt : MonoBehaviour
         {
             job = jobs[Random.Range(0, jobs.Length)];
         }
-    }
 
-    void Start()
-    {
         for (int i = 0; i < transform.childCount; i++)
         {
             skins.Add(transform.GetChild(i).gameObject);
         }
+    }
+
+    void Start()
+    {
+       
+      
 
         agent = GetComponent<NavMeshAgent>();
     }
@@ -50,9 +55,7 @@ public class MovingAnt : MonoBehaviour
     public void SelectDestination()
     {
         // Select a random place for vagrant ants
-        waypointToReach = GameManager.Instance.grounds[Random.Range(0, GameManager.Instance.grounds.Count)];
         waypointToReach = GameManager.Instance.ground[Random.Range(0, GameManager.Instance.ground.Count)];
-        Debug.Log(waypointToReach);
     }
 
     public void OnTriggerEnter(Collider other)
@@ -85,6 +88,7 @@ public class MovingAnt : MonoBehaviour
                 {
                     GameObject skin = skins.Find(x => x.tag == "Vagrant");
                     skin.SetActive(true);
+
                     StartCoroutine(VagrantWait());
                     break;
                 }
@@ -92,8 +96,8 @@ public class MovingAnt : MonoBehaviour
                 {
                     GameObject skin = skins.Find(x => x.tag == "Lumberjack");
                     skin.SetActive(true);
-
-                    if (!exhausted)
+                    
+                    if (!exhausted && GameManager.Instance.forests.Count >= 0)
                     {
                         waypointToReach = GameManager.Instance.forests[Random.Range(0, GameManager.Instance.forests.Count)].gameObject;
                         Building waypointBuilding = waypointToReach.GetComponent<Building>();
@@ -111,7 +115,7 @@ public class MovingAnt : MonoBehaviour
                     GameObject skin = skins.Find(x => x.tag == "Collier");
                     skin.SetActive(true);
 
-                    if (!exhausted)
+                    if (!exhausted && GameManager.Instance.mines.Count > 0)
                     {
                         waypointToReach = GameManager.Instance.mines[Random.Range(0, GameManager.Instance.mines.Count)].gameObject;
                         Building waypointBuilding = waypointToReach.GetComponent<Building>();
@@ -129,7 +133,7 @@ public class MovingAnt : MonoBehaviour
                     GameObject skin = skins.Find(x => x.tag == "Explorer");
                     skin.SetActive(true);
 
-                    if (!exhausted)
+                    if (!exhausted && GameManager.Instance.foods.Count > 0)
                     {
                         waypointToReach = GameManager.Instance.foods[Random.Range(0, GameManager.Instance.foods.Count)].gameObject;
                         Building waypointBuilding = waypointToReach.GetComponent<Building>();
@@ -146,13 +150,13 @@ public class MovingAnt : MonoBehaviour
                 {
                     GameObject skin = skins.Find(x => x.tag == "Mason");
                     skin.SetActive(true);
-
-                    if (!exhausted)
+                    if (!exhausted && GameManager.Instance.worksites.Count > 0)
                     {
                         waypointToReach = GameManager.Instance.worksites[Random.Range(0, GameManager.Instance.worksites.Count)].gameObject;
                         Building waypointBuilding = waypointToReach.GetComponent<Building>();
                         waypointBuilding.antsAssignToThisBuilding.Add(gameObject.GetComponent<MovingAnt>());
                         GoTo(waypointToReach);
+                        isWorking = true;
                     }
                     else
                     {
@@ -165,7 +169,7 @@ public class MovingAnt : MonoBehaviour
                     GameObject skin = skins.Find(x => x.tag == "Vagrant");
                     skin.SetActive(true);
 
-                    if (!exhausted)
+                    if (!exhausted && GameManager.Instance.schools.Count > 0)
                     {
                         waypointToReach = GameManager.Instance.schools[Random.Range(0, GameManager.Instance.schools.Count)].gameObject;
                         Building waypointBuilding = waypointToReach.GetComponent<Building>();
@@ -223,5 +227,31 @@ public class MovingAnt : MonoBehaviour
         yield return new WaitForSeconds(Random.Range(0, 5));
         SelectDestination();
         GoTo(waypointToReach);
+    }
+
+    public string InvisibleAnt(string ObjectName)
+    {
+        switch (job)
+        {
+            case "lumberjack":
+                ObjectName = "Lumberjack";
+                break;
+            case "collier":
+                ObjectName = "Collier";
+                break;
+            case "mason":
+                ObjectName = "Mason";
+                break;
+            case "explorer":
+                ObjectName = "Explorer";
+                break;
+            case "vagrant" :
+                ObjectName = "Vagrant";
+                break;
+            case "student":
+                ObjectName = "Vagrant";
+                break;
+        }
+        return ObjectName;
     }
 }

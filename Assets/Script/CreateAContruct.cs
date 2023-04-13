@@ -8,15 +8,14 @@ using UnityEngine.AI;
 
 public class CreateAContruct : MonoBehaviour
 {
-    GameObject cube;
+    public GameObject cube;
     public bool ConstructMod;
     public GameObject cubePrevisual;
     public GameObject LargeCubePrevisual;
     public Resource Resource;
-    public NavMeshSurface navMeshSurface;
+    public NavMeshSurface navMeshSurface;   
     public NavigationBaker navigationBaker;
     public GameObject PArentOfBLoc;
-    private int BuildingSize;
 
     private void Awake()
     {
@@ -72,64 +71,51 @@ public class CreateAContruct : MonoBehaviour
         if (construct.woodCost <= Resource.Wood && construct.stoneCost <= Resource.Stone) 
         {
             cube = aConstruct;
-            BuildingSize = construct.constructSize;
             ConstructMod = true;
-            if (BuildingSize > 1)
-            {
-                LargeCubePrevisual.SetActive(true);
-            }
-            else
-            {
                 cubePrevisual.SetActive(true);
-            }
             
-           
         }
     }
     public void create(RaycastHit hit)
     {
-        
-        if (BuildingSize > 1)
-        {
-            LargeCubePrevisual.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z);
-        }
-        else
-        {
+       
             cubePrevisual.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z);
-        }
 
         if (Input.GetMouseButton(0))
         {
-            foreach (GameObject ground in GameManager.Instance.grounds)
+     
+                for(int i = 0; i < GameManager.Instance.ground.Count; i++)
             {
-                if(ground == hit.transform.gameObject)
+                if (GameManager.Instance.ground[i] == hit.transform.gameObject)
                 {
-                    GameManager.Instance.grounds.Remove(ground);
+                    GameManager.Instance.ground.Remove(GameManager.Instance.ground[i]);
+                    Debug.Log(GameManager.Instance.ground[i]);
                 }
             }
             hit.transform.gameObject.tag = "Untagged";
-            if (BuildingSize > 1)
-            {
-                LargeCubePrevisual.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 2, hit.transform.position.z);
-                LargeCubePrevisual.SetActive(false);
-            }
-            else
-            {
                 cubePrevisual.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 2, hit.transform.position.z);
                 cubePrevisual.SetActive(false);
-            }
+            
             Resource.Wood = -cube.GetComponent<Construct>().woodCost;
             Resource.Stone = -cube.GetComponent<Construct>().stoneCost;
             GameObject newCube = Instantiate(cube, new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z), Quaternion.identity);
+            newCube.GetComponent<Construct>().contructThePrefab();
             ConstructMod = false;
             newCube.transform.SetParent(PArentOfBLoc.transform);
+            GameManager.Instance.worksites.Add(newCube.GetComponent<Building>());
+            for(int i = 0; i < GameManager.Instance.ants.Count; i++)
+            {
+                if (GameManager.Instance.ants[i].job == "mason" && GameManager.Instance.isItDay && !GameManager.Instance.ants[i].isWorking)
+                {
+                    GameManager.Instance.ants[i].StartingDay();
+                }
+            }
             navigationBaker.bakeTheNavigation();
         }
         if (Input.GetMouseButton(1))
         {
             cubePrevisual.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 2, hit.transform.position.z);
             cubePrevisual.SetActive(false);
-            LargeCubePrevisual.SetActive(false);
             ConstructMod = false;
         }
     }

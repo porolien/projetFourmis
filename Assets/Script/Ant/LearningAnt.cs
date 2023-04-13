@@ -27,9 +27,11 @@ public class LearningAnt : MonoBehaviour
         {
             if (isLearningAJob)
             {
-                timeBeforeLast += Time.deltaTime;  // ajoute a chaque update le temps écoulé depuis le dernier Update		
+                Debug.Log(TimeNeeded);
+                timeBeforeLast += Time.deltaTime;  		
                 if (timeBeforeLast > 1)
                 {
+                    
                     TimeNeeded--;
                     timeBeforeLast = 0;
                     if (TimeNeeded <= 0)
@@ -46,24 +48,27 @@ public class LearningAnt : MonoBehaviour
 
     public void LearnAJob(string AJobToLearn)
     {
- 
+        isLearningAJob = true;
+        
         switch (AJobToLearn)
         {
             case "Lumberjack":
-                TimeNeeded = 30f;
+                TimeNeeded = 5f;
+                TheLearningJob = AJobToLearn;
                 break;
             case "Collier":
                 TimeNeeded = 40f;
+                TheLearningJob = AJobToLearn;
                 break;
             case "Explorer":
                 TimeNeeded = 50f;
+                TheLearningJob = AJobToLearn;
                 break;
             case "Mason":
                 TimeNeeded = 60f;
+                TheLearningJob = AJobToLearn;
                 break;
         }
-        isLearningAJob = true;
-        TheLearningJob = AJobToLearn;
-   
+   Debug.Log("weTakeAJob");
     }
 }

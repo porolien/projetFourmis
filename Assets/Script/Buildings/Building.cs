@@ -10,6 +10,7 @@ public class Building : MonoBehaviour
 
     // For Gain Resources
     public Resource resource;
+    public bool isAWorksite;
 
     // Maximum capacity of the building
     public int capacity;
@@ -20,7 +21,9 @@ public class Building : MonoBehaviour
 
     public bool isWork;
 
+    // Time Variable
     float timeBeforeLast;
+    public float ConstructTime;
     void Start()
     {
         isWork = true;
@@ -45,11 +48,20 @@ public class Building : MonoBehaviour
             if (tag == "Food" || tag == "Mine" || tag == "Forest")
             {
                 // add at every update the time since the last update
-                timeBeforeLast += Time.deltaTime;	
-                if (timeBeforeLast > 5)
+                timeBeforeLast += Time.deltaTime * antsInBuilding.Count;	
+                if (timeBeforeLast > 7)
                 {
                     GainResources();
                     timeBeforeLast = 0;
+                }
+            }
+            else if (tag == "Worksite")
+            {
+                timeBeforeLast += Time.deltaTime * antsInBuilding.Count;
+                if (ConstructTime <= timeBeforeLast)
+                {
+                    ;
+                    gameObject.GetComponent<Construct>().LetHimConstruct();
                 }
             }
         }
@@ -66,7 +78,15 @@ public class Building : MonoBehaviour
                 // Add ant in the building
                 antsInBuilding.Add(movingAnt);
                 antsAssignToThisBuilding.Remove(movingAnt);
-                movingAnt.gameObject.SetActive(false);
+               
+                foreach (Transform AntChild in other.transform)
+                {
+                    if(AntChild.gameObject.name == movingAnt.InvisibleAnt(movingAnt.job))
+                    {
+                        AntChild.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                    }
+                }
+                //movingAnt.gameObject.SetActive(false);
                 movingAnt.transform.position = new Vector3(gameObject.transform.position.x, movingAnt.transform.position.y, gameObject.transform.position.z);
                 if(tag == "School" && movingAnt.job == "student")
                 {
@@ -100,15 +120,12 @@ public class Building : MonoBehaviour
         switch (tag)
         {
             case "Food":
-                Debug.Log("gainFood");
                 resource.Food = antsInBuilding.Count * 3;
                 break;
             case "Mine":
-                Debug.Log("gainstone");
                 resource.Stone = antsInBuilding.Count * 3;
                 break;
             case "Forest":
-                Debug.Log("gainwood");
                 resource.Wood = antsInBuilding.Count * 3;
                 break;
         }

@@ -17,6 +17,9 @@ TagManager:
   - Explorer
   - Mason
   - Lumberjack
+  - Museum
+  - Library
+  - Farm
   layers:
   - Default
   - TransparentFX

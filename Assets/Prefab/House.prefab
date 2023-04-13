@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 5458086022456063649}
   - component: {fileID: 5458086022456063648}
   - component: {fileID: 5458086022456063651}
-  - component: {fileID: -490222621667990588}
-  - component: {fileID: -675835790061615124}
+  - component: {fileID: 8562038581974783404}
+  - component: {fileID: 1465860250850685548}
   m_Layer: 0
-  m_Name: Forest
-  m_TagString: Forest
+  m_Name: House
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1658147763a67c849b4e6194c75d8ef8, type: 2}
+  - {fileID: 2100000, guid: d4a549b7e5f78d14d8e1eecf783f33fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,7 +99,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.1, y: 1.1, z: 1.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-490222621667990588
+--- !u!114 &8562038581974783404
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,7 +117,7 @@ MonoBehaviour:
   TheConstruct: {fileID: 0}
   timeToConstruct: 0
   AllTheTime: 0
---- !u!114 &-675835790061615124
+--- !u!114 &1465860250850685548
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

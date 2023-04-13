@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 5458086022456063649}
   - component: {fileID: 5458086022456063648}
   - component: {fileID: 5458086022456063651}
-  - component: {fileID: -490222621667990588}
-  - component: {fileID: -675835790061615124}
+  - component: {fileID: 2249526778621888171}
+  - component: {fileID: 1493111942564462431}
   m_Layer: 0
-  m_Name: Forest
-  m_TagString: Forest
+  m_Name: WorkSiteHouse
+  m_TagString: Worksite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1658147763a67c849b4e6194c75d8ef8, type: 2}
+  - {fileID: 2100000, guid: a478dc0066917cf418f49d3bbfc7d352, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,7 +99,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.1, y: 1.1, z: 1.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-490222621667990588
+--- !u!114 &2249526778621888171
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,10 +114,11 @@ MonoBehaviour:
   woodCost: 0
   stoneCost: 0
   foodCost: 0
-  TheConstruct: {fileID: 0}
+  TheConstruct: {fileID: 5458086022456063650, guid: 93e8c17138b55eb46877ea985adf2be4, type: 3}
+  TypeOfConstruct: house
   timeToConstruct: 0
-  AllTheTime: 0
---- !u!114 &-675835790061615124
+  AllTheTime: 1
+--- !u!114 &1493111942564462431
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

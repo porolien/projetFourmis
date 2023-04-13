@@ -19,6 +19,7 @@ public class Raycast : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 10000))
         {
+            
             string tagFromHit = hit.transform.gameObject.tag;
             if (tagFromHit == "Ground" && gameObject.tag != "Ant")
             {
@@ -32,6 +33,7 @@ public class Raycast : MonoBehaviour
             {
                 if (Input.GetMouseButton(0))
                 {
+                    
                     playerUi.ant = hit.transform.gameObject;
                     playerUi.antwindow.SetActive(true);
                     playerUi.Init();
