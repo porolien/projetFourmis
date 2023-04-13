@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2249526778621888171}
   - component: {fileID: 1493111942564462431}
   - component: {fileID: 3611519700437515010}
+  - component: {fileID: -5060798855661863055}
   m_Layer: 0
   m_Name: WorkSiteLibrary
   m_TagString: Worksite
@@ -156,3 +157,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-5060798855661863055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5458086022456063650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c44e5a46b7c01749b148550f94e2b62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gaugeManager: {fileID: 0}
+  aLotOfHappy: 10

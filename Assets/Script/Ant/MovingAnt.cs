@@ -225,8 +225,12 @@ public class MovingAnt : MonoBehaviour
         // Behaviour of the vagrant
 
         yield return new WaitForSeconds(Random.Range(0, 5));
-        SelectDestination();
-        GoTo(waypointToReach);
+        if (!isWorking)
+        {
+            SelectDestination();
+            GoTo(waypointToReach);
+        }
+        
     }
 
     public string InvisibleAnt(string ObjectName)

@@ -21,6 +21,7 @@ public class Construct : MonoBehaviour
             
             case "museum":
                 GameManager.Instance.museums.Add(TheConstruct.GetComponent<Building>());
+                TheConstruct.GetComponent<GaugeGain>().gainSomeHappyness();
                 break;
             case "school":
                 GameManager.Instance.schools.Add(TheConstruct.GetComponent<Building>());
@@ -46,6 +47,7 @@ public class Construct : MonoBehaviour
         for(int j = 0; j < gameObject.GetComponent<Building>().antsInBuilding.Count ; j++)
         {
             gameObject.GetComponent<Building>().antsInBuilding[j].wantToLeft();
+            gameObject.GetComponent<Building>().antsInBuilding[j].isWorking = false;
         }
         Destroy(gameObject);
     }
