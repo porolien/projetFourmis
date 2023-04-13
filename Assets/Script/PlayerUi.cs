@@ -25,20 +25,21 @@ public class PlayerUi : MonoBehaviour
 
     public void JobButton(string TheJob)
     {
-        switch (TheJob)
+        MovingAnt movingAnt = ant.GetComponent<MovingAnt>();
+        movingAnt.job = "student";
+        GameObject skin = movingAnt.skins.Find(x => x.tag == "Vagrant");
+        skin.SetActive(true);
+
+        if (GameManager.Instance.isItDay)
         {
-            case "lumberjack":
-                break;
-            case "mason":
-                break;
-            case "explorer":
-                break;
-            case "collier":
-                break;
+            movingAnt.waypointToReach = GameManager.Instance.schools[Random.Range(0, GameManager.Instance.schools.Count)].gameObject;
+            movingAnt.GoTo(movingAnt.waypointToReach);
         }
-        ant.GetComponent<MovingAnt>().job = "student";
-        ant.GetComponent<MovingAnt>().StartingDay();
-        ant.GetComponent<LearningAnt>().LearnAJob(TheJob);
+        else
+        {
+            movingAnt.GoToSleep();
+        }
+        movingAnt.GetComponent<LearningAnt>().LearnAJob(TheJob);
     }
 
     public void CloseAntButton1()
