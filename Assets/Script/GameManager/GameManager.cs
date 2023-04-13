@@ -69,8 +69,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-
-    
         restNightTime = nightTime;
         restDayTime = dayTime;
         FindAllInTheScene();
@@ -81,16 +79,12 @@ public class GameManager : MonoBehaviour
                 Physics.IgnoreCollision(ant.gameObject.GetComponent<Collider>(), otherAnt.gameObject.GetComponent<Collider>());
             }
         }
-        routine = StartCoroutine(Day(dayTime));
-       
+        routine = StartCoroutine(Day(dayTime));     
     }
 
     private void FindAllInTheScene()
     {
         // Find all who's already placed in the scene like ants, ground or zones
-
-        // Ground
-
 
         // Ants
         MovingAnt[] tempAnts = FindObjectsOfType<MovingAnt>();
@@ -181,8 +175,7 @@ public class GameManager : MonoBehaviour
     }
 
     public IEnumerator Day(int dayTime)
-    {
-        
+    {    
         isItDay = true;
         for (int i = 1; i <= dayTime; i++)
         {
@@ -239,9 +232,7 @@ public class GameManager : MonoBehaviour
                         else
                         {
                             resource.Food = -1;
-                        }
-                    
-                       
+                        }            
                 }
             }
             restNightTime = nightTime - i;
