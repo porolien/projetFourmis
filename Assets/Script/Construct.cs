@@ -28,6 +28,7 @@ public class Construct : MonoBehaviour
                 break;
             case "library":
                 GameManager.Instance.librarys.Add(TheConstruct.GetComponent<Building>());
+                TheConstruct.GetComponent<GaugeGain>().gainSomeHappyness();
                 break;
             case "farm":
                 GameManager.Instance.farms.Add(TheConstruct.GetComponent<Building>());

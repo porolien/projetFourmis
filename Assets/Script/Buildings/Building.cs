@@ -130,6 +130,9 @@ public class Building : MonoBehaviour
             case "Forest":
                 resource.Wood = antsInBuilding.Count * 3;
                 break;
+            case "Farm":
+                resource.Food = antsInBuilding.Count * 6;
+                break;
         }
     }
 }
