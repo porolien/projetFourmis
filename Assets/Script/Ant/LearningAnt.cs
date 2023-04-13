@@ -35,7 +35,7 @@ public class LearningAnt : MonoBehaviour
                     timeBeforeLast = 0;
                     if (TimeNeeded <= 0)
                     {
-
+                        ant.exhausted = true;
                         isLearningAJob = false;
                         ant.job = TheLearningJob;
                     }
