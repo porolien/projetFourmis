@@ -19,8 +19,9 @@ public class AntAge : MonoBehaviour
         age += 1;
         if (age >= maxAge)
         {
-            GameManager.Instance.ants.Remove(gameObject.GetComponent<MovingAnt>());
-            Destroy(gameObject);
+            gameObject.GetComponent<MovingAnt>().die();
+            /*GameManager.Instance.ants.Remove(gameObject.GetComponent<MovingAnt>());
+            Destroy(gameObject);*/
         }
     }
 }

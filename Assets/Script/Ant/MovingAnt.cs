@@ -38,8 +38,8 @@ public class MovingAnt : MonoBehaviour
 
     void Start()
     {
-       
-      
+
+
 
         agent = GetComponent<NavMeshAgent>();
     }
@@ -61,7 +61,7 @@ public class MovingAnt : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         // If the ant is a vagrant : go to an other place
-        if (job == "vagrant" || exhausted )
+        if (job == "vagrant" || exhausted)
         {
             if (waypointToReach != null)
             {
@@ -96,7 +96,7 @@ public class MovingAnt : MonoBehaviour
                 {
                     GameObject skin = skins.Find(x => x.tag == "Lumberjack");
                     skin.SetActive(true);
-                    
+
                     if (!exhausted && GameManager.Instance.forests.Count >= 0)
                     {
                         waypointToReach = GameManager.Instance.forests[Random.Range(0, GameManager.Instance.forests.Count)].gameObject;
@@ -245,7 +245,7 @@ public class MovingAnt : MonoBehaviour
             case "explorer":
                 ObjectName = "Explorer";
                 break;
-            case "vagrant" :
+            case "vagrant":
                 ObjectName = "Vagrant";
                 break;
             case "student":
@@ -253,5 +253,26 @@ public class MovingAnt : MonoBehaviour
                 break;
         }
         return ObjectName;
+    }
+    public void die()
+    {
+       for (int i = 0; i < GameManager.Instance.ants.Count; i++)
+        {
+            if (GameManager.Instance.ants[i] == gameObject.GetComponent<MovingAnt>())
+            {
+                GameManager.Instance.ants.Remove(GameManager.Instance.ants[i]);
+            }
+        }
+        Destroy(gameObject);
+    }
+
+    public IEnumerator leftTheConstruct()
+    {
+        yield return new WaitForSeconds(0.1f);
+        StartingDay();
+    }
+    public void wantToLeft()
+    {
+        StartCoroutine(leftTheConstruct());
     }
 }

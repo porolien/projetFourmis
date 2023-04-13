@@ -22,7 +22,7 @@ public class Building : MonoBehaviour
     public bool isWork;
 
     // Time Variable
-    float timeBeforeLast;
+    public float timeBeforeLast;
     public float ConstructTime;
     void Start()
     {
@@ -60,7 +60,7 @@ public class Building : MonoBehaviour
                 timeBeforeLast += Time.deltaTime * antsInBuilding.Count;
                 if (ConstructTime <= timeBeforeLast)
                 {
-                    ;
+                    
                     gameObject.GetComponent<Construct>().LetHimConstruct();
                 }
             }
@@ -70,11 +70,13 @@ public class Building : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         // Check if the ant need to enter in the building
         if (other.TryGetComponent<MovingAnt>(out var movingAnt))
         {
+            
             if (antsAssignToThisBuilding.Contains(movingAnt))
-            {
+            {   
                 // Add ant in the building
                 antsInBuilding.Add(movingAnt);
                 antsAssignToThisBuilding.Remove(movingAnt);

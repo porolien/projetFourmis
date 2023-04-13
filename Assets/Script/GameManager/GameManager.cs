@@ -182,7 +182,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator Day(int dayTime)
     {
-
+        
         isItDay = true;
         for (int i = 1; i <= dayTime; i++)
         {
@@ -194,7 +194,13 @@ public class GameManager : MonoBehaviour
                     ant.StartingDay();
                     AntAge antAge = ant.GetComponent<AntAge>();
                     antAge.GainAge();
-
+                    foreach (Transform AntChild in ant.transform)
+                    {
+                        if (AntChild.gameObject.name == ant.InvisibleAnt(ant.job))
+                        {
+                            AntChild.gameObject.GetComponent<MeshRenderer>().enabled = true;
+                        }
+                    }
                 }
             }
             
@@ -212,18 +218,30 @@ public class GameManager : MonoBehaviour
         {
             if (restNightTime == this.nightTime)
             {
-                foreach (MovingAnt ant in ants)
+                for (int a = 0; a < ants.Count; a++ )
                 {
-                    foreach (Transform AntChild in ant.transform)
+                    MovingAnt ant = ants[a];
+
+                    for (int j = 0; j < ant.transform.childCount; j++)
                     {
+                        Transform AntChild = ant.transform.GetChild(j);
                         if (AntChild.gameObject.name == ant.InvisibleAnt(ant.job))
                         {
                             AntChild.gameObject.GetComponent<MeshRenderer>().enabled = true;
                         }
                     }
-                    resource.Food = -1;
-                    ant.exhausted = false;
-                    ant.GoToSleep();
+                        ant.exhausted = false;
+                        ant.GoToSleep();
+                        if (resource.Food < 1)
+                        {
+                            ant.die();
+                        }
+                        else
+                        {
+                            resource.Food = -1;
+                        }
+                    
+                       
                 }
             }
             restNightTime = nightTime - i;
@@ -238,6 +256,7 @@ public class GameManager : MonoBehaviour
         restNightTime = this.nightTime;
         routine = StartCoroutine(Day(dayTime));
     }
+
 
     public void PauseAnt()
     {

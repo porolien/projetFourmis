@@ -15,7 +15,6 @@ public class Construct : MonoBehaviour
 
     public void LetHimConstruct()
     {
-        Debug.Log("j'aitoutcass");
         TheConstruct.SetActive(true);
         switch (TypeOfConstruct)
         {
@@ -46,7 +45,7 @@ public class Construct : MonoBehaviour
         }
         for(int j = 0; j < gameObject.GetComponent<Building>().antsInBuilding.Count ; j++)
         {
-            gameObject.GetComponent<Building>().antsInBuilding[j].StartingDay();
+            gameObject.GetComponent<Building>().antsInBuilding[j].wantToLeft();
         }
         Destroy(gameObject);
     }
