@@ -5,28 +5,18 @@ using UnityEngine;
 
 public class MoveTheCamera : MonoBehaviour
 {
-
-
     public float sensitivity = 5f;
     private int Zoom = 3;
     public Camera cameraFollow;
 
     public int poseCamera = -31;
 
-     private float aze = 0f;
-     int bze = 31;
+     //private float aze = 0f;
+     //int bze = 31;
 
     private Vector3 cameraFollowPosition;
 
     public float scrollSpeed = 10;
-
-    private void Start()
-    {
-        
-    }
-
-
-
 
     public void Update()
     {
@@ -61,8 +51,6 @@ public class MoveTheCamera : MonoBehaviour
             transform.position.z + 1 * scrollSpeed * Time.deltaTime);
         }
 
-
-
         if (transform.position.x >= 0)
         {
             transform.position = new Vector3(0, transform.position.y, transform.position.z);
@@ -83,7 +71,6 @@ public class MoveTheCamera : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, -40);
         }
 
-
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
             Debug.Log(Input.GetAxis("Mouse ScrollWheel"));
@@ -94,10 +81,10 @@ public class MoveTheCamera : MonoBehaviour
             }
             ZoomTheCamera();
         }
+
         //zoom out the camera
         if(Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
-           
             Zoom++;
             if (Zoom > 5)
             {
@@ -129,5 +116,4 @@ public class MoveTheCamera : MonoBehaviour
                 break;
         }
     }
-
 }
