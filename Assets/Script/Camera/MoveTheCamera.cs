@@ -11,66 +11,54 @@ public class MoveTheCamera : MonoBehaviour
 
     public int poseCamera = -31;
 
-     //private float aze = 0f;
-     //int bze = 31;
-
-    private Vector3 cameraFollowPosition;
-
     public float scrollSpeed = 10;
 
     public void Update()
     {
-        //Mouving the camera
-
+        // Camera movements
         var mPosX = Input.mousePosition.x;
         var mPosY = Input.mousePosition.y;
-
 
         float mousePosX = Input.mousePosition.x;
         float mousePosY = Input.mousePosition.y;
         int scrollDistance = 10;
+
         if (mousePosX < scrollDistance)
         {
             transform.Translate(Vector3.right * -scrollSpeed * Time.deltaTime);
         }
-
         if (mousePosX >= Screen.width - scrollDistance)
         {
             transform.Translate(Vector3.right * scrollSpeed * Time.deltaTime);
         }
-
         if (mousePosY < scrollDistance)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y,
-            transform.position.z + 1 * -scrollSpeed * Time.deltaTime);
+            transform.position = new Vector3(transform.position.x + 1 * -scrollSpeed * Time.deltaTime, transform.position.y, transform.position.z + 1 * -scrollSpeed * Time.deltaTime);
         }
-
         if (mousePosY >= Screen.height - scrollDistance)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y,
-            transform.position.z + 1 * scrollSpeed * Time.deltaTime);
+            transform.position = new Vector3(transform.position.x + 1 * scrollSpeed * Time.deltaTime, transform.position.y, transform.position.z + 1 * scrollSpeed * Time.deltaTime);
         }
 
+        // Check if the camera is outside the limits
+        if (transform.position.x <= -35)
+        {
+            transform.position = new Vector3(-35, transform.position.y, transform.position.z);
+        }
+        if (transform.position.z <= -35)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, -35);
+        }
         if (transform.position.x >= 0)
         {
             transform.position = new Vector3(0, transform.position.y, transform.position.z);
         }
-
-        else if (transform.position.x <= -40)
+        if (transform.position.z >= 0)
         {
-            transform.position = new Vector3(-40, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         }
 
-        else if (transform.position.z >= -10)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y, -10);
-        }
-
-        else if (transform.position.z <= -40)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y, -40);
-        }
-
+        // Zoom the camera
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
             Zoom--;
@@ -96,6 +84,7 @@ public class MoveTheCamera : MonoBehaviour
 
     void ZoomTheCamera()
     {
+        // Different steps of the zoom
         switch (Zoom)
         {
             case 1:
