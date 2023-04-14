@@ -73,7 +73,6 @@ public class MoveTheCamera : MonoBehaviour
 
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
-            Debug.Log(Input.GetAxis("Mouse ScrollWheel"));
             Zoom--;
             if(Zoom < 0)
             {
