@@ -37,11 +37,11 @@ public class Building : MonoBehaviour
     {
         if (isWork)
         {
-            if (tag == "Food" || tag == "Mine" || tag == "Forest")
+            if (tag == "Food" || tag == "Mine" || tag == "Forest" || tag == "Farm")
             {
                 // add at every update the time since the last update
                 timeBeforeLast += Time.deltaTime * antsInBuilding.Count;	
-                if (timeBeforeLast > 7)
+                if (timeBeforeLast > 1)
                 {
                     GainResources();
                     timeBeforeLast = 0;
@@ -114,16 +114,16 @@ public class Building : MonoBehaviour
         switch (tag)
         {
             case "Food":
-                resource.Food = antsInBuilding.Count * 3;
+                resource.Food = antsInBuilding.Count * 1;
                 break;
             case "Mine":
-                resource.Stone = antsInBuilding.Count * 3;
+                resource.Stone = antsInBuilding.Count * 1;
                 break;
             case "Forest":
-                resource.Wood = antsInBuilding.Count * 3;
+                resource.Wood = antsInBuilding.Count * 1;
                 break;
             case "Farm":
-                resource.Food = antsInBuilding.Count * 6;
+                resource.Food = antsInBuilding.Count * 2;
                 break;
         }
     }

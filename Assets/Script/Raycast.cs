@@ -27,6 +27,7 @@ public class Raycast : MonoBehaviour
             {
                 if (Input.GetMouseButton(0))
                 {
+                    Debug.Log(hit.transform.gameObject.GetComponent<MovingAnt>().job);
                     playerUi.ant = hit.transform.gameObject;
                     playerUi.antwindow.SetActive(true);
                     playerUi.Init();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using static UnityEditor.PlayerSettings;
 
 public class PlayerUi : MonoBehaviour
 {
@@ -53,18 +54,17 @@ public class PlayerUi : MonoBehaviour
         AntName.text = ant.name;
         switch (ant.GetComponent<MovingAnt>().job)
         {
-            
             case "lumberjack":
                 Lumberjack.GetComponent<Image>().color = Color.red;
                 break;
             case "collier":
-                Lumberjack.GetComponent<Image>().color = Color.red;
+                Collier.GetComponent<Image>().color = Color.red;
                 break;
             case "explorer":
-                Lumberjack.GetComponent<Image>().color = Color.red;
+                Explorer.GetComponent<Image>().color = Color.red;
                 break;
             case "mason":
-                Lumberjack.GetComponent<Image>().color = Color.red;
+                Mason.GetComponent<Image>().color = Color.red;
                 break;
             default:
                 break;
