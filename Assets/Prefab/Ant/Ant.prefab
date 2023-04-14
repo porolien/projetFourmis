@@ -310,7 +310,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c07befab8ca1540368e662cfe2fddf6b, type: 2}
+  - {fileID: 2100000, guid: 2d1f31f6b1ce3e944a834655b3306393, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -411,6 +411,7 @@ MonoBehaviour:
   skins: []
   agent: {fileID: 7227759867230754864}
   waypointToReach: {fileID: 0}
+  isWorking: 0
   exhausted: 0
 --- !u!136 &2852367539359512308
 CapsuleCollider:
@@ -439,6 +440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ant: {fileID: 0}
+  TimeNeeded: 0
   isLearningAJob: 0
   isPlayLearning: 0
 --- !u!114 &4006896871108887744

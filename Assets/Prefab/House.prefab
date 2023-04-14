@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d4a549b7e5f78d14d8e1eecf783f33fa, type: 2}
+  - {fileID: 2100000, guid: 5195427c0d27644ed90d87ebe86d468a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -135,8 +135,7 @@ MonoBehaviour:
   resource: {fileID: 0}
   isAWorksite: 0
   capacity: 4
-  antsAssignToThisBuilding:
-  - {fileID: 0}
+  antsAssignToThisBuilding: []
   antsInBuilding: []
   isWork: 0
   timeBeforeLast: 0
