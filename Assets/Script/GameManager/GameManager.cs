@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
         }
+        //
     }
 
     void Start()
@@ -79,7 +80,7 @@ public class GameManager : MonoBehaviour
                 Physics.IgnoreCollision(ant.gameObject.GetComponent<Collider>(), otherAnt.gameObject.GetComponent<Collider>());
             }
         }
-        routine = StartCoroutine(Day(dayTime));     
+        routine = StartCoroutine(Day(dayTime));
     }
 
     private void FindAllInTheScene()
