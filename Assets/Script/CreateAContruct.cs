@@ -44,7 +44,6 @@ public class CreateAContruct : MonoBehaviour
                 if (GameManager.Instance.ground[i] == hit.transform.gameObject)
                 {
                     GameManager.Instance.ground.Remove(GameManager.Instance.ground[i]);
-                    Debug.Log(GameManager.Instance.ground[i]);
                 }
             }
             hit.transform.gameObject.tag = "Untagged";
