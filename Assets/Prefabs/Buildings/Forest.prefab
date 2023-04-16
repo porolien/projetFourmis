@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -490222621667990588}
   - component: {fileID: -675835790061615124}
   - component: {fileID: -3824430693704859333}
+  - component: {fileID: -6694101954696400611}
   m_Layer: 8
   m_Name: Forest
   m_TagString: Forest
@@ -29,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5458086022456063650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.683786, y: 1.3614244, z: -11.627466}
+  m_LocalPosition: {x: -8.683786, y: 1, z: -11.627466}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -148,6 +149,14 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!33 &-6694101954696400611
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5458086022456063650}
+  m_Mesh: {fileID: 0}
 --- !u!1 &5970330595216558902
 GameObject:
   m_ObjectHideFlags: 0
