@@ -72,13 +72,6 @@ public class GameManager : MonoBehaviour
         restNightTime = nightTime;
         restDayTime = dayTime;
         FindAllInTheScene();
-        foreach (MovingAnt ant in ants)
-        {
-            foreach (MovingAnt otherAnt in ants)
-            {
-                Physics.IgnoreCollision(ant.gameObject.GetComponent<Collider>(), otherAnt.gameObject.GetComponent<Collider>());
-            }
-        }
         routine = StartCoroutine(Day(dayTime));
     }
 
@@ -224,10 +217,7 @@ public class GameManager : MonoBehaviour
                         Transform AntChild = ant.transform.GetChild(j);
                         if (AntChild.gameObject.name == ant.InvisibleAnt(ant.job))
                         {
-
-                            Debug.Log(AntChild.GetChild(1).name);
                             AntChild.GetChild(1).GetComponent<SkinnedMeshRenderer>().enabled = true;
-
                         }
                     }
                         ant.exhausted = false;
