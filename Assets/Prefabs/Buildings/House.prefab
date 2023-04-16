@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5191170176901252343}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Skin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8562038581974783404}
   - component: {fileID: 1465860250850685548}
   - component: {fileID: -8964620251656420200}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: House
   m_TagString: House
   m_Icon: {fileID: 0}
@@ -144,9 +144,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5191170176901252343}
     m_Modifications:
+    - target: {fileID: 1563013649101912586, guid: f6cd065603fad8241a839101b0e240ac, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763973864644201033, guid: f6cd065603fad8241a839101b0e240ac, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2721065833871170240, guid: f6cd065603fad8241a839101b0e240ac, type: 3}
       propertyPath: m_Name
       value: Mushroom House
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721065833871170240, guid: f6cd065603fad8241a839101b0e240ac, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3353205183221301370, guid: f6cd065603fad8241a839101b0e240ac, type: 3}
       propertyPath: m_RootOrder
@@ -207,6 +219,10 @@ PrefabInstance:
     - target: {fileID: 3353205183221301370, guid: f6cd065603fad8241a839101b0e240ac, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878439511501433222, guid: f6cd065603fad8241a839101b0e240ac, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6cd065603fad8241a839101b0e240ac, type: 3}

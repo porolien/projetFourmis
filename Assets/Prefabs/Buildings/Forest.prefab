@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -490222621667990588}
   - component: {fileID: -675835790061615124}
   - component: {fileID: -3824430693704859333}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Forest
   m_TagString: Forest
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8288990676502370491}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Skin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,6 +197,10 @@ PrefabInstance:
     - target: {fileID: 1791707096663884, guid: e3107906af530ca408371f305a851fe9, type: 3}
       propertyPath: m_Name
       value: Root1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1791707096663884, guid: e3107906af530ca408371f305a851fe9, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4061501180274292, guid: e3107906af530ca408371f305a851fe9, type: 3}
       propertyPath: m_RootOrder
@@ -276,6 +280,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CutedTree2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1459734292331438, guid: 43791afa4786e804db2b10895bfad810, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4105257442463048, guid: 43791afa4786e804db2b10895bfad810, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -353,6 +361,10 @@ PrefabInstance:
     - target: {fileID: 1252220935515434, guid: 189d32eedfaefa141a89c5e127519df1, type: 3}
       propertyPath: m_Name
       value: OakCut
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252220935515434, guid: 189d32eedfaefa141a89c5e127519df1, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4678335222835150, guid: 189d32eedfaefa141a89c5e127519df1, type: 3}
       propertyPath: m_RootOrder
@@ -432,6 +444,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CutedTree2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1459734292331438, guid: 43791afa4786e804db2b10895bfad810, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4105257442463048, guid: 43791afa4786e804db2b10895bfad810, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -509,6 +525,10 @@ PrefabInstance:
     - target: {fileID: 1668259477846182, guid: 93708c99868319d459bfeab2d57470d0, type: 3}
       propertyPath: m_Name
       value: CutedTree1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668259477846182, guid: 93708c99868319d459bfeab2d57470d0, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4276419232522074, guid: 93708c99868319d459bfeab2d57470d0, type: 3}
       propertyPath: m_RootOrder
@@ -588,6 +608,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CutedTree2
       objectReference: {fileID: 0}
+    - target: {fileID: 1459734292331438, guid: 43791afa4786e804db2b10895bfad810, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4105257442463048, guid: 43791afa4786e804db2b10895bfad810, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -666,6 +690,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Oak2Dry
       objectReference: {fileID: 0}
+    - target: {fileID: 1961737654165068, guid: 2fabc3c6c8508ca418a92e449c8a7366, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4847011075247650, guid: 2fabc3c6c8508ca418a92e449c8a7366, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -743,6 +771,10 @@ PrefabInstance:
     - target: {fileID: 1668259477846182, guid: 93708c99868319d459bfeab2d57470d0, type: 3}
       propertyPath: m_Name
       value: CutedTree1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1668259477846182, guid: 93708c99868319d459bfeab2d57470d0, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4276419232522074, guid: 93708c99868319d459bfeab2d57470d0, type: 3}
       propertyPath: m_RootOrder
