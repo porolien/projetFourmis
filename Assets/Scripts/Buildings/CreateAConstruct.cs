@@ -11,11 +11,10 @@ public class CreateAConstruct : MonoBehaviour
     public GameObject cube;
     public bool constructMod;
     public GameObject cubePrevisual;
-    public GameObject largeCubePrevisual;
     public Resource resource;
     public NavMeshSurface navMeshSurface;
     public NavigationBaker navigationBaker;
-    public GameObject parentOfBLoc;
+    public GameObject parentOfBloc;
 
     private void Awake()
     {
@@ -61,7 +60,7 @@ public class CreateAConstruct : MonoBehaviour
             GameObject newCube = Instantiate(cube, new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z), Quaternion.identity);
             newCube.GetComponent<Construct>().contructThePrefab();
             constructMod = false;
-            newCube.transform.SetParent(parentOfBLoc.transform);
+            newCube.transform.SetParent(parentOfBloc.transform);
             GameManager.Instance.worksites.Add(newCube.GetComponent<Building>());
 
             //call all mason for work
