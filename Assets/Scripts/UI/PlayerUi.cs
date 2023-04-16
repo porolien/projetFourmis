@@ -7,11 +7,12 @@ using static UnityEditor.PlayerSettings;
 
 public class PlayerUi : MonoBehaviour
 {
-    public GameObject Lumberjack, Mason, Explorer, Collier;
+    public GameObject lumberjack, mason, explorer, collier;
     public GameObject antwindow;
     public GameObject ant;
-    public TMP_InputField AntName;
-    //public Text ressources;
+    public TMP_InputField antName;
+    public TMP_Text antJob;
+    public TMP_Text antAge;
 
     public void AntButton()
     {
@@ -22,12 +23,16 @@ public class PlayerUi : MonoBehaviour
     public void CloseAntButton()
     {
         // Close ant sheet
+        lumberjack.SetActive(true);
+        collier.SetActive(true);
+        explorer.SetActive(true);
+        mason.SetActive(true);
         antwindow.SetActive(false);
     }
 
     public void ChangeName()
     {
-       ant.name = AntName.text;
+       ant.name = antName.text;
     }
     public void JobButton(string TheJob)
     {
@@ -58,20 +63,23 @@ public class PlayerUi : MonoBehaviour
 
     public void DisplayInformations()
     {
-        AntName.text = ant.name;
+        antName.text = ant.name;
+        antJob.text = $"Job : {ant.GetComponent<MovingAnt>().job}";
+        antAge.text = $"Age : {ant.GetComponent<AntAge>().age}";
+
         switch (ant.GetComponent<MovingAnt>().job)
         {
             case "lumberjack":
-                Lumberjack.GetComponent<Image>().color = Color.red;
+                lumberjack.SetActive(false);
                 break;
             case "collier":
-                Collier.GetComponent<Image>().color = Color.red;
+                collier.SetActive(false);
                 break;
             case "explorer":
-                Explorer.GetComponent<Image>().color = Color.red;
+                explorer.SetActive(false);
                 break;
             case "mason":
-                Mason.GetComponent<Image>().color = Color.red;
+                mason.SetActive(false);
                 break;
             default:
                 break;
