@@ -74,10 +74,8 @@ public class Building : MonoBehaviour
                     if (AntChild.gameObject.name == movingAnt.InvisibleAnt(movingAnt.job))
                     {
                         AntChild.GetChild(1).GetComponent<SkinnedMeshRenderer>().enabled = false;
-
                     }
                 }
-                    //movingAnt.gameObject.SetActive(false);
                     movingAnt.transform.position = new Vector3(gameObject.transform.position.x, movingAnt.transform.position.y, gameObject.transform.position.z);
                     if (tag == "School" && movingAnt.job == "student")
                     {

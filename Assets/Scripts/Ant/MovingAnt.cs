@@ -289,13 +289,13 @@ public class MovingAnt : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public IEnumerator leftTheConstruct()
+    public IEnumerator LeftTheConstruct()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(1f);
         StartingDay();
     }
-    public void wantToLeft()
+    public void WantToLeft()
     {
-        StartCoroutine(leftTheConstruct());
+        StartCoroutine(LeftTheConstruct());
     }
 }
