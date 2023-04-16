@@ -15929,7 +15929,7 @@ MonoBehaviour:
   food: {fileID: 0}
   ant: {fileID: 7227759867230754862, guid: 240083c1744cfe74abaf01df91b7c7ff, type: 3}
   resource: {fileID: 333052436}
-  happyGauge: {fileID: 0}
+  happyGauge: {fileID: 710720774}
   ants: []
   forests: []
   mines: []
@@ -15941,8 +15941,8 @@ MonoBehaviour:
   librarys: []
   farms: []
   ground: []
-  dayTime: 15
-  nightTime: 15
+  dayTime: 25
+  nightTime: 25
   restNightTime: 0
   restDayTime: 0
   isItDay: 0
