@@ -47,7 +47,7 @@ public class Construct : MonoBehaviour
         }
         for(int j = 0; j < gameObject.GetComponent<Building>().antsInBuilding.Count ; j++)
         {
-            gameObject.GetComponent<Building>().antsInBuilding[j].wantToLeft();
+            gameObject.GetComponent<Building>().antsInBuilding[j].WantToLeft();
             gameObject.GetComponent<Building>().antsInBuilding[j].isWorking = false;
         }
         Destroy(gameObject);
