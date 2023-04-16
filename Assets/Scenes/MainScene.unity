@@ -95659,10 +95659,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfd0cf1863229e044bec804e111c2bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 5
   cameraFollow: {fileID: 2038980874}
-  poseCamera: -31
+  sensitivity: 5
   scrollSpeed: 10
+  multiplier: 2
+  vectoringMultiplier: 1
   maxPos: -14
   minPos: -37.5
 --- !u!1 &2041621427

@@ -7,16 +7,14 @@ public class MoveTheCamera : MonoBehaviour
 {
     public Camera cameraFollow;
 
-    public float sensitivity = 5f;
-
-    public float scrollSpeed = 10;
+    private float scrollSpeed = 10;
     // Multipliers depending of the zoom
-    public float multiplier;
-    public float vectoringMultiplier;
+    private float multiplier;
+    private float vectoringMultiplier;
 
     // Maximum positions in X and Z
-    public float maxPos;
-    public float minPos;
+    private float maxPos;
+    private float minPos;
 
     private int zoom;
 
@@ -24,6 +22,8 @@ public class MoveTheCamera : MonoBehaviour
     {
         multiplier = 2f;
         vectoringMultiplier = 1f;
+        maxPos = -14f;
+        minPos = -37.5f;
         zoom = 9;
     }
 
