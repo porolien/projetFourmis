@@ -73,9 +73,9 @@ public class MoveTheCamera : MonoBehaviour
         if(Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
             Zoom++;
-            if (Zoom > 5)
+            if (Zoom > 7)
             {
-                Zoom = 5;
+                Zoom = 7;
             }
             ZoomTheCamera();
         }  
@@ -100,6 +100,12 @@ public class MoveTheCamera : MonoBehaviour
                 break;
             case 5:
                 Camera.main.fieldOfView = 85;
+                break;
+            case 6:
+                Camera.main.fieldOfView = 95;
+                break;
+            case 7:
+                Camera.main.fieldOfView = 105;
                 break;
         }
     }
