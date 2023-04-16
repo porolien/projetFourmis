@@ -15941,8 +15941,8 @@ MonoBehaviour:
   librarys: []
   farms: []
   ground: []
-  dayTime: 25
-  nightTime: 25
+  dayTime: 45
+  nightTime: 15
   restNightTime: 0
   restDayTime: 0
   isItDay: 0
@@ -37338,7 +37338,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -98934,7 +98934,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
