@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67df5d59f5916d439ca23dc7fa3548c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodCost: 0
-  stoneCost: 0
+  woodCost: 120
+  stoneCost: 50
   foodCost: 0
   TheConstruct: {fileID: 5458086022456063650, guid: 1ee3d2fb14474a748b9625b8129915b8, type: 3}
   TypeOfConstruct: library
@@ -127,7 +127,7 @@ MonoBehaviour:
   antsInBuilding: []
   isWork: 0
   timeBeforeLast: 0
-  ConstructTime: 10
+  ConstructTime: 100
 --- !u!54 &3611519700437515010
 Rigidbody:
   m_ObjectHideFlags: 0

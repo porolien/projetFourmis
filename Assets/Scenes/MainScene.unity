@@ -4717,6 +4717,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mine (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5458086022456063651, guid: a6928f2bb6d8ffc4a9fe66fe26f119ae, type: 3}
+      propertyPath: m_Size.y
+      value: 1.4931183
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458086022456063651, guid: a6928f2bb6d8ffc4a9fe66fe26f119ae, type: 3}
+      propertyPath: m_Center.y
+      value: 0.25344083
+      objectReference: {fileID: 0}
     - target: {fileID: 5458086022456063654, guid: a6928f2bb6d8ffc4a9fe66fe26f119ae, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -4727,7 +4735,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5458086022456063654, guid: a6928f2bb6d8ffc4a9fe66fe26f119ae, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 5458086022456063654, guid: a6928f2bb6d8ffc4a9fe66fe26f119ae, type: 3}
       propertyPath: m_LocalPosition.z
@@ -19411,7 +19419,7 @@ MonoBehaviour:
   resource: {fileID: 333052436}
   navMeshSurface: {fileID: 0}
   navigationBaker: {fileID: 1720075594}
-  parentOfBLoc: {fileID: 0}
+  parentOfBLoc: {fileID: 743431093}
 --- !u!1 &404123469
 GameObject:
   m_ObjectHideFlags: 0
@@ -35587,6 +35595,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 740945057}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &743431093
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 743431094}
+  m_Layer: 0
+  m_Name: Building
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &743431094
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743431093}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -83.27677, y: -190.39351, z: 185.90752}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &744108637
 GameObject:
   m_ObjectHideFlags: 0
@@ -82657,7 +82696,7 @@ MonoBehaviour:
   m_LayerMask:
     serializedVersion: 2
     m_Bits: 320
-  m_UseGeometry: 0
+  m_UseGeometry: 1
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1

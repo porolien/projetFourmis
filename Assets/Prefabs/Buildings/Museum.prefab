@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8562038581974783404}
   - component: {fileID: 1465860250850685548}
   - component: {fileID: 4877561147173360224}
+  - component: {fileID: 6289533205004867064}
   m_Layer: 8
   m_Name: Museum
   m_TagString: Museum
@@ -105,6 +106,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6289533205004867064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5458086022456063650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c44e5a46b7c01749b148550f94e2b62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gaugeManager: {fileID: 0}
+  aLotOfHappy: 50
 --- !u!1 &8415148310486455219
 GameObject:
   m_ObjectHideFlags: 0
