@@ -10,7 +10,7 @@ public class PlayerUi : MonoBehaviour
     public GameObject Lumberjack, Mason, Explorer, Collier;
     public GameObject antwindow;
     public GameObject ant;
-    public TMP_Text AntName;
+    public TMP_InputField AntName;
     //public Text ressources;
 
     public void AntButton()
@@ -25,6 +25,10 @@ public class PlayerUi : MonoBehaviour
         antwindow.SetActive(false);
     }
 
+    public void ChangeName()
+    {
+       ant.name = AntName.text;
+    }
     public void JobButton(string TheJob)
     {
         // Send the ant if we choose to change the job of an ant
