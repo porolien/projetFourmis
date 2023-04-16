@@ -15,6 +15,7 @@ public class Construct : MonoBehaviour
 
     public void LetHimConstruct()
     {
+        //the building will be visible then we destruct our wworksite
         TheConstruct.SetActive(true);
         switch (TypeOfConstruct)
         {          
@@ -54,6 +55,7 @@ public class Construct : MonoBehaviour
 
     public void contructThePrefab()
     {
+        //put a invisible building that will appear when we finish the work
         GameObject ThePrefab = Instantiate(TheConstruct, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
         ThePrefab.SetActive(false);
         TheConstruct = ThePrefab;

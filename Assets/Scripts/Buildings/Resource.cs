@@ -12,6 +12,8 @@ public class Resource : MonoBehaviour
     private int wood;
     private int stone;
     private int food;
+
+    //the way to get some resource
     public int Wood
     { 
         get { return wood; }
@@ -44,22 +46,5 @@ public class Resource : MonoBehaviour
         Wood = 0;
         Stone = 0;
         Food = 0;
-    }
-
-    void Update()
-    {
-        /*   if (Input.GetKeyDown(KeyCode.W))
-           {
-               Wood = 15;
-           }
-           if (Input.GetKeyDown(KeyCode.S))
-           {
-               Stone = 15;
-           }
-           if (Input.GetKeyDown(KeyCode.F))
-           {
-               Food = 15;
-           }
-        */
     }
 }
