@@ -185,7 +185,7 @@ public class GameManager : MonoBehaviour
             {
                 foreach (MovingAnt ant in ants)
                 {
-                   // ant.gameObject.SetActive(true);
+                    // ant.gameObject.SetActive(true);
                     ant.StartingDay();
                     AntAge antAge = ant.GetComponent<AntAge>();
                     antAge.GainAge();
@@ -193,7 +193,10 @@ public class GameManager : MonoBehaviour
                     {
                         if (AntChild.gameObject.name == ant.InvisibleAnt(ant.job))
                         {
-                            AntChild.gameObject.GetComponent<MeshRenderer>().enabled = true;
+                            
+                            Debug.Log(AntChild.GetChild(1).name);
+                            AntChild.GetChild(1).GetComponent<SkinnedMeshRenderer>().enabled = true;
+                          
                         }
                     }
                 }
@@ -223,7 +226,10 @@ public class GameManager : MonoBehaviour
                         Transform AntChild = ant.transform.GetChild(j);
                         if (AntChild.gameObject.name == ant.InvisibleAnt(ant.job))
                         {
-                            AntChild.gameObject.GetComponent<MeshRenderer>().enabled = true;
+
+                            Debug.Log(AntChild.GetChild(1).name);
+                            AntChild.GetChild(1).GetComponent<SkinnedMeshRenderer>().enabled = true;
+
                         }
                     }
                         ant.exhausted = false;

@@ -62,30 +62,34 @@ public class Building : MonoBehaviour
     {
         // Check if the ant need to enter in the building
         if (other.TryGetComponent<MovingAnt>(out var movingAnt))
-        {      
+        {
             if (antsAssignToThisBuilding.Contains(movingAnt))
-            {   
+            {
                 // Add ant in the building
                 antsInBuilding.Add(movingAnt);
                 antsAssignToThisBuilding.Remove(movingAnt);
-               
+
                 foreach (Transform AntChild in other.transform)
                 {
-                    if(AntChild.gameObject.name == movingAnt.InvisibleAnt(movingAnt.job))
+                    if (AntChild.gameObject.name == movingAnt.InvisibleAnt(movingAnt.job))
                     {
-                        AntChild.gameObject.GetComponent<MeshRenderer>().enabled = false;
+
+                        Debug.Log(AntChild.GetChild(1).name);
+                        AntChild.GetChild(1).GetComponent<SkinnedMeshRenderer>().enabled = false;
+
                     }
                 }
-                //movingAnt.gameObject.SetActive(false);
-                movingAnt.transform.position = new Vector3(gameObject.transform.position.x, movingAnt.transform.position.y, gameObject.transform.position.z);
-                if(tag == "School" && movingAnt.job == "student")
-                {
-                    movingAnt.GetComponent<LearningAnt>().isLearningAJob = true;
+                    //movingAnt.gameObject.SetActive(false);
+                    movingAnt.transform.position = new Vector3(gameObject.transform.position.x, movingAnt.transform.position.y, gameObject.transform.position.z);
+                    if (tag == "School" && movingAnt.job == "student")
+                    {
+                        movingAnt.GetComponent<LearningAnt>().isLearningAJob = true;
+                    }
                 }
             }
+            //antsAssignToThisBuilding.FindAll(x => x.job == "vagrant");
         }
-        //antsAssignToThisBuilding.FindAll(x => x.job == "vagrant");
-    }
+    
 
     private void OnTriggerExit(Collider other)
     {
