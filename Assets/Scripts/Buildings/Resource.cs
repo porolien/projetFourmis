@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class Resource : MonoBehaviour
 {
-    public TMPro.TextMeshProUGUI NumberOfWood;
-    public TMPro.TextMeshProUGUI NumberOfStone;
-    public TMPro.TextMeshProUGUI NumberOfFood;
+    public TextMeshProUGUI NumberOfWood;
+    public TextMeshProUGUI NumberOfStone;
+    public TextMeshProUGUI NumberOfFood;
     private int wood;
     private int stone;
     private int food;
@@ -38,7 +38,7 @@ public class Resource : MonoBehaviour
     }
     public string resource;
     private bool onAWork;
-    // Start is called before the first frame update
+
     void Start()
     {
         Wood = 0;
@@ -46,7 +46,6 @@ public class Resource : MonoBehaviour
         Food = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         /*   if (Input.GetKeyDown(KeyCode.W))
@@ -62,6 +61,5 @@ public class Resource : MonoBehaviour
                Food = 15;
            }
         */
-
     }
 }

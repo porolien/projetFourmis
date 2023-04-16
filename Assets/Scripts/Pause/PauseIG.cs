@@ -5,11 +5,11 @@ using UnityEngine.AI;
 
 public class PauseIG : MonoBehaviour
 {
-
-    List<LearningAnt> learnAnts = new List<LearningAnt>();
+    List<LearningAnt> learnAnts = new();
 
     public void PauseAnt()
     {
+        // Pause all learnings in the scene
         foreach (MovingAnt ant in GameManager.Instance.ants)
         {
             LearningAnt tempAnt = ant.gameObject.GetComponent<LearningAnt>();
@@ -30,6 +30,7 @@ public class PauseIG : MonoBehaviour
 
     public void PlayAnt()
     {
+        // Restart all learnings in the scene
         foreach (LearningAnt ant in learnAnts)
         {
             ant.isPlayLearning=true;

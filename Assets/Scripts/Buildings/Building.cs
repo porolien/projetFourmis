@@ -52,21 +52,17 @@ public class Building : MonoBehaviour
                 timeBeforeLast += Time.deltaTime * antsInBuilding.Count;
                 if (ConstructTime <= timeBeforeLast)
                 {
-                    
                     gameObject.GetComponent<Construct>().LetHimConstruct();
                 }
             }
-        }
-        
+        }   
     }
 
     private void OnTriggerEnter(Collider other)
     {
-
         // Check if the ant need to enter in the building
         if (other.TryGetComponent<MovingAnt>(out var movingAnt))
-        {
-            
+        {      
             if (antsAssignToThisBuilding.Contains(movingAnt))
             {   
                 // Add ant in the building
@@ -94,7 +90,6 @@ public class Building : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         // Check if the ant need to exit in the building
-
         if (other.TryGetComponent<MovingAnt>(out var movingAnt))
         {
             if (antsInBuilding.Contains(movingAnt))
@@ -111,6 +106,7 @@ public class Building : MonoBehaviour
 
     private void GainResources()
     {
+        // Add ressources at each second
         switch (tag)
         {
             case "Food":

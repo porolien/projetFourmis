@@ -78,8 +78,7 @@ public class MoveTheCamera : MonoBehaviour
                 Zoom = 5;
             }
             ZoomTheCamera();
-        }
-        
+        }  
     }
 
     void ZoomTheCamera()

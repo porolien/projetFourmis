@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class Raycast : MonoBehaviour
 {
-    public CreateAContruct createAContruct;
+    public CreateAConstruct createAContruct;
     public PlayerUi playerUi;
 
     void FixedUpdate()
     {
+        // Check on what we click in the scene
+        // Use to open ant sheet and place building
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 10000))
-        {
-            
+        {    
             string tagFromHit = hit.transform.gameObject.tag;
             if (tagFromHit == "Ground" && gameObject.tag != "Ant")
             {
                
-                if(createAContruct.ConstructMod == true)
+                if(createAContruct.constructMod == true)
                 {   
-                    createAContruct.create(hit);
+                    createAContruct.Create(hit);
                 }
             }
             else if(tagFromHit == "Ant")
@@ -30,7 +31,7 @@ public class Raycast : MonoBehaviour
                     Debug.Log(hit.transform.gameObject.GetComponent<MovingAnt>().job);
                     playerUi.ant = hit.transform.gameObject;
                     playerUi.antwindow.SetActive(true);
-                    playerUi.Init();
+                    playerUi.DisplayInformations();
                 }
             }
         }

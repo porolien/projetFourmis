@@ -11,7 +11,7 @@ public class MovingAnt : MonoBehaviour
     private string[] jobs = new string[] { "vagrant", "lumberjack", "collier", "explorer", "mason" };
     public string job;
 
-    public List<GameObject> skins = new List<GameObject>();
+    public List<GameObject> skins = new();
 
     public NavMeshAgent agent;
 
@@ -30,6 +30,7 @@ public class MovingAnt : MonoBehaviour
             job = jobs[Random.Range(0, jobs.Length)];
         }
 
+        // Retrieve the list of all skins in children
         for (int i = 0; i < transform.childCount; i++)
         {
             skins.Add(transform.GetChild(i).gameObject);
@@ -38,16 +39,12 @@ public class MovingAnt : MonoBehaviour
 
     void Start()
     {
-
-
-
         agent = GetComponent<NavMeshAgent>();
     }
 
     public void GoTo(GameObject waypoint)
     {
         // Send ant to a place
-
         agent.SetDestination(waypoint.transform.position);
         LastWaypoint = waypoint;
     }
@@ -77,7 +74,7 @@ public class MovingAnt : MonoBehaviour
     {
         // Select a destination at the beginning of the day and show the good skin depending
         // of the job
-
+        // If the ant is exhausted, she behaves as a vagrant
         foreach (GameObject skinChildren in skins)
         {
             skinChildren.SetActive(false);
@@ -130,6 +127,7 @@ public class MovingAnt : MonoBehaviour
                 }
             case ("explorer"):
                 {
+                    // Send explorer ants to a farm in priority and to a bush if it's full
                     GameObject skin = skins.Find(x => x.tag == "Explorer");
                     skin.SetActive(true);
 
@@ -166,6 +164,7 @@ public class MovingAnt : MonoBehaviour
                 }
             case ("mason"):
                 {
+                    // If the mason doesen't find a worksite, she behaves as a vagrant
                     GameObject skin = skins.Find(x => x.tag == "Mason");
                     skin.SetActive(true);
                     if (!exhausted && GameManager.Instance.worksites.Count > 0)
@@ -211,7 +210,6 @@ public class MovingAnt : MonoBehaviour
     public void GoToSleep()
     {
         // Send all ants who aren't vagrants to sleep
-
         if (job != "vagrant")
         {
             bool hasFindAHouse = false;
@@ -230,6 +228,8 @@ public class MovingAnt : MonoBehaviour
                     
                 }
             }
+            // If the ant has not find a house, she behaves as a vagrant and she is exhausted
+            // and sad
             if (!hasFindAHouse)
             {
                 GameManager.Instance.UpOurHappyness(-1);
@@ -243,14 +243,12 @@ public class MovingAnt : MonoBehaviour
     public IEnumerator VagrantWait()
     {
         // Behaviour of the vagrant
-
         yield return new WaitForSeconds(Random.Range(0, 5));
         if (!isWorking)
         {
             SelectDestination();
             GoTo(waypointToReach);
-        }
-        
+        } 
     }
 
     public string InvisibleAnt(string ObjectName)
@@ -278,7 +276,8 @@ public class MovingAnt : MonoBehaviour
         }
         return ObjectName;
     }
-    public void die()
+
+    public void Death()
     {
       /* for (int i = 0; i < GameManager.Instance.ants.Count; i++)
         {

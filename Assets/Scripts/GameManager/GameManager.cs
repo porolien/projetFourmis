@@ -9,7 +9,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     //Singleton
-
     private static GameManager _instance = null;
     private GameManager() { }
     public static GameManager Instance => _instance;
@@ -135,7 +134,6 @@ public class GameManager : MonoBehaviour
             houses.Add(house.GetComponent<Building>());
         }
 
-
         // Schools
         GameObject[] tempSchools = GameObject.FindGameObjectsWithTag("School");
 
@@ -151,6 +149,7 @@ public class GameManager : MonoBehaviour
         {
             museums.Add(museum.GetComponent<Building>());
         }
+
         // Librarys
         GameObject[] tempLibrary = GameObject.FindGameObjectsWithTag("Library");
 
@@ -158,6 +157,7 @@ public class GameManager : MonoBehaviour
         {
             librarys.Add(library.GetComponent<Building>());
         }
+
         // Farms
         GameObject[] tempFarm = GameObject.FindGameObjectsWithTag("Farm");
 
@@ -176,7 +176,8 @@ public class GameManager : MonoBehaviour
     }
 
     public IEnumerator Day(int dayTime)
-    {    
+    {   
+        // Manage what happens during the day
         isItDay = true;
         for (int i = 1; i <= dayTime; i++)
         {
@@ -207,6 +208,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator Night(int nightTime)
     {
+        // Manage what happens during the night
         isItDay = false;
         for (int i = 1; i <= nightTime; i++)
         {
@@ -228,7 +230,7 @@ public class GameManager : MonoBehaviour
                         ant.GoToSleep();
                         if (resource.Food < 1)
                         {
-                            ant.die();
+                            ant.Death();
                         }
                         else
                         {
@@ -252,6 +254,7 @@ public class GameManager : MonoBehaviour
 
     public void PauseAnt()
     {
+        // Pause ants and all timings in the scene
         foreach (MovingAnt ant in ants)
         {
             ant.agent.isStopped = true;
@@ -285,6 +288,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayAnt()
     {
+        // Restart ants movement and timings in the scene
         foreach (MovingAnt ant in ants)
         {
             ant.agent.isStopped = false;
@@ -318,6 +322,7 @@ public class GameManager : MonoBehaviour
 
     public void UpOurHappyness(int amountOfHappyness)
     {
+        // Call to increase gauge of happiness
         HappyGauge.happy += amountOfHappyness; 
     }
 }

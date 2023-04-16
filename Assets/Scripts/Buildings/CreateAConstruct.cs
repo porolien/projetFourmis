@@ -6,39 +6,39 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class CreateAContruct : MonoBehaviour
+public class CreateAConstruct : MonoBehaviour
 {
     public GameObject cube;
-    public bool ConstructMod;
+    public bool constructMod;
     public GameObject cubePrevisual;
-    public GameObject LargeCubePrevisual;
-    public Resource Resource;
+    public GameObject largeCubePrevisual;
+    public Resource resource;
     public NavMeshSurface navMeshSurface;
     public NavigationBaker navigationBaker;
-    public GameObject PArentOfBLoc;
+    public GameObject parentOfBLoc;
 
     private void Awake()
     {
-        navigationBaker.bakeTheNavigation();
+        // Bake the Navmesh a first time
+        navigationBaker.BakeTheNavigation();
     }
 
     public void PutABuilding(GameObject aConstruct)
     {
         Construct construct = aConstruct.GetComponent<Construct>();
-        if (construct.woodCost <= Resource.Wood && construct.stoneCost <= Resource.Stone)
+        if (construct.woodCost <= resource.Wood && construct.stoneCost <= resource.Stone)
         {
             cube = aConstruct;
-            ConstructMod = true;
+            constructMod = true;
             cubePrevisual.SetActive(true);
         }
     }
-    public void create(RaycastHit hit)
+    public void Create(RaycastHit hit)
     {
         cubePrevisual.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z);
 
         if (Input.GetMouseButton(0))
         {
-
             for (int i = 0; i < GameManager.Instance.ground.Count; i++)
             {
                 if (GameManager.Instance.ground[i] == hit.transform.gameObject)
@@ -50,12 +50,12 @@ public class CreateAContruct : MonoBehaviour
             cubePrevisual.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 2, hit.transform.position.z);
             cubePrevisual.SetActive(false);
 
-            Resource.Wood = -cube.GetComponent<Construct>().woodCost;
-            Resource.Stone = -cube.GetComponent<Construct>().stoneCost;
+            resource.Wood = -cube.GetComponent<Construct>().woodCost;
+            resource.Stone = -cube.GetComponent<Construct>().stoneCost;
             GameObject newCube = Instantiate(cube, new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z), Quaternion.identity);
             newCube.GetComponent<Construct>().contructThePrefab();
-            ConstructMod = false;
-            newCube.transform.SetParent(PArentOfBLoc.transform);
+            constructMod = false;
+            newCube.transform.SetParent(parentOfBLoc.transform);
             GameManager.Instance.worksites.Add(newCube.GetComponent<Building>());
             for (int i = 0; i < GameManager.Instance.ants.Count; i++)
             {
@@ -64,13 +64,13 @@ public class CreateAContruct : MonoBehaviour
                     GameManager.Instance.ants[i].StartingDay();
                 }
             }
-            navigationBaker.bakeTheNavigation();
+            navigationBaker.BakeTheNavigation();
         }
         if (Input.GetMouseButton(1))
         {
             cubePrevisual.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 2, hit.transform.position.z);
             cubePrevisual.SetActive(false);
-            ConstructMod = false;
+            constructMod = false;
         }
     }
 }

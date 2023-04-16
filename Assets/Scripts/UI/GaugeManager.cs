@@ -9,11 +9,13 @@ public class GaugeManager : MonoBehaviour
    public float happy = 25f;
    public float happyMax = 200f;
 
-    public Image happyBar;
-
+   public Image happyBar;
 
     void Update()
     {
+        // Fill the gauge of happiness
+        // If the gauge is completely full, victory
+        //If the gauge is completly empty, defeat
         happyBar.fillAmount = happy / happyMax;
 
         happy = Mathf.Clamp(happy, 0f, happyMax);

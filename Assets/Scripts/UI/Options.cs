@@ -4,18 +4,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-public class Option : MonoBehaviour
+public class Options : MonoBehaviour
 {
     public AudioSource audioSource;
     public Slider slider;
 
-    //public TMP_Text TxtVolume;
-
     public void SliderChange()
     {
+        // Set the audio volume
         audioSource.volume = slider.value;
-       // TxtVolume.text = "Volume" + (audioSource.volume + 100).ToString("00") + "%";
-
     }
 }

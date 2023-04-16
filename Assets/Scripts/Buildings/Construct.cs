@@ -17,18 +17,17 @@ public class Construct : MonoBehaviour
     {
         TheConstruct.SetActive(true);
         switch (TypeOfConstruct)
-        {
-            
+        {          
             case "museum":
                 GameManager.Instance.museums.Add(TheConstruct.GetComponent<Building>());
-                TheConstruct.GetComponent<GaugeGain>().gainSomeHappyness();
+                TheConstruct.GetComponent<GaugeGain>().GainSomeHappyness();
                 break;
             case "school":
                 GameManager.Instance.schools.Add(TheConstruct.GetComponent<Building>());
                 break;
             case "library":
                 GameManager.Instance.librarys.Add(TheConstruct.GetComponent<Building>());
-                TheConstruct.GetComponent<GaugeGain>().gainSomeHappyness();
+                TheConstruct.GetComponent<GaugeGain>().GainSomeHappyness();
                 break;
             case "farm":
                 GameManager.Instance.farms.Add(TheConstruct.GetComponent<Building>());
@@ -60,5 +59,3 @@ public class Construct : MonoBehaviour
         TheConstruct = ThePrefab;
     }
 }
-
-

@@ -5,32 +5,33 @@ using UnityEngine;
 public class LearningAnt : MonoBehaviour
 {
     public MovingAnt ant;
-    public float TimeNeeded;
-    public bool isLearningAJob;
-    float timeBeforeLast;
-    string TheLearningJob;
 
-    //Check if the game was on play or pause
+    string TheLearningJob;
+    public bool isLearningAJob;
+
+    public float TimeNeeded;
+    float timeBeforeLast;
+
+    // Check if the game was on play or pause
     public bool isPlayLearning;
 
-    // Start is called before the first frame update
     void Start()
     {
         ant = GetComponent<MovingAnt>();
         isPlayLearning = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // Decrease time to learn if the ant is learning a job and if the game is not pause
+        // If the ant has finished to learn, she is exhausted
         if (isPlayLearning)
         {
             if (isLearningAJob)
             {
                 timeBeforeLast += Time.deltaTime;  		
                 if (timeBeforeLast > 1)
-                {
-                    
+                {                 
                     TimeNeeded--;
                     timeBeforeLast = 0;
                     if (TimeNeeded <= 0)
@@ -41,12 +42,12 @@ public class LearningAnt : MonoBehaviour
                     }
                 }
             }
-        }
-        
+        }   
     }
 
     public void LearnAJob(string AJobToLearn)
     {
+        // Launch the learning depending of the job
         isLearningAJob = true;
         
         switch (AJobToLearn)

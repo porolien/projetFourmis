@@ -15,16 +15,19 @@ public class PlayerUi : MonoBehaviour
 
     public void AntButton()
     {
-            antwindow.SetActive(true);
+        // Open ant sheet
+        antwindow.SetActive(true);
     }
 
     public void CloseAntButton()
     {
+        // Close ant sheet
         antwindow.SetActive(false);
     }
 
     public void JobButton(string TheJob)
     {
+        // Send the ant if we choose to change the job of an ant
         MovingAnt movingAnt = ant.GetComponent<MovingAnt>();
         movingAnt.job = "student";
 
@@ -49,7 +52,7 @@ public class PlayerUi : MonoBehaviour
         movingAnt.GetComponent<LearningAnt>().LearnAJob(TheJob);
     }
 
-    public void Init()
+    public void DisplayInformations()
     {
         AntName.text = ant.name;
         switch (ant.GetComponent<MovingAnt>().job)
@@ -70,7 +73,4 @@ public class PlayerUi : MonoBehaviour
                 break;
         }
     }
-
-
-
 }

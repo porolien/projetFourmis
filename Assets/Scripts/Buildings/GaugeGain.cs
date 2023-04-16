@@ -6,9 +6,10 @@ public class GaugeGain : MonoBehaviour
 {
     public GaugeManager gaugeManager;
     public int aLotOfHappy;
-    // Start is called before the first frame update
-   public void gainSomeHappyness()
+
+   public void GainSomeHappyness()
     {
+        // Increase the gauge of happiness
         gaugeManager = GameManager.Instance.HappyGauge;
         gaugeManager.happy += aLotOfHappy;
     }

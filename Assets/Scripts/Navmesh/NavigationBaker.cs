@@ -9,7 +9,7 @@ public class NavigationBaker : MonoBehaviour
     public NavMeshSurface surface;
 
     // Use this for initialization
-     public void bakeTheNavigation()
+     public void BakeTheNavigation()
     {
         surface.BuildNavMesh();
     }
