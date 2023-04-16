@@ -5,13 +5,27 @@ using UnityEngine;
 
 public class MoveTheCamera : MonoBehaviour
 {
-    public float sensitivity = 5f;
-    private int Zoom = 3;
     public Camera cameraFollow;
 
-    public int poseCamera = -31;
+    public float sensitivity = 5f;
 
     public float scrollSpeed = 10;
+    // Multipliers depending of the zoom
+    public float multiplier;
+    public float vectoringMultiplier;
+
+    // Maximum positions in X and Z
+    public float maxPos;
+    public float minPos;
+
+    private int zoom;
+
+    private void Start()
+    {
+        multiplier = 2f;
+        vectoringMultiplier = 1f;
+        zoom = 9;
+    }
 
     public void Update()
     {
@@ -25,46 +39,46 @@ public class MoveTheCamera : MonoBehaviour
 
         if (mousePosX < scrollDistance)
         {
-            transform.Translate(Vector3.right * -scrollSpeed * Time.deltaTime * 1.5f);
+            transform.Translate(Vector3.right * -scrollSpeed * Time.deltaTime * multiplier);
         }
         if (mousePosX >= Screen.width - scrollDistance)
         {
-            transform.Translate(Vector3.right * scrollSpeed * Time.deltaTime * 1.5f);
+            transform.Translate(Vector3.right * scrollSpeed * Time.deltaTime * multiplier);
         }
         if (mousePosY < scrollDistance)
         {
-            transform.position = new Vector3(transform.position.x + 1 * -scrollSpeed * Time.deltaTime, transform.position.y, transform.position.z + 1 * -scrollSpeed * Time.deltaTime);
+            transform.position = new Vector3(transform.position.x + 1 * -scrollSpeed * Time.deltaTime * vectoringMultiplier, transform.position.y, transform.position.z + 1 * -scrollSpeed * Time.deltaTime * vectoringMultiplier);
         }
         if (mousePosY >= Screen.height - scrollDistance)
         {
-            transform.position = new Vector3(transform.position.x + 1 * scrollSpeed * Time.deltaTime, transform.position.y, transform.position.z + 1 * scrollSpeed * Time.deltaTime);
+            transform.position = new Vector3(transform.position.x + 1 * scrollSpeed * Time.deltaTime * vectoringMultiplier, transform.position.y, transform.position.z + 1 * scrollSpeed * Time.deltaTime * vectoringMultiplier);
         }
 
         // Check if the camera is outside the limits
-        if (transform.position.x <= -35)
+        if (transform.position.x <= minPos)
         {
-            transform.position = new Vector3(-35, transform.position.y, transform.position.z);
+            transform.position = new Vector3(minPos, transform.position.y, transform.position.z);
         }
-        if (transform.position.z <= -35)
+        if (transform.position.z <= minPos)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, -35);
+            transform.position = new Vector3(transform.position.x, transform.position.y, minPos);
         }
-        if (transform.position.x >= -14)
+        if (transform.position.x >= maxPos)
         {
-            transform.position = new Vector3(-14, transform.position.y, transform.position.z);
+            transform.position = new Vector3(maxPos, transform.position.y, transform.position.z);
         }
-        if (transform.position.z >= -14)
+        if (transform.position.z >= maxPos)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, -14);
+            transform.position = new Vector3(transform.position.x, transform.position.y, maxPos);
         }
 
         // Zoom the camera
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
-            Zoom--;
-            if(Zoom < 0)
+            zoom--;
+            if(zoom < 0)
             {
-                Zoom = 1;
+                zoom = 1;
             }
             ZoomTheCamera();
         }
@@ -72,10 +86,10 @@ public class MoveTheCamera : MonoBehaviour
         //zoom out the camera
         if(Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
-            Zoom++;
-            if (Zoom > 7)
+            zoom++;
+            if (zoom > 11)
             {
-                Zoom = 7;
+                zoom = 11;
             }
             ZoomTheCamera();
         }  
@@ -84,28 +98,84 @@ public class MoveTheCamera : MonoBehaviour
     void ZoomTheCamera()
     {
         // Different steps of the zoom
-        switch (Zoom)
+        switch (zoom)
         {
             case 1:
-                Camera.main.fieldOfView = 45;
+                Camera.main.fieldOfView = 10;
+                minPos = -40.5f;
+                maxPos = -12f;
+                multiplier = 0.4f;
+                vectoringMultiplier = 0.3f;
                 break;
             case 2:
-                Camera.main.fieldOfView = 55;
+                Camera.main.fieldOfView = 15;
+                minPos = -40f;
+                maxPos = -12.5f;
+                multiplier = 0.5f;
+                vectoringMultiplier = 0.4f;
                 break;
             case 3:
-                Camera.main.fieldOfView = 65;
+                Camera.main.fieldOfView = 25;
+                minPos = -39.5f;
+                maxPos = -12.5f;
+                multiplier = 0.8f;
+                vectoringMultiplier = 0.6f;
                 break;
             case 4:
-                Camera.main.fieldOfView = 75;
+                Camera.main.fieldOfView = 35;
+                minPos = -39f;
+                maxPos = -13f;
+                multiplier = 1f;
+                vectoringMultiplier = 0.7f;
                 break;
             case 5:
-                Camera.main.fieldOfView = 85;
+                Camera.main.fieldOfView = 45;
+                minPos = -38.5f;
+                maxPos = -13f;
+                multiplier = 1.3f;
+                vectoringMultiplier = 0.9f;
                 break;
             case 6:
-                Camera.main.fieldOfView = 95;
+                Camera.main.fieldOfView = 55;
+                minPos = -38.5f;
+                maxPos = -13f;
+                multiplier = 1.6f;
+                vectoringMultiplier = 1f;
                 break;
             case 7:
+                Camera.main.fieldOfView = 65;
+                minPos = -38f;
+                maxPos = -13.5f;
+                multiplier = 1.8f;
+                vectoringMultiplier = 1f;
+                break;
+            case 8:
+                Camera.main.fieldOfView = 75;
+                minPos = -37.5f;
+                maxPos = -14f;
+                multiplier = 2f;
+                vectoringMultiplier = 1f;
+                break;
+            case 9:
+                Camera.main.fieldOfView = 85;
+                minPos = -37.5f;
+                maxPos = -14f;
+                multiplier = 2f;
+                vectoringMultiplier = 1f;
+                break;
+            case 10:
+                Camera.main.fieldOfView = 95;
+                minPos = -37.5f;
+                maxPos = -14f;
+                multiplier = 2f;
+                vectoringMultiplier = 1f;
+                break;
+            case 11:
                 Camera.main.fieldOfView = 105;
+                minPos = -37f;
+                maxPos = -14f;
+                multiplier = 2f;
+                vectoringMultiplier = 1f;
                 break;
         }
     }
