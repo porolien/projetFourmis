@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class Resource : MonoBehaviour
 {
-    public TextMeshProUGUI NumberOfWood;
-    public TextMeshProUGUI NumberOfStone;
-    public TextMeshProUGUI NumberOfFood;
+    public TextMeshProUGUI numberOfWood;
+    public TextMeshProUGUI numberOfStone;
+    public TextMeshProUGUI numberOfFood;
     private int wood;
     private int stone;
     private int food;
@@ -18,7 +18,7 @@ public class Resource : MonoBehaviour
     { 
         get { return wood; }
         set { wood = value + wood;
-            NumberOfWood.text = "" + wood;   }
+            numberOfWood.text = "" + wood;   }
     }
     public int Stone
     {
@@ -26,7 +26,7 @@ public class Resource : MonoBehaviour
         set
         {
             stone = value + stone;
-            NumberOfStone.text = "" + stone;
+            numberOfStone.text = "" + stone;
         }
     }
     public int Food
@@ -35,7 +35,7 @@ public class Resource : MonoBehaviour
         set
         {
             food = value + food;
-            NumberOfFood.text = "" + food;
+            numberOfFood.text = "" + food;
         }
     }
     public string resource;

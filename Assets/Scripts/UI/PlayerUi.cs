@@ -49,10 +49,17 @@ public class PlayerUi : MonoBehaviour
 
         if (GameManager.Instance.isItDay)
         {
-            movingAnt.waypointToReach = GameManager.Instance.schools[Random.Range(0, GameManager.Instance.schools.Count)].gameObject;
-            Building waypointBuilding = movingAnt.waypointToReach.GetComponent<Building>();
-            waypointBuilding.antsAssignToThisBuilding.Add(movingAnt);
-            movingAnt.GoTo(movingAnt.waypointToReach);
+            if (GameManager.Instance.schools.Count > 0)
+            {
+                movingAnt.waypointToReach = GameManager.Instance.schools[Random.Range(0, GameManager.Instance.schools.Count)].gameObject;
+                Building waypointBuilding = movingAnt.waypointToReach.GetComponent<Building>();
+                waypointBuilding.antsAssignToThisBuilding.Add(movingAnt);
+                movingAnt.GoTo(movingAnt.waypointToReach);
+            }
+            else
+            {
+                return;
+            }
         }
         else
         {

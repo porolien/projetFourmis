@@ -73,8 +73,6 @@ public class Building : MonoBehaviour
                 {
                     if (AntChild.gameObject.name == movingAnt.InvisibleAnt(movingAnt.job))
                     {
-
-                        Debug.Log(AntChild.GetChild(1).name);
                         AntChild.GetChild(1).GetComponent<SkinnedMeshRenderer>().enabled = false;
 
                     }

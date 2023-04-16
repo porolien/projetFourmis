@@ -28,7 +28,6 @@ public class MainMenu : MonoBehaviour
         mainMenu.SetActive(false);
     }
 
-
     public void OpenOptionsWindow()
     {
         // Call if button Options is clicked

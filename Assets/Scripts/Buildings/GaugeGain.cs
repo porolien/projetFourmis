@@ -10,7 +10,7 @@ public class GaugeGain : MonoBehaviour
    public void GainSomeHappyness()
     {
         // Increase the gauge of happiness
-        gaugeManager = GameManager.Instance.HappyGauge;
+        gaugeManager = GameManager.Instance.happyGauge;
         gaugeManager.happy += aLotOfHappy;
     }
 }

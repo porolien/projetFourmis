@@ -15266,12 +15266,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95b1d03241d30e046957fac798d7be42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mine: {fileID: 0}
-  Forest: {fileID: 0}
-  Food: {fileID: 0}
+  mine: {fileID: 0}
+  forest: {fileID: 0}
+  food: {fileID: 0}
   ant: {fileID: 7227759867230754862, guid: 240083c1744cfe74abaf01df91b7c7ff, type: 3}
   resource: {fileID: 333052436}
-  HappyGauge: {fileID: 710720774}
+  happyGauge: {fileID: 0}
   ants: []
   forests: []
   mines: []
@@ -15315,9 +15315,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9341b3defb306654e96d98ff2bf8b9dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumberOfWood: {fileID: 47813792}
-  NumberOfStone: {fileID: 1750499409}
-  NumberOfFood: {fileID: 1236477365}
+  numberOfWood: {fileID: 47813792}
+  numberOfStone: {fileID: 1750499409}
+  numberOfFood: {fileID: 1236477365}
   resource: 
 --- !u!114 &333052437
 MonoBehaviour:
@@ -30089,7 +30089,7 @@ Terrain:
   m_StaticShadowCaster: 0
   m_ReflectionProbeUsage: 1
   m_MaterialTemplate: {fileID: 2100000, guid: e127fb7a382bcc64fab14ac30999fc06, type: 2}
-  m_BakeLightProbesForTrees: 1
+  m_BakeLightProbesForTrees: 0
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
   m_ScaleInLightmap: 0.0256
@@ -36052,7 +36052,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.9136463, b: 0.38113207, a: 1}
+  m_Color: {r: 0.9978842, g: 1, b: 0.86226416, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30

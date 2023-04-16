@@ -15,16 +15,16 @@ public class GameManager : MonoBehaviour
     //
 
     //prefab of ressources building needed to be paused and played
-    public GameObject Mine;
-    public GameObject Forest;
-    public GameObject Food;
+    public GameObject mine;
+    public GameObject forest;
+    public GameObject food;
 
     // Prefab to clone each day
     public GameObject ant;
 
     //Resource and the gauge which will be upgrade during the game
     public Resource resource;
-    public GaugeManager HappyGauge;
+    public GaugeManager happyGauge;
 
     // All objects we need to access during the game
     public List<MovingAnt> ants = new();
@@ -193,8 +193,6 @@ public class GameManager : MonoBehaviour
                     {
                         if (AntChild.gameObject.name == ant.InvisibleAnt(ant.job))
                         {
-                            
-                            Debug.Log(AntChild.GetChild(1).name);
                             AntChild.GetChild(1).GetComponent<SkinnedMeshRenderer>().enabled = true;
                           
                         }
@@ -329,6 +327,6 @@ public class GameManager : MonoBehaviour
     public void UpOurHappyness(int amountOfHappyness)
     {
         // Call to increase gauge of happiness
-        HappyGauge.happy += amountOfHappyness; 
+        happyGauge.happy += amountOfHappyness;
     }
 }
